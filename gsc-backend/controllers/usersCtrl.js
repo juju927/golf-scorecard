@@ -2,19 +2,18 @@ const debug = require("debug")("gsc-backend:controllers:usersCtrl")
 
 const User = require("../models/UserModel")
 const jwt = require("jsonwebtoken");
+const sendResponse = require("../helpers/sendResponseHelper")
 
 
 async function create(req, res) {
   try {
     const newUser = await User.create(req.body);
     debug("created new user: %o", req.body);
-    // const token = createJWT(newUser);
-    // sendResponse(res, 201, { token: token });
-    res.status(201).json({ newUser });
+    const token = createJWT(newUser);
+    sendResponse(res, 201, { token: token });
   } catch (err) {
     debug("Error creating: %o", err);
-    // sendResponse(res, status, null, message);
-    res.status(500).json({ error });
+    sendResponse(res, 500, null, message);
   }
 }
 
