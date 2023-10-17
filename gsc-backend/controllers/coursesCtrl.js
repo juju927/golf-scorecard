@@ -23,4 +23,14 @@ async function getAll(req, res) {
   }
 }
 
-module.exports = { create, getAll }
+async function getBy(req, res) {
+  try {
+    const re = new RegExp(req.body.course_name, "i")
+    const course = await Course.find({ course_name: re }).exec()
+    sendResponse(res, 201, { course })
+  } catch (err) {
+    sendResponse(res, 500, err.message)
+  }
+}
+
+module.exports = { create, getAll, getBy }
