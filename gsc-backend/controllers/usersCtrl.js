@@ -10,10 +10,10 @@ async function create(req, res) {
     const newUser = await User.create(req.body);
     debug("created new user: %o", req.body);
     const token = createJWT(newUser);
-    sendResponse(res, 201, { token: token });
+    sendResponse(res, 201, { token: token }, "user created");
   } catch (err) {
     debug("Error creating: %o", err);
-    sendResponse(res, 500, null, message);
+    sendResponse(res, 500, err.message);
   }
 }
 
