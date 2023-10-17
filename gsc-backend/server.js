@@ -11,6 +11,7 @@ const debug = require("debug")("gsc-backend:server.js");
 //* routers
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/usersRouter");
+const coursesRouter = require("./routes/coursesRouter")
 
 //* app
 const app = express();
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/courses", coursesRouter)
 
 //* catch 404 and forward to error handler
 app.use( (req, res, next) => {

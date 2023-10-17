@@ -1,9 +1,8 @@
-const debug = require("debug")("gsc-backend:controllers:usersCtrl")
+const debug = require("debug")("gsc-backend:controllers:usersCtrl");
 
-const User = require("../models/UserModel")
+const User = require("../models/UserModel");
 const jwt = require("jsonwebtoken");
-const sendResponse = require("../helpers/sendResponseHelper")
-
+const sendResponse = require("../helpers/sendResponseHelper");
 
 async function create(req, res) {
   try {
