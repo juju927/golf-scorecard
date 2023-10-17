@@ -2,7 +2,11 @@ const mongoose = require("mongoose")
 const debug = require("debug")("gsc-backend:config:database")
 
 mongoose.set("debug", true)
-mongoose.connect(process.env.DATABASE_URL)
+
+main().catch((error)=> debug(error))
+async function main() {
+  await mongoose.connect(process.env.DATABASE_URL)
+}
 
 const db = mongoose.connection;
 

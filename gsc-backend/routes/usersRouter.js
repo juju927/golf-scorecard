@@ -1,9 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const debug = require("debug")("gsc-backend:routes:usersRouter");
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const express = require("express");
+const router = express.Router();
+const usersCtrl = require("../controllers/usersCtrl");
+const { body, validationResult } = require("express-validator");
+
+router.get("/", (req, res, next) => {res.json({ "msg": "ya"})})
+router.post("/create", usersCtrl.create);
 
 module.exports = router;

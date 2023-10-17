@@ -43,6 +43,7 @@ app.use((err, req, res, next) => {
 
 //* routes
 app.get("/api", (req, res) => {
+  debug("bleb")
   res.json({ msg: "hi werl" });
 });
 
