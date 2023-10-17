@@ -23,14 +23,14 @@ async function getAll(req, res) {
   }
 }
 
-async function getBy(req, res) {
+async function getByName(req, res) {
   try {
-    const re = new RegExp(req.body.course_name, "i")
-    const course = await Course.find({ course_name: re }).exec()
-    sendResponse(res, 201, { course })
+    const re = new RegExp(req.params.courseName, "i")
+    const courses = await Course.find({ course_name: re }).exec()
+    sendResponse(res, 201, { courses })
   } catch (err) {
     sendResponse(res, 500, err.message)
   }
 }
 
-module.exports = { create, getAll, getBy }
+module.exports = { create, getAll, getByName }

@@ -6,6 +6,6 @@ const usersCtrl = require("../controllers/usersCtrl");
 const { body, validationResult } = require("express-validator");
 
 router.get("/", (req, res, next) => {res.json({ "msg": "ya"})})
-router.post("/create", usersCtrl.create);
+router.post("/", usersCtrl.create);
 
 module.exports = router;
