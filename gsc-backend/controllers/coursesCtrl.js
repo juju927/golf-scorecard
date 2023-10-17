@@ -14,4 +14,13 @@ async function create(req, res) {
   }
 }
 
-module.exports = { create }
+async function getAll(req, res) {
+  try {
+    const courses = await Course.find({})
+    sendResponse(res, 201, { courses })
+  } catch (err) {
+    sendResponse(res, 500, err.message)
+  }
+}
+
+module.exports = { create, getAll }

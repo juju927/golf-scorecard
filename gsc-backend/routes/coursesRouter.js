@@ -7,5 +7,7 @@ const { body, validationResult } = require("express-validator");
 
 router.get("/", (req, res, next) => {res.json({ "msg": "courseseseses"})})
 router.post("/create", coursesCtrl.create);
+router.get("/all", coursesCtrl.getAll);
+
 
 module.exports = router;
