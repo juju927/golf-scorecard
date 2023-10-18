@@ -7,7 +7,7 @@ const sendResponse = require("../helpers/sendResponseHelper");
 
 async function getRounds(req, res) {
   try {
-    const rounds = await Round.find({ user_id: req.query.user_id });
+    const rounds = await Round.find({ ...req.query })
     sendResponse(res, 200, { rounds });
   } catch (err) {
     sendResponse(res, 500, err.message);

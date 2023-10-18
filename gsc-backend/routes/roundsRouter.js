@@ -2,13 +2,13 @@ const debug = require("debug")("gsc-backend:routes:userRecordsRouter");
 
 const express = require("express");
 const router = express.Router();
-const userRecordsCtrl = require("../controllers/roundsCtrl");
+const roundsCtrl = require("../controllers/roundsCtrl");
 
 
-router.get("/", userRecordsCtrl.getRounds)
-router.get("/round", userRecordsCtrl.getRound);
-router.post("/", userRecordsCtrl.createRound);
-router.post("/record/stroke", userRecordsCtrl.addStroke);
+router.get("/", roundsCtrl.getRounds)
+router.get("/round", roundsCtrl.getRound);
+router.post("/", roundsCtrl.createRound);
+router.post("/record/stroke", roundsCtrl.addStroke);
 
 
 
