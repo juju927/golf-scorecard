@@ -25,8 +25,8 @@ const userRecordSchema = new Schema({
       penalty_strokes: { type: Number, required: true, default: 0 },
       stroke_details: [
         {
-          club: { type: String, validate: /\d[iWh]|W\d{2}|PW|Pt/ },
-          ground: { type: String, enum: ['Fairway', 'Rough', 'Sand', 'Green'] },
+          club: { type: String, validate: /\d[iWh]|W\d{2}|PW|Pt/, required: [true, "Please specify club used."] }, 
+          ground: { type: String, enum: ['Tee-off', 'Fairway', 'Rough', 'Sand', 'Green'], required: [true, "Please specify type of ground shot from."] },
           is_chip: { type: Boolean, default: false },
           analysis: {
             is_left: { type: Boolean, default: false },

@@ -28,10 +28,31 @@ async function createRound(req, res) {
   }
 }
 
-// async function addStroke(req, res) {
-//   const round = await UserRecord.findById(req.body.round_id)
-//   round.round_
-// }
+async function addStroke(req, res) {
+  try {
+    const round = await UserRecord.findById(req.body.round_id);
+    // selecting a subdoc: https://mongoosejs.com/docs/subdocs.html#finding-a-subdocument
+    const roundRecord = await round.round_record.id(req.body.record_id);
+    roundRecord.stroke_details.push({
+      club: req.body.stroke.club,
+      ground: req.body.stroke.ground,
+      is_chip: req.body.stroke.is_chip,
+      analysis: {
+        is_left: req.body.stroke.is_left || false,
+        is_right: req.body.stroke.is_right || false,
+        is_short: req.body.stroke.is_short || false,
+        is_long: req.body.stroke.is_long || false,
+        remarks: req.body.stroke.remarks || ""
+      }
+    });
+    roundRecord.total_strokes++;
+    await round.save();
+    sendResponse(res, 201, roundRecord, "stroke added");
+  } catch (err) {
+    debug("Error creating: %o", err);
+    sendResponse(res, 500, err.message);
+  }
+}
 
 function initialiseRecord(roundType) {
   // roundLength is 'full', 'out', or 'in'
@@ -57,4 +78,4 @@ function initialiseRecord(roundType) {
   return arr;
 }
 
-module.exports = { createRound };
+module.exports = { createRound, addStroke };
