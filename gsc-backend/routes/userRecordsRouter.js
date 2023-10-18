@@ -4,8 +4,11 @@ const express = require("express");
 const router = express.Router();
 const userRecordsCtrl = require("../controllers/userRecordsCtrl");
 
+
+router.get("/round", userRecordsCtrl.getRound);
 router.post("/round", userRecordsCtrl.createRound);
 router.post("/round/stroke", userRecordsCtrl.addStroke);
+
 
 
 module.exports = router;

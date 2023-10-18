@@ -5,6 +5,18 @@ const User = require("../models/UserModel");
 const Course = require("../models/CourseModel");
 const sendResponse = require("../helpers/sendResponseHelper");
 
+
+async function getRound(req, res) {
+  try {
+    debug(req);
+    const round = await UserRecord.findById(req.query.id);
+    sendResponse(res, 201, { round });
+  } catch (err) {
+    debug("Error getting round: %o", err);
+    sendResponse(res, 500, err.message);
+  }
+}
+
 async function createRound(req, res) {
   try {
     const user = await User.findById(req.body.user_id); //! change to token (req.user._id)
@@ -61,6 +73,15 @@ async function addStroke(req, res) {
   }
 }
 
+// async function editStroke(req, res) {
+//   try {
+
+//   } catch (err) {
+//     debug("Error editing stroke: %o", err);
+//     sendResponse(res, 500, err.message);
+//   }
+// }
+
 function initialiseRecord(roundType) {
   // roundLength is 'full', 'out', or 'in'
   let start = 1;
@@ -85,4 +106,4 @@ function initialiseRecord(roundType) {
   return arr;
 }
 
-module.exports = { createRound, addStroke };
+module.exports = { getRound, createRound, addStroke };
