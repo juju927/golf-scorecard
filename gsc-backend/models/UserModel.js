@@ -14,6 +14,8 @@ const userSchema = new Schema(
       unique: true,
       trim: true,
       lowercase: true,
+      minLength: 4,
+      maxLength: 30
     },
     email: {
       type: String,
@@ -26,7 +28,10 @@ const userSchema = new Schema(
     password: { type: String, trim: true, minLength: 8, required: true },
   },
   {
-    timestamps: true,
+    timestamps: { 
+      createdAt: 'created_at',
+      updatedAt: 'updated_at'
+    },
     toJSON: {
       transform: (_, ret) => {
         delete ret.password;
