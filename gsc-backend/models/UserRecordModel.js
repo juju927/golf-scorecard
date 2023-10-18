@@ -6,7 +6,9 @@ const { Schema, model } = mongoose;
 const userRecordSchema = new Schema({
   user_id: { type: Schema.Types.ObjectId, ref: "User" },
   course_id: { type: Schema.Types.ObjectId, ref: "Course" },
-  round_date: { type: Date, required: true, default: Date.now },
+  round_date: { type: Date, required: true, default: Date.now() },
+  tee: { type: String, required: [ true, "Please specify tee colour."] }, // colour tee
+  // hcp: { type: Number }, // hcp for the course
   round_record: [
     {
       hole_num: {
@@ -23,16 +25,15 @@ const userRecordSchema = new Schema({
       penalty_strokes: { type: Number, required: true, default: 0 },
       stroke_details: [
         {
-          club: { type: String, validate: /\d[iW]|W\d{2}|PW|Putter/ },
-          type: {
-            type: String,
-            enum: ["Tee-off", "Fairway", "Chip", "Sand", "Putt"],
-          },
+          club: { type: String, validate: /\d[iWh]|W\d{2}|PW|Pt/ },
+          ground: { type: String, enum: ['Fairway', 'Rough', 'Sand', 'Green'] },
+          is_chip: { type: Boolean, default: false },
           analysis: {
-            left: { type: Boolean, default: false },
-            right: { type: Boolean, default: false },
-            short: { type: Boolean, default: false },
-            long: { type: Boolean, default: false },
+            is_left: { type: Boolean, default: false },
+            is_right: { type: Boolean, default: false },
+            is_short: { type: Boolean, default: false },
+            is_long: { type: Boolean, default: false },
+            remarks: { type: String }
           },
         },
       ],

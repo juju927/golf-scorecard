@@ -11,15 +11,15 @@ const userSchema = new Schema(
     username: {
       type: String,
       required: [true, "Please input a username."],
-      unique: true,
+      unique: [true, "Username taken."],
       trim: true,
       lowercase: true,
       minLength: 4,
-      maxLength: 30
+      maxLength: 30,
     },
     email: {
       type: String,
-      unique: true,
+      unique: [true, "Email already registered."],
       trim: true,
       lowercase: true,
       validate: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
@@ -28,9 +28,9 @@ const userSchema = new Schema(
     password: { type: String, trim: true, minLength: 8, required: true },
   },
   {
-    timestamps: { 
-      createdAt: 'created_at',
-      updatedAt: 'updated_at'
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
     },
     toJSON: {
       transform: (_, ret) => {
