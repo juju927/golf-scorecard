@@ -5,8 +5,7 @@ const router = express.Router();
 const clubsCtrl = require("../controllers/clubsCtrl");
 
 router.get("/", clubsCtrl.getAll);
-router.get("/:clubName", clubsCtrl.getByName);
-router.get("/:id", clubsCtrl.getById);
+router.get("/club", clubsCtrl.getByQuery);
 router.post("/", clubsCtrl.create);
 
 

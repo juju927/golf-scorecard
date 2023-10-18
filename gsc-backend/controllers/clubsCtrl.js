@@ -16,30 +16,27 @@ async function create(req, res) {
 
 async function getAll(req, res) {
   try {
+    debug(req.query)
     const clubs = await Club.find({})
-    sendResponse(res, 201, { clubs })
+    sendResponse(res, 200, { clubs })
   } catch (err) {
     sendResponse(res, 500, err.message)
   }
 }
 
-async function getByName(req, res) {
+async function getByQuery(req, res) {
   try {
-    const re = new RegExp(req.params.clubName, "i")
-    const clubs = await Club.find({ club_name: re }).exec()
-    sendResponse(res, 201, { clubs })
+    if (req.query.id) {
+      const club = await Club.findById(req.query.id)
+      sendResponse(res, 200, { club })
+    } else if (req.query.name) {
+      const re = new RegExp(req.query.name, "i")
+      const clubs = await Club.find({ club_name: re }).exec()
+      sendResponse(res, 200, { clubs })
+    }
   } catch (err) {
     sendResponse(res, 500, err.message)
   }
 }
 
-async function getById(req, res) {
-  try {
-    const club = await Club.findById(req.params.id)
-    sendResponse(res, 201, { club })
-  } catch (err) {
-    sendResponse(res, 500, err.message)
-  }
-}
-
-module.exports = { create, getAll, getByName, getById }
+module.exports = { create, getAll, getByQuery }
