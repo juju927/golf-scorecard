@@ -1,7 +1,7 @@
 const debug = require("debug")("gsc-backend:controllers:clubsCtrl");
 
 const Club = require("../models/ClubModel");
-const sendResponse = require("../helpers/sendResponseHelper")
+const sendResponse = require("../helpers/sendResponseHelper");
 
 async function create(req, res) {
   try {
@@ -16,27 +16,27 @@ async function create(req, res) {
 
 async function getAll(req, res) {
   try {
-    debug(req.query)
-    const clubs = await Club.find({})
-    sendResponse(res, 200, { clubs })
+    debug(req.query);
+    const clubs = await Club.find({});
+    sendResponse(res, 200, { clubs });
   } catch (err) {
-    sendResponse(res, 500, err.message)
+    sendResponse(res, 500, err.message);
   }
 }
 
 async function getByQuery(req, res) {
   try {
     if (req.query.id) {
-      const club = await Club.findById(req.query.id)
-      sendResponse(res, 200, { club })
+      const club = await Club.findById(req.query.id);
+      sendResponse(res, 200, { club });
     } else if (req.query.name) {
-      const re = new RegExp(req.query.name, "i")
-      const clubs = await Club.find({ club_name: re }).exec()
-      sendResponse(res, 200, { clubs })
+      const re = new RegExp(req.query.name, "i");
+      const clubs = await Club.find({ club_name: re }).exec();
+      sendResponse(res, 200, { clubs });
     }
   } catch (err) {
-    sendResponse(res, 500, err.message)
+    sendResponse(res, 500, err.message);
   }
 }
 
-module.exports = { create, getAll, getByQuery }
+module.exports = { create, getAll, getByQuery };

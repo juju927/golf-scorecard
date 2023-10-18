@@ -1,15 +1,14 @@
 const debug = require("debug")("gsc-backend:controllers:userRecordsCtrl");
 
-const UserRecord = require("../models/UserRecordModel");
+const Round = require("../models/RoundModel");
 const User = require("../models/UserModel");
 const Course = require("../models/CourseModel");
 const sendResponse = require("../helpers/sendResponseHelper");
 
-
 async function getRound(req, res) {
   try {
     debug(req);
-    const round = await UserRecord.findById(req.query.id);
+    const round = await Round.findById(req.query.id);
     sendResponse(res, 201, { round });
   } catch (err) {
     debug("Error getting round: %o", err);
@@ -21,10 +20,10 @@ async function createRound(req, res) {
   try {
     const user = await User.findById(req.body.user_id); //! change to token (req.user._id)
     const course = await Course.findById(req.body.course_id);
-    const newRound = await UserRecord.create({
+    const newRound = await Round.create({
       user_id: user._id, // change to token (req.user._id)
       course_id: course._id,
-      round_date: req.body.round_date || Date.now(),
+      date: req.body.date || Date.now(),
       tee: req.body.tee, // do a retrieve of tees in the course
       round_record: [...initialiseRecord(req.body.round_type)],
     });
@@ -42,7 +41,7 @@ async function createRound(req, res) {
 
 async function addStroke(req, res) {
   try {
-    const round = await UserRecord.findById(req.body.round_id);
+    const round = await Round.findById(req.body.round_id);
     // selecting a subdoc: https://mongoosejs.com/docs/subdocs.html#finding-a-subdocument
     const roundRecord = await round.round_record.id(req.body.record_id);
     if (req.body.stroke.is_penalty) {
