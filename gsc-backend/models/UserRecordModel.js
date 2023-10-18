@@ -17,8 +17,8 @@ const userRecordSchema = new Schema({
       },
       total_strokes: {
         type: Number,
-        required: true,
-        default: stroke_details.length, // ?
+        required: true 
+        //? how to make this count length of stroke details?
       },
       penalty_strokes: { type: Number, required: true, default: 0 },
       stroke_details: [
