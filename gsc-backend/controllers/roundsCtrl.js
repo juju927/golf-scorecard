@@ -5,11 +5,19 @@ const User = require("../models/UserModel");
 const Course = require("../models/CourseModel");
 const sendResponse = require("../helpers/sendResponseHelper");
 
+async function getRounds(req, res) {
+  try {
+    const rounds = await Round.find({ user_id: req.query.user_id });
+    sendResponse(res, 200, { rounds });
+  } catch (err) {
+    sendResponse(res, 500, err.message);
+  }
+}
+
 async function getRound(req, res) {
   try {
-    debug(req);
     const round = await Round.findById(req.query.id);
-    sendResponse(res, 201, { round });
+    sendResponse(res, 200, { round });
   } catch (err) {
     debug("Error getting round: %o", err);
     sendResponse(res, 500, err.message);
@@ -105,4 +113,4 @@ function initialiseRecord(roundType) {
   return arr;
 }
 
-module.exports = { getRound, createRound, addStroke };
+module.exports = { getRounds, getRound, createRound, addStroke };
