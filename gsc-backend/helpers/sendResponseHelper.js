@@ -7,4 +7,4 @@ function sendResponse(res, status, data = null, message) {
   });
 };
 
-module.exports = { sendResponse }
+module.exports = sendResponse

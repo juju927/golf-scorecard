@@ -4,8 +4,11 @@ const express = require("express");
 const router = express.Router();
 const usersCtrl = require("../controllers/usersCtrl");
 const { body, validationResult } = require("express-validator");
+const checkToken = require("../middleware/checkToken");
 
-router.get("/", (req, res, next) => {res.json({ "msg": "ya"})})
-router.post("/", usersCtrl.create);
+router.get("/", checkToken)
+router.post("/register", usersCtrl.register);
+router.post("/login", usersCtrl.login);
+
 
 module.exports = router;
