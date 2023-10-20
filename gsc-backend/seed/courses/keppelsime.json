@@ -85,7 +85,7 @@
     {
       "hole_no": 1,
       "par": 4,
-      "dist": {
+      "dists": {
         "black": 384,
         "blue": 362,
         "white": 338,
@@ -98,7 +98,7 @@
     {
       "hole_no": 2,
       "par": 5,
-      "dist": {
+      "dists": {
         "black": 482,
         "blue": 464,
         "white": 443,
@@ -111,7 +111,7 @@
     {
       "hole_no": 3,
       "par": 3,
-      "dist": {
+      "dists": {
         "black": 191,
         "blue": 173,
         "white": 147,
@@ -124,7 +124,7 @@
     {
       "hole_no": 4,
       "par": 4,
-      "dist": {
+      "dists": {
         "black": 298,
         "blue": 278,
         "white": 246,
@@ -137,7 +137,7 @@
     {
       "hole_no": 5,
       "par": 4,
-      "dist": {
+      "dists": {
         "black": 353,
         "blue": 336,
         "white": 327,
@@ -150,7 +150,7 @@
     {
       "hole_no": 6,
       "par": 4,
-      "dist": {
+      "dists": {
         "black": 284,
         "blue": 264,
         "white": 240,
@@ -163,7 +163,7 @@
     {
       "hole_no": 7,
       "par": 3,
-      "dist": {
+      "dists": {
         "black": 178,
         "blue": 168,
         "white": 148,
@@ -176,7 +176,7 @@
     {
       "hole_no": 8,
       "par": 4,
-      "dist": {
+      "dists": {
         "black": 356,
         "blue": 338,
         "white": 327,
@@ -189,7 +189,7 @@
     {
       "hole_no": 9,
       "par": 5,
-      "dist": {
+      "dists": {
         "black": 441,
         "blue": 424,
         "white": 398,
@@ -202,7 +202,7 @@
     {
       "hole_no": 10,
       "par": 4,
-      "dist": {
+      "dists": {
         "black": 317,
         "blue": 296,
         "white": 276,
@@ -215,7 +215,7 @@
     {
       "hole_no": 11,
       "par": 3,
-      "dist": {
+      "dists": {
         "black": 156,
         "blue": 145,
         "white": 134,
@@ -228,7 +228,7 @@
     {
       "hole_no": 12,
       "par": 4,
-      "dist": {
+      "dists": {
         "black": 342,
         "blue": 319,
         "white": 292,
@@ -241,7 +241,7 @@
     {
       "hole_no": 13,
       "par": 3,
-      "dist": {
+      "dists": {
         "black": 127,
         "blue": 119,
         "white": 105,
@@ -254,7 +254,7 @@
     {
       "hole_no": 14,
       "par": 5,
-      "dist": {
+      "dists": {
         "black": 501,
         "blue": 478,
         "white": 448,
@@ -267,7 +267,7 @@
     {
       "hole_no": 15,
       "par": 4,
-      "dist": {
+      "dists": {
         "black": 325,
         "blue": 307,
         "white": 271,
@@ -280,7 +280,7 @@
     {
       "hole_no": 16,
       "par": 5,
-      "dist": {
+      "dists": {
         "black": 514,
         "blue": 471,
         "white": 461,
@@ -293,7 +293,7 @@
     {
       "hole_no": 17,
       "par": 4,
-      "dist": {
+      "dists": {
         "black": 369,
         "blue": 341,
         "white": 315,
@@ -306,7 +306,7 @@
     {
       "hole_no": 18,
       "par": 4,
-      "dist": {
+      "dists": {
         "black": 323,
         "blue": 301,
         "white": 274,
