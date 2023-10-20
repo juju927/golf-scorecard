@@ -1,69 +1,85 @@
 {
   "course_name": "Keppel Club Sime Course",
-  "course_ratings": {
-    "black": {
-      "full": 71.3,
-      "out": 35.9,
-      "in": 35.4
+  "usga_ratings": [
+    {
+      "name": "Men's Black Tee",
+      "course": {
+        "full": 71.3,
+        "out": 35.9,
+        "in": 35.4
+      },
+      "slope": {
+        "full": 134,
+        "out": 135,
+        "in": 133
+      }
     },
-    "blue": {
-      "full": 69.5,
-      "out": 35.2,
-      "in": 34.3
+    {
+      "name": "Men's Blue Tee",
+      "course": {
+        "full": 69.5,
+        "out": 35.2,
+        "in": 34.3
+      },
+      "slope": {
+        "full": 127,
+        "out": 128,
+        "in": 126
+      }
     },
-    "white": {
-      "full": 67.3,
-      "out": 33.9,
-      "in": 33.4
+    {
+      "name": "Men's White Tee",
+      "course": {
+        "full": 67.3,
+        "out": 33.9,
+        "in": 33.4
+      },
+      "slope": {
+        "full": 121,
+        "out": 124,
+        "in": 118
+      }
     },
-    "snr_jnr_red": {
-      "full": 65.3,
-      "out": 32.9,
-      "in": 32.4
+    {
+      "name": "Senior/Junior Red Tee",
+      "course": {
+        "full": 65.3,
+        "out": 32.9,
+        "in": 32.4
+      },
+      "slope": {
+        "full": 109,
+        "out": 111,
+        "in": 107
+      }
     },
-    "ladies_white": {
-      "full": 72.7,
-      "out": 36.7,
-      "in": 36.0
+    {
+      "name": "Ladies' White Tee",
+      "course": {
+        "full": 72.7,
+        "out": 36.7,
+        "in": 36.0
+      },
+      "slope": {
+        "full": 130,
+        "out": 137,
+        "in": 123
+      }
     },
-    "red": {
-      "full": 70.5,
-      "out": 35.5,
-      "in": 35.0
+    {
+      "name": "Ladies' Red Tee",
+      "course": {
+        "full": 70.5,
+        "out": 35.5,
+        "in": 35.0
+      },
+      "slope": {
+        "full": 124,
+        "out": 128,
+        "in": 120
+      }
     }
-  },
-  "slope_ratings": {
-    "black": {
-      "full": 134,
-      "out": 135,
-      "in": 133
-    },
-    "blue": {
-      "full": 127,
-      "out": 128,
-      "in": 126
-    },
-    "white": {
-      "full": 121,
-      "out": 124,
-      "in": 118
-    },
-    "snr_jnr_red": {
-      "full": 109,
-      "out": 111,
-      "in": 107
-    },
-    "ladies_white": {
-      "full": 130,
-      "out": 137,
-      "in": 123
-    },
-    "red": {
-      "full": 124,
-      "out": 128,
-      "in": 120
-    }
-  },
+  ],
   "dist_unit": "metres",
   "holes": [
     {

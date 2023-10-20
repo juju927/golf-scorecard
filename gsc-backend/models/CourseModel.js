@@ -3,106 +3,28 @@ const debug = require("debug")("gsc-backend:models:CourseModel");
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
+const ratingSchema = new Schema({
+  name: { type: String, required: [true, "Please specify course tee name."] },
+  course: {
+    full: { type: Number },
+    out: { type: Number },
+    in: { type: Number },
+  },
+  slope: {
+    full: { type: Number, min: 55, max: 155 },
+    out: { type: Number, min: 55, max: 155 },
+    in: { type: Number, min: 55, max: 155 },
+  },
+});
+
+// https://mongoosejs.com/docs/schematypes.html#maps
 const courseSchema = new Schema({
   course_name: {
     type: String,
     required: [true, "Please specify the course name."],
   },
-  course_ratings: {
-    gold: {
-      full: { type: Number },
-      out: { type: Number },
-      in: { type: Number },
-    },
-    black: {
-      full: { type: Number },
-      out: { type: Number },
-      in: { type: Number },
-    },
-    blue: {
-      full: { type: Number },
-      out: { type: Number },
-      in: { type: Number },
-    },
-    white: {
-      full: { type: Number },
-      out: { type: Number },
-      in: { type: Number },
-    },
-    ladies_white: {
-      full: { type: Number },
-      out: { type: Number },
-      in: { type: Number },
-    },
-    yellow: {
-      full: { type: Number },
-      out: { type: Number },
-      in: { type: Number },
-    },
-    snr_jnr_red: {
-      full: { type: Number },
-      out: { type: Number },
-      in: { type: Number },
-    },
-    red: {
-      full: { type: Number },
-      out: { type: Number },
-      in: { type: Number },
-    },
-    green: {
-      full: { type: Number },
-      out: { type: Number },
-      in: { type: Number },
-    },
-  },
-  slope_ratings: {
-    gold: {
-      full: { type: Number, min: 55, max: 155 },
-      out: { type: Number, min: 55, max: 155 },
-      in: { type: Number, min: 55, max: 155 },
-    },
-    black: {
-      full: { type: Number, min: 55, max: 155 },
-      out: { type: Number, min: 55, max: 155 },
-      in: { type: Number, min: 55, max: 155 },
-    },
-    blue: {
-      full: { type: Number, min: 55, max: 155 },
-      out: { type: Number, min: 55, max: 155 },
-      in: { type: Number, min: 55, max: 155 },
-    },
-    white: {
-      full: { type: Number, min: 55, max: 155 },
-      out: { type: Number, min: 55, max: 155 },
-      in: { type: Number, min: 55, max: 155 },
-    },
-    ladies_white: {
-      full: { type: Number, min: 55, max: 155 },
-      out: { type: Number, min: 55, max: 155 },
-      in: { type: Number, min: 55, max: 155 },
-    },
-    yellow: {
-      full: { type: Number, min: 55, max: 155 },
-      out: { type: Number, min: 55, max: 155 },
-      in: { type: Number, min: 55, max: 155 },
-    },
-    snr_jnr_red: {
-      full: { type: Number, min: 55, max: 155 },
-      out: { type: Number, min: 55, max: 155 },
-      in: { type: Number, min: 55, max: 155 },
-    },
-    red: {
-      full: { type: Number, min: 55, max: 155 },
-      out: { type: Number, min: 55, max: 155 },
-      in: { type: Number, min: 55, max: 155 },
-    },
-    green: {
-      full: { type: Number, min: 55, max: 155 },
-      out: { type: Number, min: 55, max: 155 },
-      in: { type: Number, min: 55, max: 155 },
-    },
-  },
-  dist_unit: { type: String, enum: ['metres', 'yards']},
+  usga_ratings: [ratingSchema],
+  dist_unit: { type: String, enum: ["metres", "yards"] },
   holes: [
     {
       hole_no: { type: Number, min: 1, max: 18, required: true },
