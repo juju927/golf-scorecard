@@ -24,7 +24,9 @@ const userSchema = new Schema(
       lowercase: true,
       validate: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
     },
-    name: { type: String, required: [true, "Please input a name."] },
+    first_name: { type: String },
+    last_name: { type: String },
+    gender: { type: String, enum: ["Male", "Female"] },
     password: { type: String, trim: true, minLength: 8, required: true },
   },
   {
