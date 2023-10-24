@@ -1,12 +1,14 @@
+import { Toaster } from "react-hot-toast"
+
 import "./App.css";
-import NavBar from "./components/NavBar/Header";
+import HomePage from "./pages/HomePage/HomePage";
 
 function App() {
   return (
     <>
       <div className="w-screen h-screen">
-        <NavBar />
-        <h1 className="text-3xl font-bold underline">yo</h1>
+        <Toaster />
+        <HomePage />
       </div>
     </>
   );
