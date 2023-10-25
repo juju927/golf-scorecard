@@ -1,6 +1,6 @@
 import background from "../../assets/images/golf-background.webp";
 
-const LandingHeader = () => {
+const AuthHeader = () => {
   return (
     <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
       <img
@@ -22,4 +22,4 @@ const LandingHeader = () => {
   );
 };
 
-export default LandingHeader;
+export default AuthHeader;

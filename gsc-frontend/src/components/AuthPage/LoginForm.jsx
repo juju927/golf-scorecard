@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import logo from "../../assets/images/golf-buddy-logo-nowords.png";
 import { loginService } from "../../utilities/users-service";
@@ -100,9 +101,12 @@ const LoginForm = () => {
 
           <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
             Don't have an account?{" "}
-            <a href="#" className="text-gray-700 underline dark:text-gray-200">
+            <Link
+              to="/accounts/register"
+              className="text-gray-700 underline dark:text-gray-200"
+            >
               Register for free
-            </a>
+            </Link>
             .
           </p>
         </div>

@@ -1,7 +1,7 @@
-import { Toaster } from "react-hot-toast"
+import { Toaster } from "react-hot-toast";
 
 import "./App.css";
-import HomePage from "./pages/HomePage/HomePage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
