@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage";
 function App() {
   return (
     <>
-      <div className="w-screen h-screen">
+      <div className="min-w-screen min-h-screen">
         <Toaster />
         <HomePage />
       </div>

@@ -7,6 +7,7 @@ import AuthPage from "./pages/AuthPage"
 import "./index.css";
 import LoginForm from "./components/AuthPage/LoginForm";
 import SignUpForm from "./components/AuthPage/SignUpForm";
+import NewRecordPage from "./pages/NewRecordPage";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         element: <SignUpForm />
       }
     ]
+  },
+  {
+    path: "record",
+    element: <NewRecordPage />
   }
 ]);
 
