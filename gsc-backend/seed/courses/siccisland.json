@@ -1,0 +1,307 @@
+{
+  "course_name": "Island Course",
+  "usga_ratings": [
+    {
+      "name": "Men's Blue Tee",
+      "course": {
+        "full": 71.6,
+        "out": 35.6,
+        "in": 36.0
+      },
+      "slope": {
+        "full": 131,
+        "out": 131,
+        "in": 132
+      }
+    },
+    {
+      "name": "Men's White Tee",
+      "course": {
+        "full": 70.3,
+        "out": 34.9,
+        "in": 35.4
+      },
+      "slope": {
+        "full": 130,
+        "out": 127,
+        "in": 132
+      }
+    },
+    {
+      "name": "Men's Silver Tee",
+      "course": {
+        "full": 67.3,
+        "out": 33.5,
+        "in": 33.8
+      },
+      "slope": {
+        "full": 126,
+        "out": 124,
+        "in": 128
+      }
+    },
+    {
+      "name": "Ladies' White Tee",
+      "course": {
+        "full": 76.9,
+        "out": 38.1,
+        "in": 38.8
+      },
+      "slope": {
+        "full": 141,
+        "out": 138,
+        "in": 144
+      }
+    },
+    {
+      "name": "Ladies' Red Tee",
+      "course": {
+        "full": 71.6,
+        "out": 35.6,
+        "in": 36.0
+      },
+      "slope": {
+        "full": 131,
+        "out": 131,
+        "in": 132
+      }
+    }
+  ],
+  "dist_unit": "metres",
+  "holes": [
+    {
+      "hole_no": 1,
+      "par": 4,
+      "dists": {
+        "blue": 287,
+        "white": 282,
+        "silver": 267,
+        "red": 267
+      },
+      "handicap_index": {
+        "all": 13
+      }
+    },
+    {
+      "hole_no": 2,
+      "par": 4,
+      "dists": {
+        "blue": 274,
+        "white": 265,
+        "silver": 258,
+        "red": 258
+      },
+      "handicap_index": {
+        "all": 11
+      }
+    },
+    {
+      "hole_no": 3,
+      "par": 5,
+      "dists": {
+        "blue": 509,
+        "white": 474,
+        "silver": 439,
+        "red": 439
+      },
+      "handicap_index": {
+        "all": 3
+      }
+    },
+    {
+      "hole_no": 4,
+      "par": 5,
+      "dists": {
+        "blue": 457,
+        "white": 442,
+        "silver": 385,
+        "red": 385
+      },
+      "handicap_index": {
+        "all": 7
+      }
+    },
+    {
+      "hole_no": 5,
+      "par": 3,
+      "dists": {
+        "blue": 139,
+        "white": 133,
+        "silver": 124,
+        "red": 124
+      },
+      "handicap_index": {
+        "all": 17
+      }
+    },
+    {
+      "hole_no": 6,
+      "par": 4,
+      "dists": {
+        "blue": 412,
+        "white": 394,
+        "silver": 381,
+        "red": 381
+      },
+      "handicap_index": {
+        "all": 1
+      }
+    },
+    {
+      "hole_no": 7,
+      "par": 4,
+      "dists": {
+        "blue": 379,
+        "white": 364,
+        "silver": 275,
+        "red": 275
+      },
+      "handicap_index": {
+        "all": 5
+      }
+    },
+    {
+      "hole_no": 8,
+      "par": 4,
+      "dists": {
+        "blue": 343,
+        "white": 336,
+        "silver": 277,
+        "red": 277
+      },
+      "handicap_index": {
+        "all": 9
+      }
+    },
+    {
+      "hole_no": 9,
+      "par": 3,
+      "dists": {
+        "blue": 150,
+        "white": 141,
+        "silver": 123,
+        "red": 123
+      },
+      "handicap_index": {
+        "all": 15
+      }
+    },
+    {
+      "hole_no": 10,
+      "par": 4,
+      "dists": {
+        "blue": 288,
+        "white": 275,
+        "silver": 269,
+        "red": 269
+      },
+      "handicap_index": {
+        "all": 18
+      }
+    },
+    {
+      "hole_no": 11,
+      "par": 5,
+      "dists": {
+        "blue": 422,
+        "white": 402,
+        "silver": 368,
+        "red": 368
+      },
+      "handicap_index": {
+        "all": 4
+      }
+    },
+    {
+      "hole_no": 12,
+      "par": 4,
+      "dists": {
+        "blue": 298,
+        "white": 283,
+        "silver": 245,
+        "red": 245
+      },
+      "handicap_index": {
+        "all": 12
+      }
+    },
+    {
+      "hole_no": 13,
+      "par": 4,
+      "dists": {
+        "blue": 348,
+        "white": 336,
+        "silver": 284,
+        "red": 284
+      },
+      "handicap_index": {
+        "all": 10
+      }
+    },
+    {
+      "hole_no": 14,
+      "par": 4,
+      "dists": {
+        "blue": 405,
+        "white": 396,
+        "silver": 311,
+        "red": 311
+      },
+      "handicap_index": {
+        "all": 2
+      }
+    },
+    {
+      "hole_no": 15,
+      "par": 3,
+      "dists": {
+        "blue": 189,
+        "white": 179,
+        "silver": 165,
+        "red": 165
+      },
+      "handicap_index": {
+        "all": 14
+      }
+    },
+    {
+      "hole_no": 16,
+      "par": 5,
+      "dists": {
+        "blue": 514,
+        "white": 490,
+        "silver": 440,
+        "red": 440
+      },
+      "handicap_index": {
+        "all": 6
+      }
+    },
+    {
+      "hole_no": 17,
+      "par": 4,
+      "dists": {
+        "blue": 360,
+        "white": 348,
+        "silver": 306,
+        "red": 306
+      },
+      "handicap_index": {
+        "all": 8
+      }
+    },
+    {
+      "hole_no": 18,
+      "par": 3,
+      "dists": {
+        "blue": 171,
+        "white": 165,
+        "silver": 144,
+        "red": 144
+      },
+      "handicap_index": {
+        "all": 16
+      }
+    }
+  ]
+}
