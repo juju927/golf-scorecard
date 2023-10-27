@@ -7,7 +7,7 @@ import AuthPage from "./pages/AuthPage"
 import "./index.css";
 import LoginForm from "./components/AuthPage/LoginForm";
 import SignUpForm from "./components/AuthPage/SignUpForm";
-import NewRecordPage from "./pages/NewRecordPage";
+import NewRoundPage from "./pages/NewRoundPage";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
   },
   {
     path: "record",
-    element: <NewRecordPage />
+    element: <NewRoundPage />
   }
 ]);
 

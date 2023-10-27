@@ -7,7 +7,7 @@ const sendResponse = require("../helpers/sendResponseHelper");
 
 async function getRounds(req, res) {
   try {
-    const rounds = await Round.find({ ...req.query })
+    const rounds = await Round.find({ ...req.query });
     sendResponse(res, 200, { rounds });
   } catch (err) {
     sendResponse(res, 500, err.message);
@@ -35,12 +35,7 @@ async function createRound(req, res) {
       tee: req.body.tee, // do a retrieve of tees in the course
       round_record: [...initialiseRecord(req.body.round_type)],
     });
-    sendResponse(
-      res,
-      201,
-      { newRound },
-      `round started at ${newRound.round_date}`
-    );
+    sendResponse(res, 201, { newRound }, `round started at ${newRound.date}`);
   } catch (err) {
     debug("Error creating round: %o", err);
     sendResponse(res, 500, err.message);
