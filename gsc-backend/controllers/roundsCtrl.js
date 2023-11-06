@@ -7,7 +7,9 @@ const sendResponse = require("../helpers/sendResponseHelper");
 
 async function getRounds(req, res) {
   try {
-    const rounds = await Round.find({ ...req.query });
+    const rounds = await Round.find({ ...req.query })
+      .populate("course")
+      .exec();
     sendResponse(res, 200, { rounds });
   } catch (err) {
     sendResponse(res, 500, err.message);
@@ -16,7 +18,7 @@ async function getRounds(req, res) {
 
 async function getRound(req, res) {
   try {
-    const round = await Round.findById(req.query.id);
+    const round = await Round.findById(req.query.id).populate("course").exec();
     sendResponse(res, 200, { round });
   } catch (err) {
     debug("Error getting round: %o", err);
@@ -29,13 +31,15 @@ async function createRound(req, res) {
     const user = await User.findById(req.body.user_id); //! change to token (req.user._id)
     const course = await Course.findById(req.body.course_id);
     const newRound = await Round.create({
-      user_id: user._id, // change to token (req.user._id)
-      course_id: course._id,
+      user: user._id, // change to token (req.user._id)
+      course: course._id,
       date: req.body.date || Date.now(),
       tee: req.body.tee, // do a retrieve of tees in the course
       round_record: [...initialiseRecord(req.body.round_type)],
     });
-    sendResponse(res, 201, { newRound }, `round started at ${newRound.date}`);
+    const round = await Round.findById(newRound._id).populate("course").exec();
+    debug("round", round);
+    sendResponse(res, 201, { round }, `round started at ${round.date}`);
   } catch (err) {
     debug("Error creating round: %o", err);
     sendResponse(res, 500, err.message);

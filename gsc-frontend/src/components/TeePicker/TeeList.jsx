@@ -1,5 +1,4 @@
 const TeeList = ({ selectedCourse, selectedTee, setSelectedTee }) => {
-  console.log(selectedCourse);
 
   const handleChange = (e) => {
     setSelectedTee(e.target.value)

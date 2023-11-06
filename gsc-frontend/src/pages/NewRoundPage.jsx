@@ -4,12 +4,19 @@ import Header from "../components/NavBar/Header";
 import TeeList from "../components/TeePicker/TeeList";
 import toast from "react-hot-toast"
 import { startNewRoundService } from "../utilities/rounds-service";
+import { currentRoundRecordAtom } from "../utilities/atom";
+import { useSetAtom } from "jotai";
+import { useNavigate } from "react-router-dom";
+
 
 const NewRoundPage = () => {
   const [selectedCourse, setSelectedCourse] = useState({});
   const [selectedTee, setSelectedTee] = useState("");
   const [selectedCourseType, setSelectedCourseType] = useState("full");
-  const [roundId, setRoundId] = useState("")
+
+  const setCurrentRound = useSetAtom(currentRoundRecordAtom)
+
+  const navigate = useNavigate()
 
   const handleStartRound = async () => {
     try {
@@ -19,8 +26,10 @@ const NewRoundPage = () => {
         tee: selectedTee,
         round_type: selectedCourseType
       })
-      toast.success(`${newRound.message}`)
-      setRoundId(newRound._id)
+      setCurrentRound(newRound)
+
+      toast.success(`New round started!`)
+      navigate(`/rounds/hole/${newRound.round_record[0].hole_num}`)
     } catch (err) {
       toast.error(`${err.message}`);
     }
@@ -52,7 +61,7 @@ const NewRoundPage = () => {
           <span className="text-sm font-medium"> Start Game </span>
 
           <svg
-            className="h-5 w-5 rtl:rotate-180"
+            className="h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

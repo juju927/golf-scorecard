@@ -8,6 +8,12 @@ import "./index.css";
 import LoginForm from "./components/AuthPage/LoginForm";
 import SignUpForm from "./components/AuthPage/SignUpForm";
 import NewRoundPage from "./pages/NewRoundPage";
+import RoundsPage from "./pages/RoundsPage";
+import RoundRecordPage from "./pages/RoundRecordPage";
+import HolePage from "./pages/HolePage";
+import { Toaster } from "react-hot-toast";
+// import { getRoundService } from "./utilities/rounds-service";
+// import HolePage from "./pages/HolePage";
 
 const router = createBrowserRouter([
   {
@@ -30,13 +36,30 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: "record",
-    element: <NewRoundPage />
+    path: "rounds",
+    element: <RoundsPage />,
+    children: [
+      {
+        path: "new",
+        element: <NewRoundPage />
+      },
+      {
+        path: "hole/:holeNo",
+        element: <HolePage />
+        },
+        //   { 
+        //     path: "scorecard",
+        //     // element scorecard view
+      
+        //   }
+      
+    ]
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <Toaster />
     <RouterProvider router={router} />
   </React.StrictMode>
 );

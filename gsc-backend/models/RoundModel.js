@@ -5,8 +5,8 @@ const { Schema, model } = mongoose;
 
 const roundSchema = new Schema(
   {
-    user_id: { type: Schema.Types.ObjectId, ref: "User" },
-    course_id: { type: Schema.Types.ObjectId, ref: "Course" },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
+    course: { type: Schema.Types.ObjectId, ref: "Course" },
     date: { type: Date, required: true, default: Date.now() },
     tee: { type: String, required: [true, "Please specify tee colour."] }, // colour tee
     // hcp: { type: Number }, // hcp for the course
