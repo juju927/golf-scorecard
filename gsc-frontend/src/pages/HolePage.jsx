@@ -2,6 +2,7 @@ import { useAtomValue } from "jotai";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom"
 import { currentRoundRecordAtom } from "../utilities/atom";
+import StrokeListItem from "../components/Rounds/StrokeListItem";
 
 const HolePage = () => {
   const { holeNo } = useParams();
@@ -51,10 +52,8 @@ const HolePage = () => {
           <h1>no shots played yet</h1>
           
         ): (
-          strokeDetails?.stroke_details?.map((stroke) => (
-            <div className="w-100 flex p-5 text-white" key={stroke._id}>
-              <div>{stroke.club}</div>
-            </div>
+          strokeDetails?.stroke_details?.map((stroke, idx) => (
+            <StrokeListItem key={stroke._id} idx={idx} stroke={stroke} />
           ))
         )}
 
