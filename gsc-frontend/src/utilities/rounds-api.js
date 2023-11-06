@@ -13,3 +13,7 @@ export function getRoundAPI(roundId) {
 export function getUserRoundsAPI(userId) {
   return sendRequest(baseURL + `?user=${userId}`);
 }
+
+export function addStrokeAPI(strokeDetails) {
+  return sendRequest(baseURL + "/record/stroke", "POST", strokeDetails);
+}

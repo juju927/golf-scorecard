@@ -59,7 +59,7 @@ const HolePage = () => {
         )}
       </div>
 
-      <NewStrokeForm />
+      <NewStrokeForm roundId={roundDetails?._id} recordId={strokeDetails?._id} />
     </div>
   );
 };

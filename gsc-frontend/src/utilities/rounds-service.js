@@ -1,4 +1,4 @@
-import { startNewRoundAPI, getRoundAPI, getUserRoundsAPI } from "./rounds-api";
+import { startNewRoundAPI, getRoundAPI, getUserRoundsAPI, addStrokeAPI } from "./rounds-api";
 
 export async function startNewRoundService(settings) {
   const data = await startNewRoundAPI(settings)
@@ -13,4 +13,8 @@ export async function getRoundService(roundId) {
 export async function getUserRoundsService(userId) {
   const data = await getUserRoundsAPI(userId)
   return data.data.rounds
+}
+
+export async function addStroke(strokeDetails) {
+  return await addStrokeAPI(strokeDetails)
 }
