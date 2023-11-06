@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom"
 import { currentRoundRecordAtom } from "../utilities/atom";
 import StrokeListItem from "../components/Rounds/StrokeListItem";
+import NewStrokeForm from "../components/Rounds/NewStrokeForm";
 
 const HolePage = () => {
   const { holeNo } = useParams();
@@ -56,8 +57,9 @@ const HolePage = () => {
             <StrokeListItem key={stroke._id} idx={idx} stroke={stroke} />
           ))
         )}
-
       </div>
+
+      <NewStrokeForm />
     </div>
   );
 };
