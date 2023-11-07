@@ -48,30 +48,30 @@ async function createRound(req, res) {
 
 async function addStroke(req, res) {
   try {
-    const round = await Round.findById(req.body.round_id);
+    const round = await Round.findById(req.body.round_id)
+      .populate("course")
+      .exec();
     // selecting a subdoc: https://mongoosejs.com/docs/subdocs.html#finding-a-subdocument
     const roundRecord = await round.round_record.id(req.body.record_id);
     if (req.body.is_penalty) {
       roundRecord.penalty_strokes++;
       roundRecord.total_strokes++;
       await round.save();
-      sendResponse(res, 201, roundRecord, "penalty stroke added");
+      sendResponse(res, 201, round, "penalty stroke added");
     } else {
       roundRecord.stroke_details.push({
         club: req.body.club,
         ground: req.body.ground,
         is_chip: req.body.is_chip,
         analysis: {
-          is_left: req.body.analysis.is_left || false,
-          is_right: req.body.analysis.is_right || false,
-          is_short: req.body.analysis.is_short || false,
-          is_long: req.body.analysis.is_long || false,
-          remarks: req.body.analysis.remarks || "",
+          direction: req.body.analysis.direction,
+          distance: req.body.analysis.distance,
+          remarks: req.body.analysis.remarks,
         },
       });
       roundRecord.total_strokes++;
       await round.save();
-      sendResponse(res, 201, roundRecord, "stroke added");
+      sendResponse(res, 201, round, "stroke added");
     }
   } catch (err) {
     debug("Error adding stroke: %o", err);

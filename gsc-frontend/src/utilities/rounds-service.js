@@ -15,6 +15,7 @@ export async function getUserRoundsService(userId) {
   return data.data.rounds
 }
 
-export async function addStroke(strokeDetails) {
-  return await addStrokeAPI(strokeDetails)
+export async function addStrokeService(strokeDetails) {
+  const data = await addStrokeAPI(strokeDetails)
+  return data.data
 }

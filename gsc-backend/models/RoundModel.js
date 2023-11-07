@@ -37,10 +37,8 @@ const roundSchema = new Schema(
             },
             is_chip: { type: Boolean, default: false },
             analysis: {
-              is_left: { type: Boolean, default: false },
-              is_right: { type: Boolean, default: false },
-              is_short: { type: Boolean, default: false },
-              is_long: { type: Boolean, default: false },
+              direction: { type: String, enum: ["left", "straight", "right"] },
+              distance: { type: String, enum: ["short", "average", "long"] },
               remarks: { type: String },
             },
           },
