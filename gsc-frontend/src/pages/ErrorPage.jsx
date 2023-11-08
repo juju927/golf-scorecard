@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ErrorPage = () => {
   return (
     <div className="grid h-screen px-4 bg-white place-content-center dark:bg-gray-900">
@@ -10,12 +12,12 @@ const ErrorPage = () => {
           We can't find that page.
         </p>
 
-        <a
-          href="#"
+        <Link
+          to="/"
           className="inline-block px-5 py-3 mt-6 text-sm font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring"
         >
           Go Back Home
-        </a>
+        </Link>
       </div>
     </div>
   );

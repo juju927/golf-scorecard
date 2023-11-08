@@ -28,7 +28,7 @@ const NewRoundPage = () => {
       setCurrentRound(newRound)
 
       toast.success(`New round started!`)
-      navigate(`/rounds/hole/${newRound.round_record[0].hole_num}`)
+      navigate(`/record/hole/${newRound.round_record[0].hole_num}`)
     } catch (err) {
       toast.error(`${err.message}`);
     }

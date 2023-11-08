@@ -33,7 +33,7 @@ const RoundsPage = () => {
     <>
       {Object.keys(currentRound) < 1 && (
         <div>
-          <button onClick={() => navigate("/rounds/new")}>new</button>
+          <button onClick={() => navigate("/record/new")}>new</button>
           {allRounds.map((round) => (
             <RoundListItem key={round._id} round={round} />
           ))}
