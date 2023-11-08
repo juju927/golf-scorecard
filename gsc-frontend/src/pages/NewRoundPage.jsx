@@ -21,7 +21,6 @@ const NewRoundPage = () => {
   const handleStartRound = async () => {
     try {
       const newRound = await startNewRoundService({
-        user_id: "6537f5eca38f93076fa41eac",
         course_id: selectedCourse._id,
         tee: selectedTee,
         round_type: selectedCourseType

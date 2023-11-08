@@ -4,10 +4,11 @@ const Round = require("../models/RoundModel");
 const User = require("../models/UserModel");
 const Course = require("../models/CourseModel");
 const sendResponse = require("../helpers/sendResponseHelper");
+const userCanAlter = require("../middleware/userCanAlter");
 
-async function getRounds(req, res) {
+async function getUserRounds(req, res) {
   try {
-    const rounds = await Round.find({ ...req.query })
+    const rounds = await Round.find({ user: req.user._id })
       .populate("course")
       .exec();
     sendResponse(res, 200, { rounds });
@@ -28,7 +29,7 @@ async function getRound(req, res) {
 
 async function createRound(req, res) {
   try {
-    const user = await User.findById(req.body.user_id); //! change to token (req.user._id)
+    const user = await User.findById(req.user._id);
     const course = await Course.findById(req.body.course_id);
     const newRound = await Round.create({
       user: user._id, // change to token (req.user._id)
@@ -51,6 +52,10 @@ async function addStroke(req, res) {
     const round = await Round.findById(req.body.round_id)
       .populate("course")
       .exec();
+    if (!userCanAlter(round, req.user)) {
+      sendResponse(res, 401, null, "unauthorised");
+      return;
+    }
     // selecting a subdoc: https://mongoosejs.com/docs/subdocs.html#finding-a-subdocument
     const roundRecord = await round.round_record.id(req.body.record_id);
     if (req.body.is_penalty) {
@@ -112,4 +117,4 @@ function initialiseRecord(roundType) {
   return arr;
 }
 
-module.exports = { getRounds, getRound, createRound, addStroke };
+module.exports = { getUserRounds, getRound, createRound, addStroke };

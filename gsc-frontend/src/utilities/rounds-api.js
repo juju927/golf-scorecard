@@ -10,8 +10,8 @@ export function getRoundAPI(roundId) {
   return sendRequest(baseURL + "/round" + `?id=${roundId}`);
 }
 
-export function getUserRoundsAPI(userId) {
-  return sendRequest(baseURL + `?user=${userId}`);
+export function getUserRoundsAPI() {
+  return sendRequest(baseURL);
 }
 
 export function addStrokeAPI(strokeDetails) {

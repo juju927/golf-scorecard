@@ -19,7 +19,7 @@ const RoundsPage = () => {
   useEffect(() => {
     const getUserRounds = async () => {
       try {
-        const rounds = await getUserRoundsService("6537f5eca38f93076fa41eac");
+        const rounds = await getUserRoundsService();
         setAllRounds(rounds);
       } catch (err) {
         toast.error(`${err.message}`);

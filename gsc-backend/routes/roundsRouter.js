@@ -5,7 +5,7 @@ const router = express.Router();
 const roundsCtrl = require("../controllers/roundsCtrl");
 
 
-router.get("/", roundsCtrl.getRounds)
+router.get("/", roundsCtrl.getUserRounds)
 router.get("/round", roundsCtrl.getRound);
 router.post("/", roundsCtrl.createRound);
 router.post("/record/stroke", roundsCtrl.addStroke);

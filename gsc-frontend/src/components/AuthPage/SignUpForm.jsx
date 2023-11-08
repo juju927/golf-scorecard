@@ -4,8 +4,12 @@ import toast from "react-hot-toast";
 import logo from "../../assets/images/golf-buddy-logo-nowords.png";
 
 import { signUpService } from "../../utilities/users-service";
+import { useSetAtom } from "jotai";
+import { userAtom } from "../../utilities/atom";
 
 const SignUpForm = () => {
+  const setUser = useSetAtom(userAtom)
+
   const [userData, setUserData] = useState({
     email: "",
     username: "",
@@ -31,6 +35,7 @@ const SignUpForm = () => {
       if (user !== null && user !== undefined) {
         toast.success("Successfully signed up!");
       }
+      setUser(user)
     } catch (err) {
       toast.error(`${err.message}`);
     }
@@ -114,6 +119,8 @@ const SignUpForm = () => {
             onChange={handleChange}
             value={userData.password}
           />
+
+          
         </div>
 
         <div className="col-span-6 sm:col-span-3">

@@ -15,6 +15,7 @@ const usersRouter = require("./routes/usersRouter");
 const coursesRouter = require("./routes/coursesRouter");
 const clubsRouter = require("./routes/clubsRouter");
 const roundsRouter = require("./routes/roundsRouter");
+const checkToken = require("./middleware/checkToken");
 
 //* app
 const app = express();
@@ -29,9 +30,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/courses", coursesRouter);
-app.use("/clubs", clubsRouter);
-app.use("/rounds", roundsRouter);
+app.use("/courses", checkToken, coursesRouter);
+app.use("/clubs", checkToken, clubsRouter);
+app.use("/rounds", checkToken, roundsRouter);
 
 //* catch 404 and forward to error handler
 app.use((req, res, next) => {

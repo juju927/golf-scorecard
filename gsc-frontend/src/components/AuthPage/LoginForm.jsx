@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import logo from "../../assets/images/golf-buddy-logo-nowords.png";
 import { loginService } from "../../utilities/users-service";
+import { useSetAtom } from "jotai";
+import { userAtom } from "../../utilities/atom";
 
 const LoginForm = () => {
+  const setUser = useSetAtom(userAtom)
+
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -22,8 +26,9 @@ const LoginForm = () => {
     try {
       const user = await loginService(userData);
       if (user !== null && user !== undefined) {
-        toast.success("Successfully signed up!");
+        toast.success("Successfully logged in!");
       }
+      setUser(user)
     } catch (err) {
       toast.error(`${err.message}`);
     }
