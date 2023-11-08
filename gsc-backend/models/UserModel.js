@@ -24,10 +24,8 @@ const userSchema = new Schema(
       lowercase: true,
       validate: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
     },
-    first_name: { type: String },
-    last_name: { type: String },
-    gender: { type: String, enum: ["Male", "Female"] },
     password: { type: String, trim: true, minLength: 8, required: true },
+    profile: { type: Schema.Types.ObjectId, ref: "UserProfile" }
   },
   {
     timestamps: {

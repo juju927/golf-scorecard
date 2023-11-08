@@ -12,6 +12,7 @@ const debug = require("debug")("gsc-backend:server.js");
 //* routers
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/usersRouter");
+const userProfilesRouter = require("./routes/userProfilesRouter");
 const coursesRouter = require("./routes/coursesRouter");
 const clubsRouter = require("./routes/clubsRouter");
 const roundsRouter = require("./routes/roundsRouter");
@@ -28,11 +29,14 @@ app.use(express.json());
 // app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(checkToken);
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/courses", checkToken, coursesRouter);
-app.use("/clubs", checkToken, clubsRouter);
-app.use("/rounds", checkToken, roundsRouter);
+app.use("/profiles", userProfilesRouter);
+app.use("/courses", coursesRouter);
+app.use("/clubs", clubsRouter);
+app.use("/rounds", roundsRouter);
 
 //* catch 404 and forward to error handler
 app.use((req, res, next) => {

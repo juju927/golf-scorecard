@@ -1,4 +1,4 @@
-const debug = require("debug")("gsc-backend:controllers:userRecordsCtrl");
+const debug = require("debug")("gsc-backend:controllers:roundsCtrl");
 
 const Round = require("../models/RoundModel");
 const User = require("../models/UserModel");
