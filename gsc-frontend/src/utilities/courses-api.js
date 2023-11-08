@@ -6,6 +6,3 @@ export function getCoursesAPI() {
   return sendRequest(baseURL);
 }
 
-export function loginAPI(credentials) {
-  return sendRequest(baseURL + "/login", "POST", credentials);
-}
