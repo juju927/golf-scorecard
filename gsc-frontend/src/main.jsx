@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       {
         path: "hole/:holeNo",
         element: <HolePage />
-        }      
+      }      
     ]
   }
 ]);

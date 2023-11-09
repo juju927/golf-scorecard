@@ -117,8 +117,8 @@ const NewStrokeForm = ({ roundId, recordId }) => {
   }, [roundId, recordId]);
 
   return (
-    <>
-      <div className="w-screen h-fit rounded-t-lg border border-solid border-white shadow-md">
+
+      <div className="rounded-t-lg border border-solid border-white shadow-md">
         <h1 className="text-white pl-2 my-3">Add new stroke</h1>
 
         <div className="px-3 grid grid-cols-4 gap-2 pb-2 text-white">
@@ -136,7 +136,7 @@ const NewStrokeForm = ({ roundId, recordId }) => {
               className="inline-block pl-[0.15rem] hover:cursor-pointer text-white"
               htmlFor="isPenaltyCheck"
             >
-              Penalty Shot
+              Penalty Stroke
             </label>
           </div>
         </div>
@@ -280,7 +280,7 @@ const NewStrokeForm = ({ roundId, recordId }) => {
           submit stroke
         </button>
       </div>
-    </>
+
   );
 };
 

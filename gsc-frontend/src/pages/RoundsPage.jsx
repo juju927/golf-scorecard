@@ -1,5 +1,4 @@
 import { useAtomValue } from "jotai";
-import { Outlet } from "react-router-dom";
 import { currentRoundRecordAtom } from "../utilities/atom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -30,7 +29,7 @@ const RoundsPage = () => {
   }, []);
 
   return (
-    <>
+    <div className="max-w-full grow overflow-y-auto">
       {Object.keys(currentRound) < 1 && (
         <div>
           <button onClick={() => navigate("/record/new")}>new</button>
@@ -39,9 +38,7 @@ const RoundsPage = () => {
           ))}
         </div>
       )}
-
-      <Outlet />
-    </>
+    </div>
   );
 };
 

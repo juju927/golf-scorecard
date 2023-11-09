@@ -1,6 +1,7 @@
 const debug = require("debug")("gsc-backend:controllers:usersCtrl");
 
 const User = require("../models/UserModel");
+const UserProfile = require("../models/UserProfileModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const sendResponse = require("../helpers/sendResponseHelper");
@@ -9,6 +10,13 @@ async function register(req, res) {
   try {
     const newUser = await User.create(req.body);
     debug("created new user: %o", req.body);
+
+    const newProfile = await UserProfile.create({
+      username: newUser.username,
+      profile_picture: "https://clipart-library.com/2023/drib6.png",
+    });
+    newUser.profile = newProfile._id;
+    await newUser.save();
     const token = createJWT(newUser);
     sendResponse(res, 201, { token: token }, "user created");
   } catch (err) {

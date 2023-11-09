@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import Header from "../components/NavBar/Header";
 import { useAtomValue } from "jotai";
 import { userAtom } from "../utilities/atom";
 import { Navigate } from "react-router-dom";
+import TopHeader from "../components/common/TopHeader";
 
 const HomePage = () => {
   const user = useAtomValue(userAtom)
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      <Header />
+      <TopHeader header="golf buddy" />
 
       { !user && <Navigate to="/login" replace={true} /> }
 

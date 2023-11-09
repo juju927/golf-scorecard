@@ -9,7 +9,7 @@ const RoundListItem = ({ round }) => {
 
   const handleClick = () => {
     setCurrentRound(round);
-    navigate(`/rounds/hole/${round.round_record[0].hole_num}`);
+    navigate(`/record/hole/${round.round_record[0].hole_num}`);
   };
 
   return (

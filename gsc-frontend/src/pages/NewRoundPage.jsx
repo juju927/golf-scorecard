@@ -1,12 +1,12 @@
 import { useState } from "react";
 import CourseList from "../components/CoursePicker/CourseList";
-import Header from "../components/NavBar/Header";
 import TeeList from "../components/TeePicker/TeeList";
 import toast from "react-hot-toast"
 import { startNewRoundService } from "../utilities/rounds-service";
 import { currentRoundRecordAtom } from "../utilities/atom";
 import { useSetAtom } from "jotai";
 import { useNavigate } from "react-router-dom";
+import TopHeader from "../components/common/TopHeader";
 
 
 const NewRoundPage = () => {
@@ -36,7 +36,7 @@ const NewRoundPage = () => {
 
   return (
     <div className="w-screen h-screen bg-white dark:bg-gray-900">
-      <Header />
+      <TopHeader header="Record" />
       <CourseList
         setSelectedCourse={setSelectedCourse}
         setSelectedTee={setSelectedTee}
