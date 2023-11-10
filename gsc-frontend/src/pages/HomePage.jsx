@@ -3,17 +3,19 @@ import { useAtomValue } from "jotai";
 import { userAtom } from "../utilities/atom";
 import { Navigate } from "react-router-dom";
 import TopHeader from "../components/common/TopHeader";
+import BottomNav from "../components/common/BottomNav";
 
 const HomePage = () => {
   const user = useAtomValue(userAtom)
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="w-screen h-screen flex flex-col dark:bg-gray-900">
+      { !user && <Navigate to="/login" replace={true} /> }
+      
       <TopHeader header="golf buddy" />
 
-      { !user && <Navigate to="/login" replace={true} /> }
 
-      <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <div className="max-w-full grow overflow-y-auto">
         <div className="sm:flex sm:items-center sm:justify-between">
           <div className="text-center sm:text-left">
             <h1 className="text-2xl font-bold text-white sm:text-3xl">
@@ -35,6 +37,8 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
+      <BottomNav />
     </div>
   );
 };
