@@ -10,7 +10,7 @@ const CourseList = ({
   setSelectedCourseType,
 }) => {
   const [courseList, setCourseList] = useState([]);
-  const courseTypes = ["full", "out", "in"];
+  const courseTypes = ["full", "front", "back"];
 
   const fetchCourses = async () => {
     try {

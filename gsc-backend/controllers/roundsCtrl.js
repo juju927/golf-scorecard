@@ -97,9 +97,9 @@ function initialiseRecord(roundType) {
   // roundLength is 'full', 'out', or 'in'
   let start = 1;
   let end = 18;
-  if (roundType == "out") {
+  if (roundType == "front") {
     end = 9;
-  } else if (roundType == "in") {
+  } else if (roundType == "back") {
     start = 10;
   }
 
