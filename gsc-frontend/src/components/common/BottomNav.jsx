@@ -8,7 +8,7 @@ const BottomNav = () => {
   const user = useAtomValue(userAtom);
 
   return (
-    <div className="h-12 bg-teal-100 border-t border-teal-600 border-solid dark:text-white dark:bg-black">
+    <div className="h-12 bg-teal-100 border-t border-teal-600 border-solid shrink-0 dark:text-white dark:bg-black">
       <nav className="h-full max-w-full grid grid-cols-5 gap-x-8 justify-between place-items-center px-3">
         <Link to="/">
           <svg
@@ -26,7 +26,7 @@ const BottomNav = () => {
           </svg>
         </Link>
 
-        <Link to="/">
+        <Link to="/analyse">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

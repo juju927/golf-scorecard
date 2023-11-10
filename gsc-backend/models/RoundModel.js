@@ -1,4 +1,4 @@
-const debug = require("debug")("gsc-backend:models:UserRecordModel");
+const debug = require("debug")("gsc-backend:models:RoundModel");
 
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
@@ -23,6 +23,7 @@ const roundSchema = new Schema(
           required: true,
         },
         penalty_strokes: { type: Number, required: true, default: 0 },
+        GIR: { type: Boolean },
         stroke_details: [
           {
             club: {
@@ -53,5 +54,7 @@ const roundSchema = new Schema(
     },
   }
 );
+
+
 
 module.exports = model("Round", roundSchema);

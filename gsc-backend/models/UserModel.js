@@ -25,7 +25,7 @@ const userSchema = new Schema(
       validate: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
     },
     password: { type: String, trim: true, minLength: 8, required: true },
-    profile: { type: Schema.Types.ObjectId, ref: "UserProfile" }
+    profile: { type: Schema.Types.ObjectId, ref: "UserProfile" },
   },
   {
     timestamps: {

@@ -29,7 +29,7 @@ const HolePage = () => {
 
 
   return (
-    <div className="max-w-full grow dark:bg-gray-900 flex flex-col max-h-full">
+    <div className="max-w-full max-h-full dark:bg-gray-900 flex flex-col">
       <div className="flex flex-col justify-center bg-teal-950 slate-950 border border-b-teal-600 px-2">
         <div className="flex w-100 justify-center justify-between">
         <Link to={`/record/hole/${prevHole}`}>⬅️</Link>

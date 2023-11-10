@@ -29,7 +29,7 @@ const RoundsPage = () => {
   }, []);
 
   return (
-    <div className="max-w-full grow overflow-y-auto">
+    <div className="max-w-full overflow-y-auto">
       {Object.keys(currentRound) < 1 && (
         <div>
           <button onClick={() => navigate("/record/new")}>new</button>

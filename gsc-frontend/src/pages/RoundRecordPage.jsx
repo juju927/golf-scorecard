@@ -9,7 +9,9 @@ const RoundRecordPage = () => {
       <Navigate to="/record/rounds" />
       <div className="w-screen h-screen flex flex-col">
         <TopHeader header="Record" />
-        <Outlet />
+        <div className="grow">
+          <Outlet />
+        </div>
         <BottomNav />
       </div>
     </>

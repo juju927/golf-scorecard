@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import ErrorPage from "./pages/ErrorPage"
+import ErrorPage from "./pages/ErrorPage";
 import "./index.css";
 import LoginForm from "./components/AuthPage/LoginForm";
 import SignUpForm from "./components/AuthPage/SignUpForm";
@@ -10,6 +10,8 @@ import NewRoundPage from "./pages/NewRoundPage";
 import RoundsPage from "./pages/RoundsPage";
 import RoundRecordPage from "./pages/RoundRecordPage";
 import HolePage from "./pages/HolePage";
+import ScorecardPage from "./pages/ScorecardPage";
+import AnalysePage from "./pages/AnalysePage";
 import { Toaster } from "react-hot-toast";
 // import { getRoundService } from "./utilities/rounds-service";
 // import HolePage from "./pages/HolePage";
@@ -29,25 +31,34 @@ const router = createBrowserRouter([
     path: "/register",
     element: <SignUpForm />,
   },
-
   {
     path: "record",
     element: <RoundRecordPage />,
     children: [
       {
         path: "new",
-        element: <NewRoundPage />
+        element: <NewRoundPage />,
       },
       {
         path: "rounds",
-        element: <RoundsPage />
+        element: <RoundsPage />,
       },
       {
         path: "hole/:holeNo",
-        element: <HolePage />
-      }      
-    ]
-  }
+        element: <HolePage />,
+      },
+    ],
+  },
+  {
+    path: "analyse",
+    element: <AnalysePage />,
+    children: [
+      {
+        path: "s/:roundId",
+        element: <ScorecardPage />,
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

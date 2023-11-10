@@ -10,6 +10,14 @@ async function getUserRounds(req, res) {
   try {
     const rounds = await Round.find({ user: req.user._id })
       .populate("course")
+      .populate({
+        path: "user",
+        select: "profile",
+        populate: {
+          path: "profile",
+          select: ["profile_picture", "username", "display_name", "country"],
+        },
+      })
       .exec();
     sendResponse(res, 200, { rounds });
   } catch (err) {
@@ -19,7 +27,10 @@ async function getUserRounds(req, res) {
 
 async function getRound(req, res) {
   try {
-    const round = await Round.findById(req.query.id).populate("course").exec();
+    const round = await Round.findById(req.query.id)
+      .populate("course")
+      .populate({ path: "user", populate: { path: "profile" } })
+      .exec();
     sendResponse(res, 200, { round });
   } catch (err) {
     debug("Error getting round: %o", err);
@@ -38,7 +49,10 @@ async function createRound(req, res) {
       tee: req.body.tee, // do a retrieve of tees in the course
       round_record: [...initialiseRecord(req.body.round_type)],
     });
-    const round = await Round.findById(newRound._id).populate("course").exec();
+    const round = await Round.findById(newRound._id)
+      .populate("course")
+      .populate({ path: "user", populate: { path: "profile" } })
+      .exec();
     debug("round", round);
     sendResponse(res, 201, { round }, `round started at ${round.date}`);
   } catch (err) {
@@ -94,7 +108,6 @@ async function addStroke(req, res) {
 // }
 
 function initialiseRecord(roundType) {
-  // roundLength is 'full', 'out', or 'in'
   let start = 1;
   let end = 18;
   if (roundType == "front") {
