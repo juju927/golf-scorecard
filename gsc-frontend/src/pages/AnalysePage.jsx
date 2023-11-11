@@ -10,7 +10,7 @@ const AnalysePage = () => {
       {/* <Navigate to="/analyse/s" /> */}
       <div className="w-screen h-screen flex flex-col">
         <TopHeader header="Analyse" />
-        <div className="grow">
+        <div className="grow bg-gray-900">
           <Outlet />
         </div>
         <BottomNav />

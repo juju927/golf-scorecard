@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/golf-buddy-logo-nowords.png"
+
 
 const TopHeader = ({ header }) => {
   const location = useLocation();
@@ -8,7 +8,7 @@ const TopHeader = ({ header }) => {
   return (
     <header className="h-16 bg-teal-100 border-b border-teal-600 border-solid dark:text-white dark:bg-black">
       <div className="px-3 w-full h-full flex items-center gap-4">
-        { !(location.pathname == "/") ? (
+        { !(location.pathname == "/") && (
           <Link to="/" className="h-12 w-12 flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -24,9 +24,7 @@ const TopHeader = ({ header }) => {
                 clipRule="evenodd"
               />
             </svg>
-          </Link>) : (
-            <img className="h-12" src={logo} />
-          )
+          </Link>) 
         }
         <h1 className="text-lg font-semibold">{header}</h1>
         

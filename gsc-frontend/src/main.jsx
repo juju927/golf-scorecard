@@ -13,13 +13,14 @@ import HolePage from "./pages/HolePage";
 import ScorecardPage from "./pages/ScorecardPage";
 import AnalysePage from "./pages/AnalysePage";
 import { Toaster } from "react-hot-toast";
+import HomePage from "./pages/HomePage";
 // import { getRoundService } from "./utilities/rounds-service";
 // import HolePage from "./pages/HolePage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <HomePage />,
     errorElement: <ErrorPage />,
   },
 

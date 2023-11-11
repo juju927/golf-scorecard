@@ -15,11 +15,14 @@ const RoundListItem = ({ round }) => {
   return (
     <>
       <div
-        className="w-screen h-300 block rounded-lg border px-2 my-2"
+        className="w-full h-fit rounded-lg my-2 bg-teal-800"
         onClick={handleClick}
       >
-        <h1>{round?.course.course_name}</h1>
-        <h3>{dayjs(round?.date).format('D MMM YYYY')}</h3>
+        <p className="py-2 pl-4">
+          <strong className="text-white">{round?.course.course_name}</strong>
+          <span className="block text-xs italic text-slate-300">{dayjs(round?.date).format('D MMM YYYY')}</span>
+
+        </p>
       </div>
     </>
   );

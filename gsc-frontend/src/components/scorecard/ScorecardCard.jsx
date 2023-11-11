@@ -27,7 +27,7 @@ const ScorecardCard = () => {
   }, [roundId]);
 
   return (
-    <div className="card-outline w-80 h-fit px-4 pb-3 rounded-lg border-solid border-2 border-double border-emerald-500 bg-teal-400">
+    <div className="card-outline min-w-80 h-fit px-4 pb-3 rounded-lg border-solid border-2 border-double border-emerald-500 bg-teal-400">
       <div className="user-profile flex h-20 gap-x-3 items-center border-b">
         <div>
           <img
@@ -48,8 +48,8 @@ const ScorecardCard = () => {
         </div>
       </div>
 
-      <div className="flex space-between py-2">
-        <div className="flex items-center gap-1 text-gray-500">
+      <div className="flex justify-between py-2">
+        <div className="flex items-center text-gray-500">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -69,10 +69,10 @@ const ScorecardCard = () => {
               d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
             />
           </svg>
-          <p className="text-xs font-medium">{scorecardDetails?.course}</p>
+          <p className="text-xs font-light">{scorecardDetails?.course}</p>
         </div>
 
-        <div className="flex items-center gap-1 text-gray-500">
+        <div className="flex items-center text-gray-500">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -88,12 +88,12 @@ const ScorecardCard = () => {
             />
           </svg>
 
-          <p className="text-xs font-medium">
+          <p className="text-xs font-light">
             {dayjs(scorecardDetails?.date).format("D MMM YYYY, h:mA")}
           </p>
         </div>
       </div>
-      <div className="w-full pb-2 text-2xl font-extrabold text-white text-center uppercase tracking-tight">
+      <div className="w-full pb-1 text-2xl font-extrabold text-white text-center uppercase tracking-tight">
         round stats
       </div>
       <div className="scorecard-details h-fit grid grid-cols-2 auto-rows-auto gap-2">

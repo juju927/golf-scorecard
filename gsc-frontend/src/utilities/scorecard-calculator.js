@@ -11,7 +11,6 @@ export function getScorecardValues(roundRecord) {
 
   const total_holes = roundRecord.round_record.length;
 
-  // get the pars of the
   var pars;
   if (roundRecord.round_record.length == 18) {
     pars = roundRecord.course.holes;

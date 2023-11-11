@@ -6,7 +6,6 @@ import { startNewRoundService } from "../utilities/rounds-service";
 import { currentRoundRecordAtom } from "../utilities/atom";
 import { useSetAtom } from "jotai";
 import { useNavigate } from "react-router-dom";
-import TopHeader from "../components/common/TopHeader";
 
 
 const NewRoundPage = () => {
@@ -35,8 +34,7 @@ const NewRoundPage = () => {
   }
 
   return (
-    <div className="w-screen h-screen bg-white dark:bg-gray-900">
-      <TopHeader header="Record" />
+    <div className="w-full h-full">
       <CourseList
         setSelectedCourse={setSelectedCourse}
         setSelectedTee={setSelectedTee}

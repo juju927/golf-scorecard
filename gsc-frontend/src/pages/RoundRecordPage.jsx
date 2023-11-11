@@ -2,14 +2,16 @@ import { Navigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import TopHeader from "../components/common/TopHeader";
 import BottomNav from "../components/common/BottomNav";
+import { useLocation } from "react-router-dom";
 
 const RoundRecordPage = () => {
+  const location = useLocation()
   return (
     <>
-      <Navigate to="/record/rounds" />
+      { location.pathname === "/record" && <Navigate to="/record/rounds" />}
       <div className="w-screen h-screen flex flex-col">
         <TopHeader header="Record" />
-        <div className="grow">
+        <div className="grow overflow-y-auto bg-gray-900">
           <Outlet />
         </div>
         <BottomNav />
