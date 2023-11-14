@@ -139,12 +139,36 @@ async function deleteStroke(req, res) {
     }
     const roundRecord = round.round_record.id(req.body.round_record_id);
     roundRecord.total_strokes--;
-    roundRecord.stroke_details.id(req.body.stroke_id).deleteOne();
+    if (req.body.is_penalty) {
+      if (roundRecord.penalty_strokes > 0) {
+        roundRecord.penalty_strokes--;
+      }
+    } else {
+      roundRecord.stroke_details.id(req.body.stroke_id).deleteOne();
+    }
     await round.save();
     sendResponse(res, 200, round, "stroke deleted");
   } catch (err) {
     debug("Error deleting stroke: %o", err);
     sendResponse(res, 500, err.message);
+  }
+}
+
+async function editGIR(req, res) {
+  try {
+    const round = await Round.findById(req.body.round_id)
+    .populate("course")
+    .exec();
+  if (!userCanAlter(round.user, req.user)) {
+    sendResponse(res, 401, null, "unauthorised");
+    return;
+  }
+  const roundRecord = round.round_record.id(req.body.round_record_id);
+  roundRecord.GIR = req.body.GIR
+  await round.save()
+  sendResponse(res, 200, round, "GIR edited");
+  } catch (err) {
+    debug("Error editing GIR: %o", err)
   }
 }
 
@@ -171,6 +195,8 @@ function initialiseRecord(roundType) {
   return arr;
 }
 
+
+
 module.exports = {
   getUserRounds,
   getRound,
@@ -178,4 +204,5 @@ module.exports = {
   addStroke,
   editStroke,
   deleteStroke,
+  editGIR
 };

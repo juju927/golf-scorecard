@@ -23,7 +23,7 @@ const roundSchema = new Schema(
           required: true,
         },
         penalty_strokes: { type: Number, required: true, default: 0 },
-        GIR: { type: Boolean },
+        GIR: { type: Boolean, default: false },
         stroke_details: [
           {
             club: {
