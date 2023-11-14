@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom"
 import TopHeader from "../components/common/TopHeader"
 import BottomNav from "../components/common/BottomNav"
+import { useState } from "react"
 // import { Navigate } from "react-router-dom"
 
 
 const AnalysePage = () => {
+  const [selectedRound, setSelectedRound] = useState({})
+
   return (
     <>
       {/* <Navigate to="/analyse/s" /> */}

@@ -43,10 +43,10 @@ async function createRound(req, res) {
     const user = await User.findById(req.user._id);
     const course = await Course.findById(req.body.course_id);
     const newRound = await Round.create({
-      user: user._id, // change to token (req.user._id)
+      user: user._id,
       course: course._id,
-      date: req.body.date || Date.now(),
-      tee: req.body.tee, // do a retrieve of tees in the course
+      date: Date.now(),
+      tee: req.body.tee,
       round_record: [...initialiseRecord(req.body.round_type)],
     });
     const round = await Round.findById(newRound._id)
@@ -61,12 +61,14 @@ async function createRound(req, res) {
   }
 }
 
+// edit record : penalty / GIR
+
 async function addStroke(req, res) {
   try {
     const round = await Round.findById(req.body.round_id)
       .populate("course")
       .exec();
-    if (!userCanAlter(round, req.user)) {
+    if (!userCanAlter(round.user, req.user)) {
       sendResponse(res, 401, null, "unauthorised");
       return;
     }
@@ -98,14 +100,53 @@ async function addStroke(req, res) {
   }
 }
 
-// async function editStroke(req, res) {
-//   try {
+async function editStroke(req, res) {
+  try {
+    const round = await Round.findById(req.body.round_id)
+      .populate("course")
+      .exec();
+    if (!userCanAlter(round.user, req.user)) {
+      sendResponse(res, 401, null, "unauthorised");
+      return;
+    }
+    const roundRecord = round.round_record.id(req.body.round_record_id);
+    const stroke = roundRecord.stroke_details.id(req.body.stroke_id);
+    stroke.club = req.body.club || stroke.club;
+    stroke.ground = req.body.ground || stroke.ground;
+    stroke.is_chip = req.body.is_chip || stroke.is_chip;
+    stroke.analysis.direction =
+      req.body.analysis.direction || stroke.analysis.direction;
+    stroke.analysis.distance =
+      req.body.analysis.distance || stroke.analysis.distance;
+    stroke.analysis.remarks =
+      req.body.analysis.remarks || stroke.analysis.remarks;
+    await round.save();
+    sendResponse(res, 200, round, "stroke edited");
+  } catch (err) {
+    debug("Error editing stroke: %o", err);
+    sendResponse(res, 500, err.message);
+  }
+}
 
-//   } catch (err) {
-//     debug("Error editing stroke: %o", err);
-//     sendResponse(res, 500, err.message);
-//   }
-// }
+async function deleteStroke(req, res) {
+  try {
+    const round = await Round.findById(req.body.round_id)
+      .populate("course")
+      .exec();
+    if (!userCanAlter(round.user, req.user)) {
+      sendResponse(res, 401, null, "unauthorised");
+      return;
+    }
+    const roundRecord = round.round_record.id(req.body.round_record_id);
+    roundRecord.total_strokes--;
+    roundRecord.stroke_details.id(req.body.stroke_id).deleteOne();
+    await round.save();
+    sendResponse(res, 200, round, "stroke deleted");
+  } catch (err) {
+    debug("Error deleting stroke: %o", err);
+    sendResponse(res, 500, err.message);
+  }
+}
 
 function initialiseRecord(roundType) {
   let start = 1;
@@ -130,4 +171,11 @@ function initialiseRecord(roundType) {
   return arr;
 }
 
-module.exports = { getUserRounds, getRound, createRound, addStroke };
+module.exports = {
+  getUserRounds,
+  getRound,
+  createRound,
+  addStroke,
+  editStroke,
+  deleteStroke,
+};
