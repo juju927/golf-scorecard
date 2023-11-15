@@ -27,7 +27,7 @@ const HomePage = () => {
           <div className="my-3 w-fit">
             <Link
               to="/record/new"
-              className="block rounded-lg bg-teal-500 px-5 py-3 text-sm font-medium text-white"
+              className="block rounded-lg bg-teal-500 shadow-md shadow-teal-500/50 px-5 py-3 text-sm font-medium text-white"
               type="button"
             >
               Record New Game

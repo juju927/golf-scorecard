@@ -28,14 +28,14 @@ const RoundsPage = () => {
       <div className="my-3 mx-auto w-fit">
         <Link
           to="/record/new"
-          className="block rounded-lg bg-teal-500 px-5 py-3 text-sm font-medium text-white"
+          className="block rounded-lg bg-teal-500 shadow-md shadow-teal-500/50 px-5 py-3 text-sm font-medium text-white"
           type="button"
         >
           Record New Game
         </Link>
       </div>
 
-      <h1 className="text-base text-white">... or continue recording from:</h1>
+      <span className="text-sm text-white">... or continue recording from:</span>
       {Object.keys(currentRound) < 1 && (
         <div>
           {allRounds.map((round) => (

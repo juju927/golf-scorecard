@@ -14,7 +14,7 @@ const RoundRecordPage = () => {
         <div className="grow overflow-y-auto bg-gray-900">
           <Outlet />
         </div>
-        <BottomNav />
+        { !location.pathname.startsWith("/record/hole") && <BottomNav />}
       </div>
     </>
   );

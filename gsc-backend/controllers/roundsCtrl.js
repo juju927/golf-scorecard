@@ -61,8 +61,6 @@ async function createRound(req, res) {
   }
 }
 
-// edit record : penalty / GIR
-
 async function addStroke(req, res) {
   try {
     const round = await Round.findById(req.body.round_id)
