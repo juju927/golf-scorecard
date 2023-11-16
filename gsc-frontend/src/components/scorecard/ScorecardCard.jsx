@@ -89,7 +89,7 @@ const ScorecardCard = () => {
           </svg>
 
           <p className="text-xs font-light">
-            {dayjs(scorecardDetails?.date).format("D MMM YYYY, h:mA")}
+            {dayjs(scorecardDetails?.date).format("D MMM YYYY, h:mmA")}
           </p>
         </div>
       </div>
