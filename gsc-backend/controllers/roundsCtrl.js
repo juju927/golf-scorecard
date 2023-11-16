@@ -71,7 +71,7 @@ async function addStroke(req, res) {
       return;
     }
     // selecting a subdoc: https://mongoosejs.com/docs/subdocs.html#finding-a-subdocument
-    const roundRecord = await round.round_record.id(req.body.record_id);
+    const roundRecord = await round.round_record.id(req.body.round_record_id);
     if (req.body.is_penalty) {
       roundRecord.penalty_strokes++;
       roundRecord.total_strokes++;
@@ -136,14 +136,23 @@ async function deleteStroke(req, res) {
       return;
     }
     const roundRecord = round.round_record.id(req.body.round_record_id);
-    roundRecord.total_strokes--;
+
     if (req.body.is_penalty) {
       if (roundRecord.penalty_strokes > 0) {
         roundRecord.penalty_strokes--;
+      } else {
+        sendResponse(
+          res,
+          400,
+          null,
+          "penalty strokes cannot be decreased past 0"
+        );
+        return;
       }
     } else {
       roundRecord.stroke_details.id(req.body.stroke_id).deleteOne();
     }
+    roundRecord.total_strokes--;
     await round.save();
     sendResponse(res, 200, round, "stroke deleted");
   } catch (err) {
@@ -155,18 +164,18 @@ async function deleteStroke(req, res) {
 async function editGIR(req, res) {
   try {
     const round = await Round.findById(req.body.round_id)
-    .populate("course")
-    .exec();
-  if (!userCanAlter(round.user, req.user)) {
-    sendResponse(res, 401, null, "unauthorised");
-    return;
-  }
-  const roundRecord = round.round_record.id(req.body.round_record_id);
-  roundRecord.GIR = req.body.GIR
-  await round.save()
-  sendResponse(res, 200, round, "GIR edited");
+      .populate("course")
+      .exec();
+    if (!userCanAlter(round.user, req.user)) {
+      sendResponse(res, 401, null, "unauthorised");
+      return;
+    }
+    const roundRecord = round.round_record.id(req.body.round_record_id);
+    roundRecord.GIR = req.body.GIR;
+    await round.save();
+    sendResponse(res, 200, round, "GIR edited");
   } catch (err) {
-    debug("Error editing GIR: %o", err)
+    debug("Error editing GIR: %o", err);
   }
 }
 
@@ -193,8 +202,6 @@ function initialiseRecord(roundType) {
   return arr;
 }
 
-
-
 module.exports = {
   getUserRounds,
   getRound,
@@ -202,5 +209,5 @@ module.exports = {
   addStroke,
   editStroke,
   deleteStroke,
-  editGIR
+  editGIR,
 };
