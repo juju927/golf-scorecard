@@ -1,4 +1,11 @@
-const StrokesSummary = ({ total, penalty, GIR, toggleGIR }) => {
+const StrokesSummary = ({
+  total,
+  penalty,
+  GIR,
+  addPenalty,
+  removePenalty,
+  toggleGIR,
+}) => {
   return (
     <div className="pb-2 flex">
       {/* penalty strokes */}
@@ -13,7 +20,10 @@ const StrokesSummary = ({ total, penalty, GIR, toggleGIR }) => {
           <div className="row-span-2 col-span-2">
             <p className="text-2xl font-bold text-white">{penalty}</p>
           </div>
-          <div className="h-full w-full flex justify-center items-center">
+          <div
+            className="h-full w-full flex justify-center items-center"
+            onClick={addPenalty}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -23,7 +33,10 @@ const StrokesSummary = ({ total, penalty, GIR, toggleGIR }) => {
               <path d="M10.75 6.75a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z" />
             </svg>
           </div>
-          <div className="h-full w-full flex justify-center items-center">
+          <div
+            className="h-full w-full flex justify-center items-center"
+            onClick={removePenalty}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"

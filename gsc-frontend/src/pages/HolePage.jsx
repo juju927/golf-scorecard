@@ -2,12 +2,15 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { currentRoundRecordAtom } from "../utilities/atom";
-import StrokeListItem from "../components/Rounds/StrokeListItem";
 import NewStrokeForm from "../components/Rounds/NewStrokeForm";
 import StrokesSummary from "../components/record/StrokesSummary";
 import HoleDetails from "../components/record/HoleDetails";
 import StrokeList from "../components/record/StrokeList";
-import { toggleGIRService } from "../utilities/rounds-service";
+import {
+  addStrokeService,
+  deleteStrokeService,
+  toggleGIRService,
+} from "../utilities/rounds-service";
 import toast from "react-hot-toast";
 
 const HolePage = () => {
@@ -29,9 +32,34 @@ const HolePage = () => {
   const prevHole = holeNo == firstHole ? holeNo : parseInt(holeNo) - 1;
   const nextHole = holeNo == lastHole ? holeNo : parseInt(holeNo) + 1;
 
+  const addPenalty = async () => {
+    try {
+      const updatedRound = await addStrokeService({
+        round_id: roundDetails?._id,
+        round_record_id: strokeDetails?._id,
+        is_penalty: true,
+      });
+      setCurrentRound(updatedRound);
+    } catch (err) {
+      toast.error(`${err.message}`);
+    }
+  };
+
+  const removePenalty = async () => {
+    try {
+      const updatedRound = await deleteStrokeService({
+        round_id: roundDetails?._id,
+        round_record_id: strokeDetails?._id,
+        is_penalty: true,
+      });
+      setCurrentRound(updatedRound);
+    } catch (err) {
+      toast.error(`${err.message}`);
+    }
+  };
+
   const toggleGIR = async (GIR) => {
     try {
-      console.log(roundDetails);
       const updatedRound = await toggleGIRService({
         round_id: roundDetails?._id,
         round_record_id: strokeDetails?._id,
@@ -58,6 +86,12 @@ const HolePage = () => {
     );
   }, [roundDetails, holeNo]);
 
+  useEffect(() => {
+    if (!roundDetails) {
+      navigate(`/record/rounds`);
+    }
+  }, []);
+
   return (
     <div className="hole-page-outlet w-full h-full bg-gray-900 flex flex-col">
       <HoleDetails
@@ -78,6 +112,8 @@ const HolePage = () => {
         penalty={strokeDetails?.penalty_strokes}
         GIR={strokeDetails?.GIR}
         toggleGIR={toggleGIR}
+        addPenalty={addPenalty}
+        removePenalty={removePenalty}
       />
 
       <div className="grow overflow-y-auto">

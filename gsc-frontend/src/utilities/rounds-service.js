@@ -3,6 +3,7 @@ import {
   getRoundAPI,
   getUserRoundsAPI,
   addStrokeAPI,
+  deleteStrokeAPI,
   toggleGIRAPI,
 } from "./rounds-api";
 
@@ -23,6 +24,11 @@ export async function getUserRoundsService(userId) {
 
 export async function addStrokeService(strokeDetails) {
   const data = await addStrokeAPI(strokeDetails);
+  return data.data;
+}
+
+export async function deleteStrokeService(strokeDetails) {
+  const data = await deleteStrokeAPI(strokeDetails);
   return data.data;
 }
 

@@ -18,6 +18,10 @@ export function addStrokeAPI(strokeDetails) {
   return sendRequest(baseURL + "/record/stroke", "POST", strokeDetails);
 }
 
+export function deleteStrokeAPI(strokeDetails) {
+  return sendRequest(baseURL + "/record/stroke", "DELETE", strokeDetails);
+}
+
 export function toggleGIRAPI(holeDetails) {
   return sendRequest(baseURL + "/record", "PATCH", holeDetails);
 }
