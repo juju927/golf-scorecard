@@ -17,3 +17,7 @@ export function getUserRoundsAPI() {
 export function addStrokeAPI(strokeDetails) {
   return sendRequest(baseURL + "/record/stroke", "POST", strokeDetails);
 }
+
+export function toggleGIRAPI(holeDetails) {
+  return sendRequest(baseURL + "/record", "PATCH", holeDetails);
+}

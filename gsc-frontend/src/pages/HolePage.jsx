@@ -1,4 +1,4 @@
-import { useAtomValue } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { currentRoundRecordAtom } from "../utilities/atom";
@@ -7,13 +7,19 @@ import NewStrokeForm from "../components/Rounds/NewStrokeForm";
 import StrokesSummary from "../components/record/StrokesSummary";
 import HoleDetails from "../components/record/HoleDetails";
 import StrokeList from "../components/record/StrokeList";
+import { toggleGIRService } from "../utilities/rounds-service";
+import toast from "react-hot-toast";
 
 const HolePage = () => {
   const { holeNo } = useParams();
   const navigate = useNavigate();
   const roundDetails = useAtomValue(currentRoundRecordAtom);
+  const setCurrentRound = useSetAtom(currentRoundRecordAtom);
+
+  // these 2 useState are cos idk how to derive from atom
   const [holeDetails, setHoleDetails] = useState({});
   const [strokeDetails, setStrokeDetails] = useState([]);
+
   const [showAddStroke, setShowAddStroke] = useState(false);
 
   const firstHole = roundDetails.round_record?.[0].hole_num;
@@ -22,6 +28,20 @@ const HolePage = () => {
 
   const prevHole = holeNo == firstHole ? holeNo : parseInt(holeNo) - 1;
   const nextHole = holeNo == lastHole ? holeNo : parseInt(holeNo) + 1;
+
+  const toggleGIR = async (GIR) => {
+    try {
+      console.log(roundDetails);
+      const updatedRound = await toggleGIRService({
+        round_id: roundDetails?._id,
+        round_record_id: strokeDetails?._id,
+        GIR: GIR,
+      });
+      setCurrentRound(updatedRound);
+    } catch (err) {
+      toast.error(`${err.message}`);
+    }
+  };
 
   useEffect(() => {
     if (
@@ -57,6 +77,7 @@ const HolePage = () => {
         total={strokeDetails?.total_strokes}
         penalty={strokeDetails?.penalty_strokes}
         GIR={strokeDetails?.GIR}
+        toggleGIR={toggleGIR}
       />
 
       <div className="grow overflow-y-auto">

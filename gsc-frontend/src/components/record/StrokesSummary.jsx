@@ -1,4 +1,4 @@
-const StrokesSummary = ({ total, penalty, GIR }) => {
+const StrokesSummary = ({ total, penalty, GIR, toggleGIR }) => {
   return (
     <div className="pb-2 flex">
       {/* penalty strokes */}
@@ -49,7 +49,7 @@ const StrokesSummary = ({ total, penalty, GIR }) => {
       </div>
 
       {/* GIR */}
-      <div className="h-20 w-1/3 flex flex-col">
+      <div className="h-20 w-1/3 flex flex-col" onClick={() => toggleGIR(!GIR)}>
         <div className="h-fit bg-teal-300 px-2 py-1">
           <div className="uppercase text-blade tracking-tight font-light text-center">
             GIR
