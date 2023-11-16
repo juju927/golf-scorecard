@@ -71,6 +71,10 @@ const HolePage = () => {
     }
   };
 
+  const goToScorecard = () => {
+    navigate(`/analyse/s/${roundDetails._id}`)
+  }
+
   useEffect(() => {
     if (
       parseInt(holeNo) < parseInt(firstHole) ||
@@ -105,6 +109,7 @@ const HolePage = () => {
           holeDetails?.handicap_index?.[roundDetails.tee] ||
           holeDetails?.handicap_index?.all
         }
+        goToScorecard={goToScorecard}
       />
 
       <StrokesSummary
