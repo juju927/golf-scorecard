@@ -27,9 +27,19 @@ const roundSchema = new Schema(
         stroke_details: [
           {
             club: {
-              type: String,
-              validate: /\d[iWh]|W\d{2}|PW|Pt/,
-              required: [true, "Please specify club used."],
+              serial: {
+                type: Number,
+                min: 0,
+                max: 34,
+                required: true,
+              },
+              category: {
+                type: String,
+                enum: ["Woods", "Hybrids", "Irons", "Wedges", "Putters"],
+                required: true,
+              },
+              name: { type: String },
+              abbrvName: { type: String, validate: /\d[iWh]|W\d{2}|PW|SW|Pt/ },
             },
             ground: {
               type: String,
@@ -54,7 +64,5 @@ const roundSchema = new Schema(
     },
   }
 );
-
-
 
 module.exports = model("Round", roundSchema);

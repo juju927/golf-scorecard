@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App";
 import ErrorPage from "./pages/ErrorPage";
 import "./index.css";
 import LoginForm from "./components/AuthPage/LoginForm";
@@ -14,16 +13,12 @@ import ScorecardPage from "./pages/ScorecardPage";
 import AnalysePage from "./pages/AnalysePage";
 import { Toaster } from "react-hot-toast";
 import HomePage from "./pages/HomePage";
-// import { getRoundService } from "./utilities/rounds-service";
-// import HolePage from "./pages/HolePage";
-
+import ProfilePage from "./pages/ProfilePage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
-    errorElement: <ErrorPage />,
   },
-
   {
     path: "/login",
     element: <LoginForm />,
@@ -60,6 +55,11 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "profile",
+    element: <ProfilePage />,
+  },
+  { path: "*", element: <ErrorPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

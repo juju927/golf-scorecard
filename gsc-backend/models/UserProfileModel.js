@@ -12,7 +12,24 @@ const userProfileSchema = new Schema({
   profile_picture: { type: String },
   display_name: { type: String },
   country: { type: String },
-  golf_bag: [{ type: String, validate: /\d[iWh]|W\d{2}|PW|Pt/ }],
+  golf_bag: [
+    {
+      serial: {
+        type: Number,
+        min: 0,
+        max: 34,
+        required: true,
+        unique: [true, "club already in bag"],
+      },
+      category: {
+        type: String,
+        enum: ["Woods", "Hybrids", "Irons", "Wedges", "Putters"],
+        required: true,
+      },
+      name: { type: String },
+      abbrvName: { type: String, validate: /\d[iWh]|W\d{2}|PW|SW|Pt/ },
+    },
+  ],
   handicap: { type: Number, min: 0, max: 53 },
 });
 

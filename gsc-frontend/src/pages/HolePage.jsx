@@ -91,10 +91,10 @@ const HolePage = () => {
   }, [roundDetails, holeNo]);
 
   useEffect(() => {
-    if (!roundDetails) {
+    if (Object.keys(roundDetails).length == 0) {
       navigate(`/record/rounds`);
     }
-  }, []);
+  }, [roundDetails]);
 
   return (
     <div className="hole-page-outlet w-full h-full bg-gray-900 flex flex-col">

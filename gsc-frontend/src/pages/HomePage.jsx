@@ -21,7 +21,7 @@ const HomePage = () => {
           </h1>
 
           <p className="mt-1.5 text-sm text-gray-500">
-            Let's hit some good shots today! 🎉
+            Go hit some good shots today! 🎉
           </p>
 
           <div className="my-3 w-fit">
