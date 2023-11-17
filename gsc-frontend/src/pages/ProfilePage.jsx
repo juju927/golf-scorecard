@@ -1,7 +1,7 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import BottomNav from "../components/common/BottomNav";
 import TopHeader from "../components/common/TopHeader";
-import { userAtom } from "../utilities/atom";
+import { userProfileAtom } from "../utilities/atom";
 import { useState } from "react";
 import { CountryDropdown } from "react-country-region-selector";
 import Flag from "react-world-flags";
@@ -10,17 +10,17 @@ import { updateProfileService } from "../utilities/profiles-service";
 import toast from "react-hot-toast";
 
 const ProfilePage = () => {
-  const user = useAtomValue(userAtom);
-  const setUser = useSetAtom(userAtom);
+  const userProfile = useAtomValue(userProfileAtom);
+  const setUserProfile = useSetAtom(userProfileAtom);
 
   // user editable fields on the page
   const [profile, setProfile] = useState({
-    display_name: user.profile.display_name || "",
-    country: user.profile.country || "",
-    handicap: user.profile.handicap || 0,
-    profile_picture: user.profile.profile_picture || "",
+    display_name: userProfile.display_name || "",
+    country: userProfile.country || "",
+    handicap: userProfile.handicap || 0,
+    profile_picture: userProfile.profile_picture || "",
   });
-  const [userClubs, setUserClubs] = useState(user.profile.golf_bag);
+  const [userClubs, setUserClubs] = useState(userProfile.golf_bag);
 
   // for dropdown box functionality
   const clubCategories = ["Woods", "Hybrids", "Irons", "Wedges", "Putters"];
@@ -54,10 +54,10 @@ const ProfilePage = () => {
   const handleEditProfile = () => {
     if (editProfile) {
       setProfile({
-        display_name: user.profile.display_name || "",
-        country: user.profile.country || "",
-        handicap: user.profile.handicap || 0,
-        profile_picture: user.profile.profile_picture || "",
+        display_name: userProfile.display_name || "",
+        country: userProfile.country || "",
+        handicap: userProfile.handicap || 0,
+        profile_picture: userProfile.profile_picture || "",
       });
     }
     setEditProfile(!editProfile);
@@ -65,8 +65,8 @@ const ProfilePage = () => {
 
   const handleUpdateDetails = async () => {
     try {
-      const updatedUser = await updateProfileService(profile);
-      setUser(updatedUser);
+      const updatedProfile = await updateProfileService(profile);
+      setUserProfile(updatedProfile);
       setEditProfile(!editProfile);
     } catch (err) {
       toast.error(err.message);
@@ -75,17 +75,17 @@ const ProfilePage = () => {
 
   const handleEditGolfBag = () => {
     if (editGolfBag) {
-      setUserClubs(user.profile.golf_bag);
+      setUserClubs(userProfile.golf_bag);
     }
     setEditGolfBag(!editGolfBag);
   };
 
   const handleUpdateGolfBag = async () => {
     try {
-      const updatedUser = await updateProfileService({
+      const updatedProfile = await updateProfileService({
         golf_bag: userClubs,
       });
-      setUser(updatedUser);
+      setUserProfile(updatedProfile);
       setEditGolfBag(!editGolfBag);
     } catch (err) {
       toast.error(err.message);
@@ -124,7 +124,7 @@ const ProfilePage = () => {
         <div className="flex flex-col items-center pt-4">
           <div className="relative">
             <img
-              src={user.profile.profile_picture}
+              src={userProfile.profile_picture}
               className="h-24 w-24 rounded-full object-cover"
             />
             <div className="h-8 w-8 rounded-full absolute bottom-0 right-0 z-10 button bg-teal-500 flex justify-center items-center shadow shadow-md shadow-teal-500/50">
@@ -148,10 +148,10 @@ const ProfilePage = () => {
           </div>
 
           <div className="capitalize text-xl font-semibold text-white pt-2">
-            {user.profile.display_name}
+            {userProfile.display_name}
           </div>
           <div className="italic text-sm font-light text-slate-500">
-            @{user.username}
+            @{userProfile.username}
           </div>
 
           {/* input fields */}

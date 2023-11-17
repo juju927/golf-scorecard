@@ -1,7 +1,7 @@
 import { useAtomValue } from "jotai";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { userAtom } from "../../utilities/atom";
+import { userProfileAtom } from "../../utilities/atom";
 import { logOutService } from "../../utilities/users-service";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const BottomNav = () => {
   const location = useLocation();
-  const user = useAtomValue(userAtom);
+  const profile = useAtomValue(userProfileAtom)
   const navigate = useNavigate();
 
   const [showProfileMenu, setShowProfileMenu] = useState(false)
@@ -103,8 +103,8 @@ const BottomNav = () => {
 
         <div className="relative">
           <img
-            alt={user?.profile?.username}
-            src={user?.profile?.profile_picture}
+            alt={profile?.username}
+            src={profile?.profile_picture}
             className="h-8 w-8 rounded-full object-cover"
             onClick={()=> setShowProfileMenu(!showProfileMenu)}
           />

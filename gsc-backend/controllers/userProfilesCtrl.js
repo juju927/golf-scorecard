@@ -43,9 +43,7 @@ async function updateUserProfile(req, res) {
       req.body,
       { new: true }
     );
-    // would be better if can "reverse" populate
-    const user = await User.findById(req.user._id).populate("profile").exec(); 
-    sendResponse(res, 200, user, "user profile updated");
+    sendResponse(res, 200, profile, "user profile updated");
   } catch (err) {
     debug("Error updating profile: %o", err);
     sendResponse(res, 500, err.message);
