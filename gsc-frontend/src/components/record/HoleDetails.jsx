@@ -19,7 +19,6 @@ const HoleDetails = ({
         confirmButtonText: "End",
         cancelButtonText: "Cancel",
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           goToScorecard();
         }

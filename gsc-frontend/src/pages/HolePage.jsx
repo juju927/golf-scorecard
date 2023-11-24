@@ -122,7 +122,7 @@ const HolePage = () => {
       />
 
       <div className="grow overflow-y-auto">
-        <StrokeList strokeDetails={strokeDetails} />
+        <StrokeList strokeDetails={strokeDetails} round_id={roundDetails?._id} />
       </div>
 
       {showAddStroke ? (

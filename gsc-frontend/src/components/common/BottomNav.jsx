@@ -115,7 +115,7 @@ const BottomNav = () => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="w-6 h-6 stroke-2 stroke-white fill-none justify-self-center"
+                  className="w-6 h-6 stroke-1 stroke-slate-500 fill-none justify-self-center"
                 >
                   <path
                     strokeLinecap="round"
@@ -135,7 +135,7 @@ const BottomNav = () => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="w-6 h-6 stroke-2 stroke-red-600 fill-none justify-self-center"
+                  className="w-6 h-6 stroke-1 stroke-rose-400 fill-none justify-self-center"
                 >
                   <path
                     strokeLinecap="round"
@@ -143,7 +143,7 @@ const BottomNav = () => {
                     d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
                   />
                 </svg>
-                <span className="text-sm capitalize text-red-600 col-span-3 ml-3">log out</span>
+                <span className="text-sm capitalize text-red-500 col-span-3 ml-3">log out</span>
               </div>
             </div>
           </div>

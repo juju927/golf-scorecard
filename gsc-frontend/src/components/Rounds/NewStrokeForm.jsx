@@ -2,13 +2,14 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 import { addStrokeService } from "../../utilities/rounds-service";
-import { useSetAtom } from "jotai";
-import { currentRoundRecordAtom } from "../../utilities/atom";
+import { useAtomValue, useSetAtom } from "jotai";
+import { currentRoundRecordAtom, userProfileAtom } from "../../utilities/atom";
 
 const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
   const setCurrentRound = useSetAtom(currentRoundRecordAtom);
+  const userProfile = useAtomValue(userProfileAtom);
 
-  const clubs = ["1W", "3W", "5W", "5i", "6i", "7i", "W53", "PW", "Pt"];
+  const clubs = userProfile?.golf_bag;
   const groundTypes = ["Tee-off", "Fairway", "Rough", "Sand", "Green"];
   const [newStroke, setNewStroke] = useState({
     round_id: roundId,
@@ -26,7 +27,7 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
   const handleClubChange = (e) => {
     setNewStroke((prevState) => ({
       ...prevState,
-      club: e.target.value,
+      club: clubs[e.target.value],
     }));
   };
 
@@ -79,7 +80,7 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
       const updatedRound = await addStrokeService(newStroke);
       resetForm();
       setCurrentRound(updatedRound);
-      setShowAddStroke(false)
+      setShowAddStroke(false);
     } catch (err) {
       toast.error(`${err.message}`);
     }
@@ -137,22 +138,22 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
         <div className="px-3 grid grid-cols-4 gap-2 pb-2 text-white">
           <h1>club</h1>
           <fieldset className="col-span-3 grid grid-cols-6 grid-rows-2 text-white">
-            {clubs.map((club) => (
-              <div key={club}>
+            {clubs.map((club, idx) => (
+              <div key={club.serial}>
                 <input
                   type="radio"
                   name="clubOption"
-                  value={club}
-                  id={club}
+                  value={idx}
+                  id={club.name}
                   className="peer hidden [&:checked_+_label_svg]:block"
-                  checked={newStroke.club === club}
+                  checked={newStroke.club.serial === club.serial}
                   onChange={handleClubChange}
                 />
                 <label
-                  htmlFor={club}
+                  htmlFor={club.name}
                   className="block cursor-pointer border border-gray-100 bg-white p-2 text-sm font-medium shadow-sm hover:border-gray-200 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500"
                 >
-                  <p className="text-gray-700">{club}</p>
+                  <p className="text-gray-700">{club.abbrvName}</p>
                 </label>
               </div>
             ))}

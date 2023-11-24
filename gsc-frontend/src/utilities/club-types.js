@@ -84,7 +84,7 @@ serialCount++;
 clubs.push({
   serial: serialCount,
   category: "Putters",
-  name: "Putter",
+  name: "putter",
   abbrvName: "Pt",
 });
 
