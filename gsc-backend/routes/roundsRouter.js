@@ -7,6 +7,7 @@ const roundsCtrl = require("../controllers/roundsCtrl");
 router.get("/", roundsCtrl.getUserRounds);
 router.get("/round", roundsCtrl.getRound);
 router.post("/", roundsCtrl.createRound);
+router.delete("/", roundsCtrl.deleteRound);
 
 router.patch("/record", roundsCtrl.editGIR);
 router.post("/record/stroke", roundsCtrl.addStroke);

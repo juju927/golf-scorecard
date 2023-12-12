@@ -14,8 +14,16 @@ export function getUserRoundsAPI() {
   return sendRequest(baseURL);
 }
 
+export function deleteRoundAPI(roundId) {
+  return sendRequest(baseURL, "DELETE", roundId)
+}
+
 export function addStrokeAPI(strokeDetails) {
   return sendRequest(baseURL + "/record/stroke", "POST", strokeDetails);
+}
+
+export function editStrokeAPI(strokeDetails) {
+  return sendRequest(baseURL + "/record/stroke", "PUT", strokeDetails)
 }
 
 export function deleteStrokeAPI(strokeDetails) {

@@ -35,9 +35,15 @@ dependencies:
   react-hot-toast:
     specifier: ^2.4.1
     version: 2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0)
+  react-icons:
+    specifier: ^4.12.0
+    version: 4.12.0(react@18.2.0)
   react-router-dom:
     specifier: ^6.17.0
     version: 6.17.0(react-dom@18.2.0)(react@18.2.0)
+  react-simple-dialogs:
+    specifier: ^1.1.0
+    version: 1.1.0(react-dom@18.2.0)(react@18.2.0)
   react-world-flags:
     specifier: ^1.6.0
     version: 1.6.0(react@18.2.0)
@@ -2140,6 +2146,14 @@ packages:
       - csstype
     dev: false
 
+  /react-icons@4.12.0(react@18.2.0):
+    resolution: {integrity: sha512-IBaDuHiShdZqmfc/TwHu6+d6k2ltNCf3AszxNmjJc1KUfXdEeRJOKyNvLmAHaarhzGmTSVygNdyu8/opXv2gaw==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -2164,6 +2178,16 @@ packages:
     dependencies:
       '@remix-run/router': 1.10.0
       react: 18.2.0
+    dev: false
+
+  /react-simple-dialogs@1.1.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-VBbr2XXbS8k4ORrJVGP2mXQuoLNmcw1Z9WRanbdmUVL5iaFXypcuvvzXirWNUnak6a2usj2GomGqRIwuURu5mg==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-world-flags@1.6.0(react@18.2.0):

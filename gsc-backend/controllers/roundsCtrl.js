@@ -61,6 +61,21 @@ async function createRound(req, res) {
   }
 }
 
+async function deleteRound(req, res) {
+  try {
+    const round = await Round.findById(req.body.round_id);
+    if (!userCanAlter(round.user, req.user)) {
+      sendResponse(res, 401, null, "unauthorised");
+      return;
+    }
+    await round.deleteOne();
+    sendResponse(res, 200, "round deleted");
+  } catch (err) {
+    debug("Error deleting round: %o", err);
+    sendResponse(res, 500, err.message);
+  }
+}
+
 async function addStroke(req, res) {
   try {
     const round = await Round.findById(req.body.round_id)
@@ -206,6 +221,7 @@ module.exports = {
   getUserRounds,
   getRound,
   createRound,
+  deleteRound,
   addStroke,
   editStroke,
   deleteStroke,

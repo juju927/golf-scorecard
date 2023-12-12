@@ -30,7 +30,6 @@ async function login(req, res) {
   debug("login user body: %o", req.body);
   try {
     const user = await User.findOne({ username: req.body.username }).populate("profile").exec();
-    debug("user", user);
     if (user === null) {
       debug("User not found");
       throw new Error();

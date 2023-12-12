@@ -2,7 +2,7 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { currentRoundRecordAtom } from "../utilities/atom";
-import NewStrokeForm from "../components/Rounds/NewStrokeForm";
+import NewStrokeForm from "../components/rounds/NewStrokeForm";
 import StrokesSummary from "../components/record/StrokesSummary";
 import HoleDetails from "../components/record/HoleDetails";
 import StrokeList from "../components/record/StrokeList";
@@ -72,8 +72,8 @@ const HolePage = () => {
   };
 
   const goToScorecard = () => {
-    navigate(`/analyse/s/${roundDetails._id}`)
-  }
+    navigate(`/analyse/s/${roundDetails._id}`);
+  };
 
   useEffect(() => {
     if (
@@ -122,25 +122,28 @@ const HolePage = () => {
       />
 
       <div className="grow overflow-y-auto">
-        <StrokeList strokeDetails={strokeDetails} round_id={roundDetails?._id} />
-      </div>
-
-      {showAddStroke ? (
-        <NewStrokeForm
-          roundId={roundDetails?._id}
-          recordId={strokeDetails?._id}
-          setShowAddStroke={setShowAddStroke}
+        <StrokeList
+          strokeDetails={strokeDetails}
+          round_id={roundDetails?._id}
         />
-      ) : (
-        <div
-          className="mx-4 my-2 px-4 h-12 rounded-lg bg-teal-500 flex justify-center items-center shadow-md shadow-teal-500/50"
-          onClick={() => setShowAddStroke(true)}
-        >
-          <p className="uppercase font-medium text-white tracking-tight">
-            add new stroke
-          </p>
-        </div>
-      )}
+
+        {showAddStroke ? (
+          <NewStrokeForm
+            roundId={roundDetails?._id}
+            recordId={strokeDetails?._id}
+            setShowAddStroke={setShowAddStroke}
+          />
+        ) : (
+          <div
+            className="mx-4 my-2 px-4 h-12 rounded-lg bg-teal-500 flex justify-center items-center shadow-md shadow-teal-500/50"
+            onClick={() => setShowAddStroke(true)}
+          >
+            <p className="uppercase font-medium text-white tracking-tight">
+              add new stroke
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

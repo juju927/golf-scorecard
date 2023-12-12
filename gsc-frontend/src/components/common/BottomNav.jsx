@@ -25,7 +25,7 @@ const BottomNav = () => {
 
   return (
     <div className="h-12 bg-teal-100 border-t border-teal-600 border-solid shrink-0 dark:text-white dark:bg-black">
-      <nav className="h-full max-w-full grid grid-cols-5 gap-x-8 justify-between place-items-center px-3">
+      <nav className="h-full max-w-full grid grid-cols-4 gap-x-8 justify-between place-items-center px-3">
         <Link to="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +78,7 @@ const BottomNav = () => {
           </svg>
         </Link>
 
-        <Link to="/">
+        {/* <Link to="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -99,7 +99,7 @@ const BottomNav = () => {
               d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"
             />
           </svg>
-        </Link>
+        </Link> */}
 
         <div className="relative">
           <img

@@ -5,9 +5,12 @@ import { userProfileAtom } from "../utilities/atom";
 import { useState } from "react";
 import { CountryDropdown } from "react-country-region-selector";
 import Flag from "react-world-flags";
-import golfClubsLibrary from "../utilities/club-types";
 import { updateProfileService } from "../utilities/profiles-service";
 import toast from "react-hot-toast";
+import GolfBagEditor from "../components/profile/GolfBagEditor";
+import SectionHeader from "../components/common/SectionHeader";
+import golfBag from "../assets/images/golf-bag.png";
+import GolfBagView from "../components/profile/GolfBagView";
 
 const ProfilePage = () => {
   const userProfile = useAtomValue(userProfileAtom);
@@ -20,15 +23,12 @@ const ProfilePage = () => {
     handicap: userProfile.handicap || 0,
     profile_picture: userProfile.profile_picture || "",
   });
-  const [userClubs, setUserClubs] = useState(userProfile.golf_bag);
 
-  // for dropdown box functionality
-  const clubCategories = ["Woods", "Hybrids", "Irons", "Wedges", "Putters"];
-  const [selectedCategory, setSelectedCategory] = useState("");
-
-  // conditional toggles for editing page vs viewing
+  // conditional toggles for editing profile
   const [editProfile, setEditProfile] = useState(false);
-  const [editGolfBag, setEditGolfBag] = useState(false);
+
+  // toggles for editing golf bag
+  const [showGolfBagEditor, setShowGolfBagEditor] = useState(false);
 
   const handleDisplayNameChange = (e) => {
     setProfile((prevState) => ({
@@ -73,54 +73,16 @@ const ProfilePage = () => {
     }
   };
 
-  const handleEditGolfBag = () => {
-    if (editGolfBag) {
-      setUserClubs(userProfile.golf_bag);
-    }
-    setEditGolfBag(!editGolfBag);
-  };
-
-  const handleUpdateGolfBag = async () => {
-    try {
-      const updatedProfile = await updateProfileService({
-        golf_bag: userClubs,
-      });
-      setUserProfile(updatedProfile);
-      setEditGolfBag(!editGolfBag);
-    } catch (err) {
-      toast.error(err.message);
-    }
-  };
-
-  const handleAddClub = (club) => {
-    if (!editGolfBag) {
-      return;
-    }
-    if (userClubs.includes(club)) {
-      toast.error("Club already added to bag!");
-      return;
-    }
-    const clubList = [...userClubs];
-    clubList.push(club);
-    clubList.sort((a, b) => a.serial - b.serial);
-    setUserClubs(clubList);
-  };
-
-  const handleRemoveClub = (idx) => {
-    if (!editGolfBag) {
-      return;
-    }
-    const clubList = [...userClubs];
-    clubList.splice(idx, 1);
-    setUserClubs(clubList);
-  };
-
   return (
     <div className="w-screen h-screen flex flex-col">
       <TopHeader header="Profile" />
 
       {/* main content */}
       <div className="grow overflow-y-auto bg-gray-900">
+        {showGolfBagEditor && (
+          <GolfBagEditor setShowGolfBagEditor={setShowGolfBagEditor} />
+        )}
+
         <div className="flex flex-col items-center pt-4">
           <div className="relative">
             <img
@@ -155,27 +117,30 @@ const ProfilePage = () => {
           </div>
 
           {/* input fields */}
-          <div className="relative flex flex-col w-full h-fit px-8 pt-2">
-            <div className="absolute top-0 right-10 flex justify-end pt-2 gap-2">
-              <div
-                className={`uppercase text-teal-500 text-sm ${
-                  editProfile && "text-teal-500/50"
-                }`}
-                onClick={handleEditProfile}
-              >
-                {editProfile ? "cancel" : "edit"}
-              </div>
-              {editProfile && (
+          <div className="flex flex-col w-full h-fit px-8 pt-2">
+            <SectionHeader headerName={"user details"} />
+            <div className="relative display-name-input pb-2">
+              {/* edit button */}
+              <div className="absolute top-0 right-0 flex justify-end gap-2">
                 <div
-                  className="uppercase text-teal-500 text-sm"
-                  onClick={handleUpdateDetails}
+                  className={`uppercase text-teal-500 text-sm ${
+                    editProfile && "text-teal-500/50"
+                  }`}
+                  onClick={handleEditProfile}
                 >
-                  save
+                  {editProfile ? "cancel" : "edit profile"}
                 </div>
-              )}
-            </div>
+                {editProfile && (
+                  <div
+                    className="uppercase text-teal-500 text-sm"
+                    onClick={handleUpdateDetails}
+                  >
+                    save
+                  </div>
+                )}
+              </div>
 
-            <div className="display-name-input pb-2">
+              {/* user details */}
               <label
                 htmlFor="displayNameInput"
                 className="text-xs uppercase text-gray-100/50"
@@ -236,110 +201,38 @@ const ProfilePage = () => {
             </div>
 
             {/* golf bag selection */}
-            <div className="relative golf-bag mt-4 pt-2 border-t border-gray-600/50">
-              <div className="absolute top-0 right-0 flex justify-end pt-2 gap-2">
-                <div
-                  className={`uppercase text-teal-500 text-sm ${
-                    editGolfBag && "text-teal-500/50"
-                  }`}
-                  onClick={handleEditGolfBag}
-                >
-                  {editGolfBag ? "cancel" : "update golf bag"}
-                </div>
-                {editGolfBag && (
-                  <div
-                    className="uppercase text-teal-500 text-sm"
-                    onClick={handleUpdateGolfBag}
-                  >
-                    save
-                  </div>
-                )}
-              </div>
-              <label className="text-xs uppercase text-gray-100/50">
-                golf bag
-              </label>
-              <div
-                className={`grid ${
-                  editGolfBag ? "grid-cols-2" : "grid-cols-1"
-                } gap-1`}
-              >
-                <div className="user-clubs text-white pt-1">
-                  {userClubs.length == 0 && (
-                    <p className="italic text-sm font-slate-300">
-                      no clubs in golf bag
-                    </p>
+            <div className="golf-bag">
+              <SectionHeader headerName={"golf bag"} />
+
+              <div>
+                <div className="user-clubs text-white flex flex-col items-center">
+                  {userProfile.golf_bag?.length == 0 && (
+                    <>
+                      <img src={golfBag} className="w-1/2 h-1/2 max-w-100" />
+                      <p className="italic text-sm font-slate-300 text-center">
+                        Looks like your golf bag is currently empty.
+                      </p>
+                      <div className="h-fit w-fit p-2 border border-teal-500">
+                        <p
+                          className="uppercase text-teal-500 text-sm text-center"
+                          onClick={() => setShowGolfBagEditor(true)}
+                        >
+                          add golf clubs
+                        </p>
+                      </div>
+                    </>
                   )}
 
-                  {userClubs.map((club, idx) => (
-                    <div
-                      className={`relative ml-2 flex gap-3 my-2`}
-                      key={idx}
-                      onClick={() => handleRemoveClub(idx)}
+                  <GolfBagView />
+                  <div className="h-fit w-fit mt-2 p-2 border border-teal-500">
+                    <p
+                      className="uppercase text-teal-500 text-sm text-center"
+                      onClick={() => setShowGolfBagEditor(true)}
                     >
-                      {editGolfBag && (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          className="w-6 h-6 stroke-red-300 stroke-1 fill-none absolute -ml-8"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
-                      )}
-                      <p>
-                        {club.name}{" "}
-                        <span className="text-gray-300">
-                          ({club.abbrvName})
-                        </span>
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <div
-                  className={`selection-clubs w-full ${
-                    !editGolfBag && "hidden"
-                  }`}
-                >
-                  <select
-                    name="golfClubLibrary"
-                    id="golfClubLibrary"
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="w-full bg-gray-700/50 focus:outline-0 outline-none border-none text-white uppercase text-sm"
-                  >
-                    <option value="">category</option>
-                    {clubCategories.map((category, idx) => (
-                      <option key={idx} value={category}>
-                        {category}
-                      </option>
-                    ))}
-                  </select>
+                      edit golf bag
+                    </p>
+                  </div>
 
-                  {golfClubsLibrary
-                    .filter((club) => club.category == selectedCategory)
-                    .map((club) => (
-                      <div
-                        key={club.serial}
-                        className="flex gap-3 my-2"
-                        onClick={() => handleAddClub(club)}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          className="w-6 h-6 stroke-green-300 stroke-1 fill-none"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
-                        <p className="text-white">{club.name}</p>
-                      </div>
-                    ))}
                 </div>
               </div>
             </div>

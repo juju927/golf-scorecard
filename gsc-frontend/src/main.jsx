@@ -14,6 +14,7 @@ import AnalysePage from "./pages/AnalysePage";
 import { Toaster } from "react-hot-toast";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
+import { SimpleDialogContainer } from 'react-simple-dialogs'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -66,5 +67,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Toaster />
     <RouterProvider router={router} />
+    <SimpleDialogContainer />
   </React.StrictMode>
 );

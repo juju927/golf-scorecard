@@ -1,15 +1,16 @@
-import { useAtomValue } from "jotai";
+import { useSetAtom } from "jotai";
 import { currentRoundRecordAtom } from "../utilities/atom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getUserRoundsService } from "../utilities/rounds-service";
 import toast from "react-hot-toast";
-import RoundListItem from "../components/Rounds/RoundListItem";
+import RoundListItem from "../components/rounds/RoundListItem";
 import { Link } from "react-router-dom";
 import * as dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
 const RoundsPage = () => {
+  const setCurrentRound = useSetAtom(currentRoundRecordAtom);
   const [todayRounds, setTodayRounds] = useState([]);
   const navigate = useNavigate();
 
@@ -17,10 +18,9 @@ const RoundsPage = () => {
     const getUserRounds = async () => {
       try {
         const rounds = await getUserRoundsService();
-        // change to ==, remove !
         const filteredRounds = rounds.filter(
           (round) =>
-            dayjs(round?.date).format("D MMM YYYY") !==
+            dayjs(round?.date).format("D MMM YYYY") ==
             dayjs(Date.now()).format("D MMM YYYY")
         );
         if (filteredRounds.length == 0) {
@@ -44,7 +44,14 @@ const RoundsPage = () => {
       )}
 
       {todayRounds?.map((round) => (
-        <RoundListItem key={round._id} round={round} />
+        <div key={round._id}>
+            <RoundListItem
+              key={round._id}
+              round={round}
+              action={setCurrentRound}
+              link={`/record/hole/${round.round_record[0].hole_num}`}
+            />
+        </div>
       ))}
 
       <div className="my-3 mx-auto w-fit">

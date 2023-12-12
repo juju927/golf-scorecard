@@ -20,7 +20,9 @@
     "react-country-region-selector": "^3.6.1",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.12.0",
     "react-router-dom": "^6.17.0",
+    "react-simple-dialogs": "^1.1.0",
     "react-world-flags": "^1.6.0",
     "sweetalert2": "^11.10.0"
   },
