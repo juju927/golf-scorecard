@@ -17,7 +17,7 @@ const RoundListItem = ({ round, action, link }) => {
   };
 
   const handleDeleteClick = async (e) => {
-    e.stopPropagation;
+    e.stopPropagation();
     if (await simpleConfirm("Delete round?")) {
       deleteRound();
     }
@@ -25,16 +25,19 @@ const RoundListItem = ({ round, action, link }) => {
 
   return (
     <div className="w-full h-fit border-b border-slate-300/50 flex py-2 pl-4">
-      <p className="grow" onClick={()=> action(round)}>
-      <Link to={link}>
-        <strong className="text-white">{round?.course.course_name}</strong>
-        <span className="block text-xs italic text-slate-300">
-          {dayjs(round?.date).format("D MMM YYYY")}
-        </span>
-      </Link>
+      <p className="grow" onClick={() => action(round)}>
+        <Link to={link}>
+          <strong className="text-white">{round?.course.course_name}</strong>
+          <span className="block text-xs italic text-slate-300">
+            {dayjs(round?.date).format("D MMM YYYY")}
+          </span>
+        </Link>
       </p>
 
-      <div className="justify-end items-center" onClick={(e)=> handleDeleteClick(e)}>
+      <div
+        className="justify-end items-center"
+        onClick={(e) => handleDeleteClick(e)}
+      >
         <AiOutlineDelete className="text-slate-300" />
       </div>
     </div>
