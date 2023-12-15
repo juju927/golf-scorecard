@@ -9,7 +9,7 @@ import { PiArrowArcRightBold } from "react-icons/pi";
 const StrokeDetails = ({ stroke }) => {
   return (
     <div className="w-full py-3 grid grid-cols-3 border-b border-slate-300/50">
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-start">
         <div
           className={`uppercase text-lg ${
             stroke.ground == "Tee-off" && "text-green-400"

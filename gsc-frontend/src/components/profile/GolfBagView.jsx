@@ -26,60 +26,60 @@ const GolfBagView = () => {
 
   return (
     <div className="w-full h-fit p-2">
-      {woods.length > 0 && (
+      {woods?.length > 0 && (
         <div className="py-2 grid grid-cols-5 grid-auto-rows">
           <p className="row-span-4 text-xs uppercase text-gray-100/50 self-center">
             Woods
           </p>
-          {woods.map((club) => (
+          {woods?.map((club) => (
             <div key={club.serial} className="place-self-center">
               {club.abbrvName}
             </div>
           ))}
         </div>
       )}
-      {hybrids.length > 0 && (
+      {hybrids?.length > 0 && (
         <div className="py-2 grid grid-cols-5 grid-auto-rows">
           <p className="row-span-4 text-xs uppercase text-gray-100/50 self-center">
             Hybrids
           </p>
-          {hybrids.map((club) => (
+          {hybrids?.map((club) => (
             <div key={club.serial} className="place-self-center">
               {club.abbrvName}
             </div>
           ))}
         </div>
       )}
-      {irons.length > 0 && (
+      {irons?.length > 0 && (
         <div className="py-2 grid grid-cols-5 grid-auto-rows">
           <p className="row-span-4 text-xs uppercase text-gray-100/50 self-center">
             Irons
           </p>
-          {irons.map((club) => (
+          {irons?.map((club) => (
             <div key={club.serial} className="place-self-center">
               {club.abbrvName}
             </div>
           ))}
         </div>
       )}
-      {wedges.length > 0 && (
+      {wedges?.length > 0 && (
         <div className="py-2 grid grid-cols-5 grid-auto-rows">
           <p className="row-span-4 text-xs uppercase text-gray-100/50 self-center">
             Wedges
           </p>
-          {wedges.map((club) => (
+          {wedges?.map((club) => (
             <div key={club.serial} className="place-self-center">
               {club.abbrvName}
             </div>
           ))}
         </div>
       )}
-      {putters.length > 0 && (
+      {putters?.length > 0 && (
         <div className="py-2 grid grid-cols-5 grid-auto-rows">
           <p className="row-span-4 text-xs uppercase text-gray-100/50 self-center">
             Putters
           </p>
-          {putters.map((club) => (
+          {putters?.map((club) => (
             <div key={club.serial} className="place-self-center">
               {club.abbrvName}
             </div>

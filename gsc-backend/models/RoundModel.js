@@ -48,8 +48,8 @@ const roundSchema = new Schema(
             },
             is_chip: { type: Boolean, default: false },
             analysis: {
-              direction: { type: String, enum: ["left", "straight", "right"] },
-              distance: { type: String, enum: ["short", "average", "long"] },
+              direction: { type: String, enum: ["left", "straight", "right", "NA"] },
+              distance: { type: String, enum: ["short", "average", "long", "NA"] },
               remarks: { type: String },
             },
           },

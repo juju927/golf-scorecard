@@ -5,6 +5,7 @@ import { addStrokeService } from "../../utilities/rounds-service";
 import { useAtomValue, useSetAtom } from "jotai";
 import { currentRoundRecordAtom, userProfileAtom } from "../../utilities/atom";
 import { useClickAway } from "@uidotdev/usehooks";
+import { AiOutlineClose } from "react-icons/ai";
 
 const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
   const setCurrentRound = useSetAtom(currentRoundRecordAtom);
@@ -124,7 +125,7 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
         ref={ref}
       >
         <div
-          className="flex justify-center"
+          className="flex justify-center bg-black border-b border-white shadow-md"
         >
           <h1 className="text-center text-white pl-2 my-3 text-lg">
             Add new stroke
@@ -132,17 +133,7 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
         </div>
 
         <div className="absolute right-3 top-3 flex justify-center items-center" onClick={() => setShowAddStroke(false)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            className="w-6 h-6 stroke-2 stroke-white"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+        <AiOutlineClose className="text-white w-6 h-6" />
         </div>
 
         <>
