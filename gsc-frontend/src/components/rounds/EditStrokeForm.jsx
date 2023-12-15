@@ -7,7 +7,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import GolfClubSelect from "./GolfClubSelect";
 import GroundTypeSelect from "./GroundTypeSelect";
-import ChipCheck from "./Chipcheck";
+import ChipCheck from "./ChipCheck";
 
 const EditStrokeForm = ({
   round_id,
@@ -31,7 +31,7 @@ const EditStrokeForm = ({
       remarks: stroke.analysis.remarks,
     },
   });
-  const [showTooltip, setShowTooltip] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const handleDirectionChange = (e) => {
     setEditedStroke((prevState) => ({
@@ -113,17 +113,24 @@ const EditStrokeForm = ({
 
           <div className="flex my-3 gap-2 relative">
             <h1 className="text-white text-xs uppercase">stroke analysis</h1>
-            <AiOutlineQuestionCircle className="text-gray-400" onClick={()=> setShowTooltip(!showTooltip)} />
-            <div className={`${!showTooltip && "hidden"} absolute right-0 bottom-5 z-10 p-2 text-justify text-xs bg-gray-400/90 rounded-sm w-3/4`}>
+            <AiOutlineQuestionCircle
+              className="text-gray-400"
+              onClick={() => setShowTooltip(!showTooltip)}
+            />
+            <div
+              className={`${
+                !showTooltip && "hidden"
+              } absolute right-0 bottom-5 z-10 p-2 text-justify text-xs bg-gray-400/90 rounded-sm w-3/4`}
+            >
               <p>
                 {" "}
-                Optional, <b>self-analysed</b> and saved for post-game
-                review.
+                Optional, <b>self-analysed</b> and saved for post-game review.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 text-white pb-2">
+          <div className="grid grid-cols-4 gap-2 text-white pb-2">
+            <h2>direction</h2>
             <fieldset className="col-span-3 grid grid-cols-3 text-white">
               {["left", "straight", "right"].map((direction) => (
                 <div key={direction}>
