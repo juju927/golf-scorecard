@@ -24,7 +24,7 @@ const BottomNav = () => {
   };
 
   return (
-    <div className="h-12 bg-teal-100 border-t border-teal-600 border-solid shrink-0 dark:text-white dark:bg-black">
+    <div className="h-16 bg-teal-100 border-t border-teal-600 border-solid shrink-0 dark:text-white dark:bg-black">
       <nav className="h-full max-w-full grid grid-cols-4 gap-x-8 justify-between place-items-center px-3">
         <Link to="/home">
           <svg
