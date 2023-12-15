@@ -4,13 +4,12 @@ import toast from "react-hot-toast";
 import logo from "../../assets/images/golf-buddy-logo-nowords.png";
 import { loginService } from "../../utilities/users-service";
 import { useSetAtom } from "jotai";
-import { userAtom, userProfileAtom } from "../../utilities/atom";
+import { userAtom } from "../../utilities/atom";
 import AuthHeader from "./AuthHeader";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const setUser = useSetAtom(userAtom);
-  const setProfile = useSetAtom(userProfileAtom);
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
@@ -31,10 +30,9 @@ const LoginForm = () => {
       const user = await loginService(userData);
       if (user !== null && user !== undefined) {
         toast.success("Successfully logged in!");
-        navigate("/");
+        navigate("/home");
       }
       setUser(user);
-      setProfile(user.profile);
     } catch (err) {
       toast.error(`${err.message}`);
     }

@@ -37,7 +37,7 @@ const SignUpForm = () => {
       const user = await signUpService(userData);
       if (user !== null && user !== undefined) {
         toast.success("Successfully signed up!");
-        navigate("/");
+        navigate("/home");
       }
       setUser(user);
     } catch (err) {

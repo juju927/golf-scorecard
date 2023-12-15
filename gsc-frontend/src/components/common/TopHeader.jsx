@@ -8,8 +8,8 @@ const TopHeader = ({ header }) => {
   return (
     <header className="h-16 bg-teal-100 border-b border-teal-600 border-solid dark:text-white dark:bg-black">
       <div className="px-3 w-full h-full flex items-center gap-4">
-        { !(location.pathname == "/") && (
-          <Link to="/" className="h-12 w-12 flex items-center justify-center">
+        { !(location.pathname == "/home") && (
+          <Link to="/home" className="h-12 w-12 flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"

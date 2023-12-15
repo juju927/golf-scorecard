@@ -9,29 +9,31 @@ import { useState } from "react";
 
 const BottomNav = () => {
   const location = useLocation();
-  const profile = useAtomValue(userProfileAtom)
+  const profile = useAtomValue(userProfileAtom);
   const navigate = useNavigate();
 
-  const [showProfileMenu, setShowProfileMenu] = useState(false)
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const handleLogout = async () => {
     try {
-      await logOutService()
-      navigate("/login")
+      await logOutService();
+      navigate("/login");
     } catch (err) {
-      toast.error(`Error logging out: ${err.message}`)
+      toast.error(`Error logging out: ${err.message}`);
     }
-  }
+  };
 
   return (
     <div className="h-12 bg-teal-100 border-t border-teal-600 border-solid shrink-0 dark:text-white dark:bg-black">
       <nav className="h-full max-w-full grid grid-cols-4 gap-x-8 justify-between place-items-center px-3">
-        <Link to="/">
+        <Link to="/home">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             className={`w-8 h-8 stroke-2 ${
-              location.pathname == "/" ? "stroke-teal-300" : "stroke-current"
+              location.pathname == "/home"
+                ? "stroke-teal-300"
+                : "stroke-current"
             }`}
           >
             <path
@@ -106,12 +108,19 @@ const BottomNav = () => {
             alt={profile?.username}
             src={profile?.profile_picture}
             className="h-8 w-8 rounded-full object-cover"
-            onClick={()=> setShowProfileMenu(!showProfileMenu)}
+            onClick={() => setShowProfileMenu(!showProfileMenu)}
           />
 
-          <div className={`profile-menu w-32 rounded-lg absolute bottom-12 right-0 px-3 py-1 bg-gray-700/80 shadow-md shadow-gray-700/30 ${!showProfileMenu && "hidden"}`}>
+          <div
+            className={`profile-menu w-32 rounded-lg absolute bottom-12 right-0 px-3 py-1 bg-gray-700/80 shadow-md shadow-gray-700/30 ${
+              !showProfileMenu && "hidden"
+            }`}
+          >
             <div className="flex flex-col divide-y divide-slate-500/50">
-              <Link to="/profile" className="grid grid-cols-4 items-center py-2">
+              <Link
+                to="/profile"
+                className="grid grid-cols-4 items-center py-2"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -128,10 +137,15 @@ const BottomNav = () => {
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span className="text-sm capitalize text-white col-span-3 ml-3">settings</span>
+                <span className="text-sm capitalize text-white col-span-3 ml-3">
+                  settings
+                </span>
               </Link>
 
-              <div className="grid grid-cols-4 items-center py-2" onClick={handleLogout}>
+              <div
+                className="grid grid-cols-4 items-center py-2"
+                onClick={handleLogout}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -143,7 +157,9 @@ const BottomNav = () => {
                     d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
                   />
                 </svg>
-                <span className="text-sm capitalize text-red-500 col-span-3 ml-3">log out</span>
+                <span className="text-sm capitalize text-red-500 col-span-3 ml-3">
+                  log out
+                </span>
               </div>
             </div>
           </div>

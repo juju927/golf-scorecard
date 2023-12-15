@@ -14,24 +14,26 @@ const RoundsPage = () => {
   const [todayRounds, setTodayRounds] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const getUserRounds = async () => {
-      try {
-        const rounds = await getUserRoundsService();
-        const filteredRounds = rounds.filter(
-          (round) =>
-            dayjs(round?.date).format("D MMM YYYY") ==
-            dayjs(Date.now()).format("D MMM YYYY")
-        );
-        if (filteredRounds.length == 0) {
-          navigate("/record/new");
-          return;
-        }
-        setTodayRounds(filteredRounds);
-      } catch (err) {
-        toast.error(`${err.message}`);
+  const getUserRounds = async () => {
+    try {
+      // !!
+      const rounds = await getUserRoundsService();
+      const filteredRounds = rounds.filter(
+        (round) =>
+          dayjs(round?.date).format("D MMM YYYY") !=
+          dayjs(Date.now()).format("D MMM YYYY")
+      );
+      if (filteredRounds.length == 0) {
+        navigate("/record/new");
+        return;
       }
-    };
+      setTodayRounds(filteredRounds);
+    } catch (err) {
+      toast.error(`${err.message}`);
+    }
+  };
+
+  useEffect(() => {
     getUserRounds();
   }, []);
 

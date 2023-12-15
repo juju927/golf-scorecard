@@ -28,14 +28,12 @@ const ScorecardPH = ({ roundDetails }) => {
     }
   }
 
-
   useEffect(()=> {
     setHoleDetails(roundDetails?.round_record?.filter((hole)=> hole.hole_num == selectedHole)[0])
   }, [selectedHole, roundDetails])
 
   return (
     <>
-
       <select className="block w-full h-content text-center text-2xl font-bold font-serif text-white focus:outline-0 outline-none border-none focus:border-none bg-transparent bg-none" value={selectedHole} onChange={(e)=> setSelectedHole(e.target.value)}>
         { roundDetails?.round_record?.map((hole) => (
           <option key={hole._id} value={hole.hole_num}>Hole {hole.hole_num}</option>
