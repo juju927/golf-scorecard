@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start": "node ./bin/www",
     "devstart": "nodemon server.js",
     "serverstart": "DEBUG=gsc-backend:* npm run start"
   },
