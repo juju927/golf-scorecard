@@ -117,8 +117,8 @@ const EditStrokeForm = ({
             <div className={`${!showTooltip && "hidden"} absolute right-0 bottom-5 z-10 p-2 text-justify text-xs bg-gray-400/90 rounded-sm w-3/4`}>
               <p>
                 {" "}
-                Stroke analysis is optional, <b>self-analysed</b> and saved for post-game
-                reflection.
+                Optional, <b>self-analysed</b> and saved for post-game
+                review.
               </p>
             </div>
           </div>
