@@ -1,4 +1,4 @@
-import StrokeListItem from "../rounds/StrokeListItem";
+import StrokeListItem from "./ListItems/StrokeListItem"
 
 const StrokeList = ({ strokeDetails, round_id }) => {
   return (

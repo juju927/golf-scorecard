@@ -1,6 +1,6 @@
 import { useState } from "react";
-import CourseList from "../components/rounds/CourseList";
-import TeeList from "../components/rounds/TeeList";
+import CourseList from "../components/record/NewRoundInputs/CourseList";
+import TeeList from "../components/record/NewRoundInputs/TeeList";
 import toast from "react-hot-toast"
 import { startNewRoundService } from "../utilities/rounds-service";
 import { currentRoundRecordAtom } from "../utilities/atom";

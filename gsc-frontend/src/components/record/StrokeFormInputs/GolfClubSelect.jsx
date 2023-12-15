@@ -1,7 +1,7 @@
 import { useAtomValue } from "jotai";
-import { userProfileAtom } from "../../utilities/atom";
+import { userProfileAtom } from "../../../utilities/atom";
 
-const GolfClubSelect = ({ editedStroke, setEditedStroke }) => {
+const GolfClubSelect = ({ stroke, setStroke }) => {
   const userProfile = useAtomValue(userProfileAtom);
   const clubs = userProfile?.golf_bag;
 
@@ -11,7 +11,7 @@ const GolfClubSelect = ({ editedStroke, setEditedStroke }) => {
     const selectedClub = clubs.filter(
       (club) => club.serial == e.target.value
     )[0];
-    setEditedStroke((prevState) => ({
+    setStroke((prevState) => ({
       ...prevState,
       club: selectedClub,
     }));
@@ -22,7 +22,7 @@ const GolfClubSelect = ({ editedStroke, setEditedStroke }) => {
       <select
         name="golfClubUsed"
         id="golfClubUsed"
-        value={editedStroke.club.serial}
+        value={stroke.club.serial}
         onChange={handleChange}
         className="bg-gray-700/50 focus:outline-0 outline-none border-none text-white text-center"
       >

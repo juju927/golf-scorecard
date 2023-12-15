@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import TopHeader from "../components/common/TopHeader";
 import BottomNav from "../components/common/BottomNav";
 import { useState } from "react";
-import RoundListItem from "../components/rounds/RoundListItem";
+import RoundListItem from "../components/record/ListItems/RoundListItem";
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 import nogamesimg from "../assets/images/golf-no-games.png";

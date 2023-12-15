@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getUserRoundsService } from "../utilities/rounds-service";
 import toast from "react-hot-toast";
-import RoundListItem from "../components/rounds/RoundListItem";
+import RoundListItem from "../components/record/ListItems/RoundListItem";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";

@@ -19,7 +19,6 @@ const userProfileSchema = new Schema({
         min: 0,
         max: 34,
         required: true,
-        unique: [true, "club already in bag"],
       },
       category: {
         type: String,

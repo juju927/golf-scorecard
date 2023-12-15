@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { getCoursesService } from "../../utilities/courses-service";
+import { getCoursesService } from "../../../utilities/courses-service";
 
 const CourseList = ({
   selectedCourse,

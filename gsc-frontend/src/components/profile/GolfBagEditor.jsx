@@ -127,7 +127,7 @@ const GolfBagEditor = ({ setShowGolfBagEditor }) => {
               </div>
             ))}
         </div>
-        <div className="flex w-full mt-3 justify-center">
+        {/* <div className="flex w-full mt-3 justify-center">
             <div
               className="block rounded-lg w-fit bg-teal-500 shadow-md shadow-teal-500/50 px-5 py-3 text-sm font-medium text-white"
               type="button"
@@ -135,7 +135,7 @@ const GolfBagEditor = ({ setShowGolfBagEditor }) => {
             >
               Save
             </div>
-          </div>
+          </div> */}
       </div>
     </div>
   );

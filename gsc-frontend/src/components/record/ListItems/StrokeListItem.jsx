@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useClickAway } from "@uidotdev/usehooks";
-import { deleteStrokeService } from "../../utilities/rounds-service";
+import { deleteStrokeService } from "../../../utilities/rounds-service";
 import { useSetAtom } from "jotai";
-import { currentRoundRecordAtom } from "../../utilities/atom";
+import { currentRoundRecordAtom } from "../../../utilities/atom";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
-import EditStrokeForm from "./EditStrokeForm";
+import EditStrokeForm from "../StrokeForms/EditStrokeForm";
 
 const StrokeListItem = ({ stroke, round_id, round_record_id, idx }) => {
   const [showMenu, setShowMenu] = useState(false);

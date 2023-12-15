@@ -2,7 +2,7 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { currentRoundRecordAtom } from "../utilities/atom";
-import NewStrokeForm from "../components/rounds/NewStrokeForm";
+import NewStrokeForm from "../components/record/StrokeForms/NewStrokeForm";
 import StrokesSummary from "../components/record/StrokesSummary";
 import HoleDetails from "../components/record/HoleDetails";
 import StrokeList from "../components/record/StrokeList";

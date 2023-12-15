@@ -1,8 +1,8 @@
-const GroundTypeSelect = ({ editedStroke, setEditedStroke }) => {
+const GroundTypeSelect = ({ stroke, setStroke }) => {
   const groundTypes = ["Tee-off", "Fairway", "Rough", "Sand", "Green"];
 
   const handleChange = (e) => {
-    setEditedStroke((prevState) => ({
+    setStroke((prevState) => ({
       ...prevState,
       ground: e.target.value
     }))
@@ -13,7 +13,7 @@ const GroundTypeSelect = ({ editedStroke, setEditedStroke }) => {
       <select
         name="groundType"
         id="groundType"
-        value={editedStroke.ground}
+        value={stroke.ground}
         onChange={handleChange}
         className="bg-gray-700/50 focus:outline-0 outline-none border-none text-white text-center"
       >

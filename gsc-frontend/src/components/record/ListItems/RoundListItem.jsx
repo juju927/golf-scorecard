@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { AiOutlineDelete } from "react-icons/ai";
-import { deleteRoundService } from "../../utilities/rounds-service";
+import { deleteRoundService } from "../../../utilities/rounds-service";
 import toast from "react-hot-toast";
 import { simpleConfirm } from "react-simple-dialogs";
 import { Link } from "react-router-dom";
