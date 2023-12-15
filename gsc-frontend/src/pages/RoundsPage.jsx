@@ -6,7 +6,7 @@ import { getUserRoundsService } from "../utilities/rounds-service";
 import toast from "react-hot-toast";
 import RoundListItem from "../components/rounds/RoundListItem";
 import { Link } from "react-router-dom";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
 const RoundsPage = () => {
@@ -47,12 +47,12 @@ const RoundsPage = () => {
 
       {todayRounds?.map((round) => (
         <div key={round._id}>
-            <RoundListItem
-              key={round._id}
-              round={round}
-              action={setCurrentRound}
-              link={`/record/hole/${round.round_record[0].hole_num}`}
-            />
+          <RoundListItem
+            key={round._id}
+            round={round}
+            action={setCurrentRound}
+            link={`/record/hole/${round.round_record[0].hole_num}`}
+          />
         </div>
       ))}
 

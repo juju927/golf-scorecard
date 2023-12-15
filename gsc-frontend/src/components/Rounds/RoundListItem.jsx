@@ -1,4 +1,4 @@
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import { AiOutlineDelete } from "react-icons/ai";
 import { deleteRoundService } from "../../utilities/rounds-service";
 import toast from "react-hot-toast";
