@@ -31,7 +31,7 @@ const ScorecardPage = () => {
 
 
   return (
-    <div className="h-full w-full flex flex-col items-center overflow-y-scroll">
+    <div className="h-full w-full flex flex-col items-center">
       <div className="py-2">
         <div className="w-80 p-0.5 grid grid-cols-3 gap-3 rounded-sm bg-gray-500/50">
           {views.map((viewType) => (
