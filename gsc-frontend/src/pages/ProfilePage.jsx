@@ -209,7 +209,7 @@ const ProfilePage = () => {
                   {userProfile.golf_bag?.length == 0 && (
                     <>
                       <img src={golfBag} className="w-1/2 h-1/2 max-w-100" />
-                      <p className="italic text-sm font-slate-300 text-center">
+                      <p className="italic text-sm font-slate-300 text-center pb-4">
                         Looks like your golf bag is currently empty.
                       </p>
                       <div className="h-fit w-fit p-2 border border-teal-500">
@@ -224,15 +224,16 @@ const ProfilePage = () => {
                   )}
 
                   <GolfBagView />
-                  <div className="h-fit w-fit mt-2 p-2 border border-teal-500">
-                    <p
-                      className="uppercase text-teal-500 text-sm text-center"
-                      onClick={() => setShowGolfBagEditor(true)}
-                    >
-                      edit golf bag
-                    </p>
-                  </div>
-
+                  {userProfile.golf_bag?.length > 0 && (
+                    <div className="h-fit w-fit mt-2 p-2 border border-teal-500">
+                      <p
+                        className="uppercase text-teal-500 text-sm text-center"
+                        onClick={() => setShowGolfBagEditor(true)}
+                      >
+                        edit golf bag
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

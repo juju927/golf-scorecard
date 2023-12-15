@@ -4,12 +4,13 @@ import toast from "react-hot-toast";
 import logo from "../../assets/images/golf-buddy-logo-nowords.png";
 import { loginService } from "../../utilities/users-service";
 import { useSetAtom } from "jotai";
-import { userAtom } from "../../utilities/atom";
+import { userAtom, userProfileAtom } from "../../utilities/atom";
 import AuthHeader from "./AuthHeader";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const setUser = useSetAtom(userAtom);
+  const setUserProfile = useSetAtom(userProfileAtom);
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
@@ -33,6 +34,7 @@ const LoginForm = () => {
         navigate("/home");
       }
       setUser(user);
+      setUserProfile(user.profile || {});
     } catch (err) {
       toast.error(`${err.message}`);
     }
@@ -114,7 +116,7 @@ const LoginForm = () => {
                   </button>
 
                   <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
-                    Don't have an account?{" "}
+                    Don&apos;t have an account?{" "}
                     <Link
                       to="/register"
                       className="text-gray-700 underline dark:text-gray-200"
