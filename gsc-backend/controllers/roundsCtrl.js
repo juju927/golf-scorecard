@@ -4,7 +4,7 @@ const Round = require("../models/RoundModel");
 const User = require("../models/UserModel");
 const Course = require("../models/CourseModel");
 const sendResponse = require("../helpers/sendResponseHelper");
-const userCanAlter = require("../middleware/userCanAlter");
+const userCanAlter = require("../helpers/userCanAlter");
 
 async function getUserRounds(req, res) {
   try {
