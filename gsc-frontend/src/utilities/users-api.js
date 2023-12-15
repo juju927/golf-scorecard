@@ -1,6 +1,6 @@
 import sendRequest from "./send-request";
 
-const baseURL = "http://localhost:3001/users";
+const baseURL = import.meta.env.VITE_BASE_URL + "users";
 
 export function signUpAPI(userData) {
   return sendRequest(baseURL + "/register", "POST", userData);

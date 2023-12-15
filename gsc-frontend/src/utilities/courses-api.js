@@ -1,6 +1,6 @@
 import sendRequest from "./send-request";
 
-const baseURL = "http://localhost:3001/courses";
+const baseURL = import.meta.env.VITE_BASE_URL + "courses";
 
 export function getCoursesAPI() {
   return sendRequest(baseURL);

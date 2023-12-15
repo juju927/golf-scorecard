@@ -1,6 +1,6 @@
 import sendRequest from "./send-request";
 
-const baseURL = "http://localhost:3001/rounds";
+const baseURL = import.meta.env.VITE_BASE_URL + "rounds";
 
 export function startNewRoundAPI(settings) {
   return sendRequest(baseURL, "POST", settings);
