@@ -7,12 +7,14 @@ import { useSetAtom } from "jotai";
 import { userAtom, userProfileAtom } from "../../utilities/atom";
 import AuthHeader from "./AuthHeader";
 import { useNavigate } from "react-router-dom";
+import Loading from "../common/Loading";
 
 const LoginForm = () => {
   const setUser = useSetAtom(userAtom);
   const setUserProfile = useSetAtom(userProfileAtom);
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(false)
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -26,17 +28,20 @@ const LoginForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    setIsLoading(true)
     e.preventDefault();
     try {
       const user = await loginService(userData);
       if (user !== null && user !== undefined) {
+        setIsLoading(false)
+        setUser(user);
+        setUserProfile(user.profile || {});
         toast.success("Successfully logged in!");
         navigate("/home");
       }
-      setUser(user);
-      setUserProfile(user.profile || {});
     } catch (err) {
       toast.error(`${err.message}`);
+      setIsLoading(false)
     }
   };
 
@@ -86,6 +91,7 @@ const LoginForm = () => {
                     className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                     onChange={handleChange}
                     value={userData.username}
+                    disabled={isLoading}
                   />
                 </div>
 
@@ -104,16 +110,21 @@ const LoginForm = () => {
                     className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                     onChange={handleChange}
                     value={userData.password}
+                    disabled={isLoading}
                   />
                 </div>
 
                 <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
+                  <div className="flex items-center gap-2">
                   <button
+                    disabled={isLoading}
                     className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white"
                     onClick={handleSubmit}
                   >
                     Log In
                   </button>
+                    { isLoading && <Loading /> }
+                  </div>
 
                   <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
                     Don&apos;t have an account?{" "}

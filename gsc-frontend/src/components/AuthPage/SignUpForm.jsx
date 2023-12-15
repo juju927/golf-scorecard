@@ -5,14 +5,16 @@ import logo from "../../assets/images/golf-buddy-logo-nowords.png";
 import AuthHeader from "./AuthHeader";
 import { signUpService } from "../../utilities/users-service";
 import { useSetAtom } from "jotai";
-import { userAtom } from "../../utilities/atom";
+import { userAtom, userProfileAtom } from "../../utilities/atom";
 import { useNavigate } from "react-router-dom";
+import Loading from "../common/Loading";
 
 const SignUpForm = () => {
   const setUser = useSetAtom(userAtom);
-
+  const setUserProfile = useSetAtom(userProfileAtom);
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState({
     email: "",
     username: "",
@@ -28,6 +30,7 @@ const SignUpForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
     if (userData.password !== userData.passwordconfirm) {
       toast.error("Passwords do not match.");
@@ -36,12 +39,15 @@ const SignUpForm = () => {
     try {
       const user = await signUpService(userData);
       if (user !== null && user !== undefined) {
+        setIsLoading(false);
+        setUser(user);
+        setUserProfile(user.profile || {});
         toast.success("Successfully signed up!");
         navigate("/home");
       }
-      setUser(user);
     } catch (err) {
       toast.error(`${err.message}`);
+      setIsLoading(false);
     }
   };
 
@@ -90,6 +96,7 @@ const SignUpForm = () => {
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                   onChange={handleChange}
                   value={userData.email}
+                  disabled={isLoading}
                 />
               </div>
 
@@ -108,6 +115,7 @@ const SignUpForm = () => {
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                   onChange={handleChange}
                   value={userData.username}
+                  disabled={isLoading}
                 />
               </div>
 
@@ -126,6 +134,7 @@ const SignUpForm = () => {
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                   onChange={handleChange}
                   value={userData.password}
+                  disabled={isLoading}
                 />
               </div>
 
@@ -144,16 +153,21 @@ const SignUpForm = () => {
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                   onChange={handleChange}
                   value={userData.passwordconfirm}
+                  disabled={isLoading}
                 />
               </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-                <button
-                  className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white"
-                  onClick={handleSubmit}
-                >
-                  Create an account
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white"
+                    onClick={handleSubmit}
+                  >
+                    Create an account
+                  </button>
+                  {isLoading && <Loading />}
+
+                </div>
 
                 <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
                   Already have an account?{" "}
