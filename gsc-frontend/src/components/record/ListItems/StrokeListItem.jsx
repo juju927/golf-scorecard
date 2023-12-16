@@ -4,7 +4,7 @@ import { deleteStrokeService } from "../../../utilities/rounds-service";
 import { useSetAtom } from "jotai";
 import { currentRoundRecordAtom } from "../../../utilities/atom";
 import toast from "react-hot-toast";
-import { simpleConfirm } from 'react-simple-dialogs'
+import { simpleConfirm } from "react-simple-dialogs";
 import EditStrokeForm from "../StrokeForms/EditStrokeForm";
 
 const StrokeListItem = ({ stroke, round_id, round_record_id, idx }) => {
@@ -31,25 +31,25 @@ const StrokeListItem = ({ stroke, round_id, round_record_id, idx }) => {
   const handleEditClick = () => {
     setShowEditStroke(true);
     setShowMenu(false);
-  }
+  };
 
   const handleDeleteClick = async () => {
     if (
       await simpleConfirm({
         title: "Delete stroke?",
-        confirmLabel: 'Delete',
-        cancelLabel: 'Cancel'
+        confirmLabel: "Delete",
+        cancelLabel: "Cancel",
       })
     ) {
       deleteStroke();
-    } 
-  }
+    }
+  };
 
   return (
     <>
-      <div className="w-full pl-4 px-2 py-2 flex">
-        <p>{idx + 1}</p>
-        
+      <div className="w-full pl-4 px-2 py-2 flex gap-3">
+        <p className="text-white text-xl font-medium font-serif">{idx + 1}.</p>
+
         <div className="flex flex-col gap">
           <p className="font-bold text-white">{stroke.ground}</p>
           <p className="pl-2 italic text-xs text-gray-300">
@@ -76,7 +76,10 @@ const StrokeListItem = ({ stroke, round_id, round_record_id, idx }) => {
               ref={ref}
             >
               <div className="flex flex-col divide-y divide-slate-500/50">
-                <div className="grid grid-cols-4 items-center py-2" onClick={handleEditClick}>
+                <div
+                  className="grid grid-cols-4 items-center py-2"
+                  onClick={handleEditClick}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
