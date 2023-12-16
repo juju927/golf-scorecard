@@ -13,16 +13,19 @@ const HoleDetails = ({
 }) => {
 
   const handleClick = async () => {
+    if (nextHole != hole_no) {
+      return;
+    }
     if (
       await simpleConfirm({
         title: "End game?",
-        confirmLabel: 'End',
-        cancelLabel: 'Cancel'
+        confirmLabel: "End",
+        cancelLabel: "Cancel",
       })
     ) {
       goToScorecard();
-    } 
-  }
+    }
+  };
 
   return (
     <div className="hole-page-hole-details flex flex-col justify-center bg-teal-950 slate-950 border-b border-teal-600 px-2">

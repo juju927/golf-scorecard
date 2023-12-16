@@ -48,6 +48,8 @@ const StrokeListItem = ({ stroke, round_id, round_record_id, idx }) => {
   return (
     <>
       <div className="w-full pl-4 px-2 py-2 flex">
+        <p>{idx + 1}</p>
+        
         <div className="flex flex-col gap">
           <p className="font-bold text-white">{stroke.ground}</p>
           <p className="pl-2 italic text-xs text-gray-300">
