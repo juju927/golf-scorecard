@@ -8,13 +8,16 @@ import RoundListItem from "../components/record/ListItems/RoundListItem";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
+import Loading from "../components/common/Loading"
 
 const RoundsPage = () => {
   const setCurrentRound = useSetAtom(currentRoundRecordAtom);
   const [todayRounds, setTodayRounds] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate();
 
   const getUserRounds = async () => {
+    setIsLoading(true)
     try {
       // !!
       const rounds = await getUserRoundsService();
@@ -25,11 +28,14 @@ const RoundsPage = () => {
       );
       if (filteredRounds.length == 0) {
         navigate("/record/new");
+        setIsLoading(false)
         return;
       }
       setTodayRounds(filteredRounds);
+      setIsLoading(false)
     } catch (err) {
       toast.error(`${err.message}`);
+      setIsLoading(false)
     }
   };
 
@@ -39,6 +45,13 @@ const RoundsPage = () => {
 
   return (
     <div className="w-full px-4 pt-4">
+      { isLoading && (
+        <div className="w-full flex flex-col items-center justify-center">
+          <Loading />
+          <p className="italic text-white text-sm">Fetching rounds...</p>
+          </div>
+      )}
+
       {todayRounds.length > 0 && (
         <span className="text-xs text-gray-500 uppercase font-bold">
           Continue recording from:

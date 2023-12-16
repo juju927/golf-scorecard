@@ -12,8 +12,14 @@ import ChipCheck from "../StrokeFormInputs/ChipCheck";
 import DirectionInput from "../StrokeFormInputs/DirectionInput";
 import DistanceInput from "../StrokeFormInputs/DistanceInput";
 import RemarksInput from "../StrokeFormInputs/RemarksInput";
+import { TbGolf } from "react-icons/tb";
 
-const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
+const NewStrokeForm = ({
+  roundId,
+  recordId,
+  total_strokes,
+  setShowAddStroke,
+}) => {
   const setCurrentRound = useSetAtom(currentRoundRecordAtom);
   const ref = useClickAway(() => {
     setShowAddStroke(false);
@@ -24,7 +30,7 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
     round_record_id: recordId,
     is_chip: false,
     club: "",
-    ground: "",
+    ground: total_strokes == 0 ? "Tee-off" : "",
     analysis: {
       direction: "",
       distance: "",
@@ -33,7 +39,7 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
   });
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const handleAddStroke = async () => {
+  const handleAddStroke = async (end) => {
     if (!newStroke.club || !newStroke.ground) {
       toast.error("Please add stroke details.");
       return;
@@ -42,7 +48,10 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
       const updatedRound = await addStrokeService(newStroke);
       resetForm();
       setCurrentRound(updatedRound);
-      setShowAddStroke(false);
+      toast.success("Stroke added!");
+      if (end) {
+        setShowAddStroke(false);
+      }
     } catch (err) {
       toast.error(`${err.message}`);
     }
@@ -54,10 +63,10 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
       round_record_id: recordId,
       is_chip: false,
       club: "",
-      ground: "Tee-off",
+      ground: "",
       analysis: {
-        direction: "straight",
-        distance: "average",
+        direction: "",
+        distance: "",
         remarks: "",
       },
     });
@@ -72,14 +81,22 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
   }, [roundId, recordId]);
 
   return (
-    <div className="absolute top-0 left-0 w-screen h-screen overflow-y-auto z-10 bg-gray-900/90 flex items-end justify-center">
+    <div className="absolute top-0 left-0 w-screen h-screen overflow-y-auto z-10 bg-gray-900/10 flex items-end justify-center">
       <div
         className="relative w-full h-10/12 shadow-md rounded-lg border border-black bg-gray-900"
         ref={ref}
       >
         <div className="flex justify-center bg-black border-b border-white shadow-md">
           <h1 className="text-center text-white my-3 text-lg tracking-wide font-semibold">
-            Add new stroke
+            Adding{" "}
+            <span className="ordinal">
+              {total_strokes + 1}
+              {total_strokes + 1 == 1 && "st"}
+              {total_strokes + 1 == 2 && "nd"}
+              {total_strokes + 1 == 3 && "rd"}
+              {total_strokes + 1 > 3 && "th"}
+            </span>{" "}
+            stroke
           </h1>
         </div>
 
@@ -97,7 +114,7 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
             <GroundTypeSelect stroke={newStroke} setStroke={setNewStroke} />
 
             <GolfClubSelect stroke={newStroke} setStroke={setNewStroke} />
-            <div>{/* empty div to use table space lol */}</div>
+            <div>{/* make this an add penalty stroke */}</div>
             <ChipCheck stroke={newStroke} setStroke={setNewStroke} />
           </div>
 
@@ -113,7 +130,6 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
               } absolute right-0 bottom-5 z-10 p-2 text-justify text-xs bg-gray-400/90 rounded-sm w-3/4`}
             >
               <p>
-                {" "}
                 Optional, <b>self-analysed</b> and saved for post-game review.
                 Can be reset by clicking the header.
               </p>
@@ -124,12 +140,21 @@ const NewStrokeForm = ({ roundId, recordId, setShowAddStroke }) => {
           <DistanceInput stroke={newStroke} setStroke={setNewStroke} />
           <RemarksInput stroke={newStroke} setStroke={setNewStroke} />
 
-          <div className="py-2 px-4 flex justify-center">
+          <div className="w-full py-2 px-4 flex justify-between">
             <button
-              className="p-3 w-full block rounded-lg bg-teal-500 text-white shadow-md shadow-teal-500/50 uppercase"
-              onClick={handleAddStroke}
+              className="w-fit px-3 py-2 rounded-lg bg-teal-700 text-white font-semibold border border-teal-500 uppercase"
+              onClick={() =>handleAddStroke(false)}
             >
-              add stroke
+              next stroke
+            </button>
+            <button
+              className="w-fit px-3 py-2 rounded-lg bg-teal-700 text-white font-semibold border border-teal-500 uppercase"
+              onClick={() =>handleAddStroke(true)}
+            >
+              <div className="flex items-center gap-2">
+                <TbGolf />
+                <span>end hole</span>
+              </div>
             </button>
           </div>
         </div>

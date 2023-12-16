@@ -47,7 +47,7 @@ const EditStrokeForm = ({
   };
 
   return (
-    <div className="absolute top-0 left-0 w-screen h-screen overflow-y-auto z-10 bg-gray-900/90 flex items-end justify-center">
+    <div className="absolute top-0 left-0 w-screen h-screen overflow-y-auto z-10 bg-gray-900/10 flex items-end justify-center">
       <div className="relative w-full h-10/12 shadow-md rounded-lg border border-black bg-gray-900">
         <div
           className="flex justify-center bg-black border-b border-white shadow-md"
@@ -122,7 +122,7 @@ const EditStrokeForm = ({
             className="p-3 w-full block rounded-lg bg-teal-500 text-white shadow-md shadow-teal-500/50 uppercase"
             onClick={handleAddStroke}
           >
-            edit stroke
+            save
           </button>
         </div>
       </div>

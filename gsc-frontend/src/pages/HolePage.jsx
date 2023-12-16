@@ -131,6 +131,7 @@ const HolePage = () => {
           <NewStrokeForm
             roundId={roundDetails?._id}
             recordId={strokeDetails?._id}
+            total_strokes={strokeDetails?.total_strokes}
             setShowAddStroke={setShowAddStroke}
           />
         ) : (
