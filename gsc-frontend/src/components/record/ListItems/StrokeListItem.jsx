@@ -4,7 +4,7 @@ import { deleteStrokeService } from "../../../utilities/rounds-service";
 import { useSetAtom } from "jotai";
 import { currentRoundRecordAtom } from "../../../utilities/atom";
 import toast from "react-hot-toast";
-import Swal from "sweetalert2";
+import { simpleConfirm } from 'react-simple-dialogs'
 import EditStrokeForm from "../StrokeForms/EditStrokeForm";
 
 const StrokeListItem = ({ stroke, round_id, round_record_id, idx }) => {
@@ -33,19 +33,17 @@ const StrokeListItem = ({ stroke, round_id, round_record_id, idx }) => {
     setShowMenu(false);
   }
 
-  const handleDeleteClick = () => {
-    Swal.fire({
-      title: "Delete stroke?",
-      showCancelButton: true,
-      cancelButtonText: "Cancel",
-      confirmButtonColor: "#c44d5b",
-      confirmButtonText: "Delete",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteStroke();
-      }
-    });
-  };
+  const handleDeleteClick = async () => {
+    if (
+      await simpleConfirm({
+        title: "Delete stroke?",
+        confirmLabel: 'Delete',
+        cancelLabel: 'Cancel'
+      })
+    ) {
+      deleteStroke();
+    } 
+  }
 
   return (
     <>

@@ -30,12 +30,12 @@ const SignUpForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    setIsLoading(true);
     e.preventDefault();
     if (userData.password !== userData.passwordconfirm) {
       toast.error("Passwords do not match.");
       return;
     }
+    setIsLoading(true);
     try {
       const user = await signUpService(userData);
       if (user !== null && user !== undefined) {

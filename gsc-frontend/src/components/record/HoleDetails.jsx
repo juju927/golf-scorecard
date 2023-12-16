@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
+import { simpleConfirm } from "react-simple-dialogs";
 
 const HoleDetails = ({
   prevHole,
@@ -11,20 +11,18 @@ const HoleDetails = ({
   index_no,
   goToScorecard,
 }) => {
-  const handleClick = () => {
-    if (nextHole == hole_no) {
-      Swal.fire({
+
+  const handleClick = async () => {
+    if (
+      await simpleConfirm({
         title: "End game?",
-        showCancelButton: true,
-        confirmButtonText: "End",
-        cancelButtonText: "Cancel",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          goToScorecard();
-        }
-      });
-    }
-  };
+        confirmLabel: 'End',
+        cancelLabel: 'Cancel'
+      })
+    ) {
+      goToScorecard();
+    } 
+  }
 
   return (
     <div className="hole-page-hole-details flex flex-col justify-center bg-teal-950 slate-950 border-b border-teal-600 px-2">

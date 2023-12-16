@@ -18,7 +18,7 @@ const userProfileSchema = new Schema({
         type: Number,
         min: 0,
         max: 34,
-        required: true,
+        required: true, 
       },
       category: {
         type: String,
