@@ -23,7 +23,10 @@ const roundSchema = new Schema(
           required: true,
         },
         penalty_strokes: { type: Number, required: true, default: 0 },
-        GIR: { type: Boolean, default: false },
+        GIR: { type: Boolean, default: undefined },
+        FIR: { type: Boolean, default: undefined },
+        putts: { type: Number, required: true, default: undefined },
+        is_completed: { type: Boolean, default: false, required: true },
         stroke_details: [
           {
             club: {
@@ -48,8 +51,14 @@ const roundSchema = new Schema(
             },
             is_chip: { type: Boolean, default: false },
             analysis: {
-              direction: { type: String, enum: ["left", "straight", "right", "NA"] },
-              distance: { type: String, enum: ["short", "average", "long", "NA"] },
+              direction: {
+                type: String,
+                enum: ["left", "straight", "right", "NA"],
+              },
+              distance: {
+                type: String,
+                enum: ["short", "average", "long", "NA"],
+              },
               remarks: { type: String },
             },
           },

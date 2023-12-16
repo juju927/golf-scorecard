@@ -13,12 +13,14 @@ import DirectionInput from "../StrokeFormInputs/DirectionInput";
 import DistanceInput from "../StrokeFormInputs/DistanceInput";
 import RemarksInput from "../StrokeFormInputs/RemarksInput";
 import { TbGolf } from "react-icons/tb";
+import Loading from "../../common/Loading";
 
 const NewStrokeForm = ({
   roundId,
   recordId,
   total_strokes,
   setShowAddStroke,
+  endRound,
 }) => {
   const setCurrentRound = useSetAtom(currentRoundRecordAtom);
   const ref = useClickAway(() => {
@@ -38,6 +40,10 @@ const NewStrokeForm = ({
     },
   });
   const [showTooltip, setShowTooltip] = useState(false);
+  const [isLoading, setIsLoading] = useState({
+    next: false,
+    end: false,
+  });
 
   const handleAddStroke = async (end) => {
     if (!newStroke.club || !newStroke.ground) {
@@ -45,12 +51,31 @@ const NewStrokeForm = ({
       return;
     }
     try {
-      const updatedRound = await addStrokeService(newStroke);
-      resetForm();
-      setCurrentRound(updatedRound);
-      toast.success("Stroke added!");
       if (end) {
+        setIsLoading((prevState) => ({
+          ...prevState,
+          end: true,
+        }));
+        await addStrokeService(newStroke);
+        await endRound();
+        setIsLoading((prevState) => ({
+          ...prevState,
+          end: false,
+        }));
         setShowAddStroke(false);
+      } else {
+        setIsLoading((prevState) => ({
+          ...prevState,
+          next: true,
+        }));
+        const updatedRound = await addStrokeService(newStroke);
+        resetForm();
+        setCurrentRound(updatedRound);
+        toast.success("Stroke added!");
+        setIsLoading((prevState) => ({
+          ...prevState,
+          next: false,
+        }));
       }
     } catch (err) {
       toast.error(`${err.message}`);
@@ -142,18 +167,28 @@ const NewStrokeForm = ({
 
           <div className="w-full py-2 px-4 flex justify-between">
             <button
-              className="w-fit px-3 py-2 rounded-lg bg-teal-700 text-white font-semibold border border-teal-500 uppercase"
-              onClick={() =>handleAddStroke(false)}
+              disabled={isLoading.next || isLoading.end}
+              className="w-1/2 h-fit px-3 py-2 rounded-lg bg-teal-700 text-white font-semibold border border-teal-500 uppercase"
+              onClick={() => handleAddStroke(false)}
             >
-              next stroke
+              <div className="flex items-center justify-center">
+                {isLoading.next ? <Loading /> : <span>next stroke</span>}
+              </div>
             </button>
             <button
-              className="w-fit px-3 py-2 rounded-lg bg-teal-700 text-white font-semibold border border-teal-500 uppercase"
-              onClick={() =>handleAddStroke(true)}
+              disabled={isLoading.next || isLoading.end}
+              className="w-5/12 h-fit px-3 py-2 rounded-lg bg-teal-700 text-white font-semibold border border-teal-500 uppercase"
+              onClick={() => handleAddStroke(true)}
             >
-              <div className="flex items-center gap-2">
-                <TbGolf />
-                <span>end hole</span>
+              <div className="flex items-center justify-center gap-2">
+                {isLoading.end ? (
+                  <Loading />
+                ) : (
+                  <>
+                    <TbGolf />
+                    <span>end hole</span>
+                  </>
+                )}
               </div>
             </button>
           </div>

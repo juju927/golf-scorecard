@@ -9,7 +9,7 @@ import StrokeList from "../components/record/StrokeList";
 import {
   addStrokeService,
   deleteStrokeService,
-  toggleGIRService,
+  updateStatsService,
 } from "../utilities/rounds-service";
 import toast from "react-hot-toast";
 
@@ -19,16 +19,19 @@ const HolePage = () => {
   const roundDetails = useAtomValue(currentRoundRecordAtom);
   const setCurrentRound = useSetAtom(currentRoundRecordAtom);
 
-  // these 2 useState are cos idk how to derive from atom
+  // these 2 useState are cos idk how to derive from atom, but they are derived (refer to useEffect)
+  // holeDetails - of golf course/ fixed
+  // strokeDetails - of user plays
   const [holeDetails, setHoleDetails] = useState({});
-  const [strokeDetails, setStrokeDetails] = useState([]);
+  const [strokeDetails, setStrokeDetails] = useState({});
 
+  // toggle form
   const [showAddStroke, setShowAddStroke] = useState(false);
 
+  // calculations for Links
   const firstHole = roundDetails.round_record?.[0].hole_num;
   const lastHole =
     roundDetails.round_record?.[roundDetails.round_record.length - 1].hole_num;
-
   const prevHole = holeNo == firstHole ? holeNo : parseInt(holeNo) - 1;
   const nextHole = holeNo == lastHole ? holeNo : parseInt(holeNo) + 1;
 
@@ -58,12 +61,13 @@ const HolePage = () => {
     }
   };
 
-  const toggleGIR = async (GIR) => {
+  const endRound = async () => {
     try {
-      const updatedRound = await toggleGIRService({
+      const updatedRound = await updateStatsService({
         round_id: roundDetails?._id,
         round_record_id: strokeDetails?._id,
-        GIR: GIR,
+        par_no: holeDetails?.par,
+        is_completed: true,
       });
       setCurrentRound(updatedRound);
     } catch (err) {
@@ -113,12 +117,8 @@ const HolePage = () => {
       />
 
       <StrokesSummary
-        total={strokeDetails?.total_strokes}
-        penalty={strokeDetails?.penalty_strokes}
-        GIR={strokeDetails?.GIR}
-        toggleGIR={toggleGIR}
-        addPenalty={addPenalty}
-        removePenalty={removePenalty}
+        strokeDetails={strokeDetails}
+        par_no={holeDetails?.par}
       />
 
       <div className="grow overflow-y-auto">
@@ -133,6 +133,7 @@ const HolePage = () => {
             recordId={strokeDetails?._id}
             total_strokes={strokeDetails?.total_strokes}
             setShowAddStroke={setShowAddStroke}
+            endRound={endRound}
           />
         ) : (
           <div

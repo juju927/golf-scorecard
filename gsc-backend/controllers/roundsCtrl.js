@@ -5,6 +5,7 @@ const User = require("../models/UserModel");
 const Course = require("../models/CourseModel");
 const sendResponse = require("../helpers/sendResponseHelper");
 const userCanAlter = require("../helpers/userCanAlter");
+const { checkGIR, checkFIR, checkPutts } = require("../helpers/statCalculator");
 
 async function getUserRounds(req, res) {
   try {
@@ -73,6 +74,27 @@ async function deleteRound(req, res) {
   } catch (err) {
     debug("Error deleting round: %o", err);
     sendResponse(res, 500, err.message);
+  }
+}
+
+async function updateRoundRecord(req, res) {
+  try {
+    const round = await Round.findById(req.body.round_id)
+      .populate("course")
+      .exec();
+    if (!userCanAlter(round.user, req.user)) {
+      sendResponse(res, 401, null, "unauthorised");
+      return;
+    }
+    const roundRecord = round.round_record.id(req.body.round_record_id);
+    roundRecord.GIR = checkGIR(roundRecord.stroke_details, req.body.par_no);
+    roundRecord.FIR = checkFIR(roundRecord.stroke_details, req.body.par_no);
+    roundRecord.putts = checkPutts(roundRecord.stroke_details);
+    roundRecord.is_completed = req.body.is_completed;
+    await round.save();
+    sendResponse(res, 200, round, "round edited");
+  } catch (err) {
+    debug("Error editing GIR: %o", err);
   }
 }
 
@@ -176,24 +198,6 @@ async function deleteStroke(req, res) {
   }
 }
 
-async function editGIR(req, res) {
-  try {
-    const round = await Round.findById(req.body.round_id)
-      .populate("course")
-      .exec();
-    if (!userCanAlter(round.user, req.user)) {
-      sendResponse(res, 401, null, "unauthorised");
-      return;
-    }
-    const roundRecord = round.round_record.id(req.body.round_record_id);
-    roundRecord.GIR = req.body.GIR;
-    await round.save();
-    sendResponse(res, 200, round, "GIR edited");
-  } catch (err) {
-    debug("Error editing GIR: %o", err);
-  }
-}
-
 function initialiseRecord(roundType) {
   let start = 1;
   let end = 18;
@@ -222,8 +226,8 @@ module.exports = {
   getRound,
   createRound,
   deleteRound,
+  updateRoundRecord,
   addStroke,
   editStroke,
   deleteStroke,
-  editGIR,
 };

@@ -3,7 +3,11 @@ import forms from "@tailwindcss/forms";
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: { colors: {
+      "card-neutral-bg": "#cbd5e1",
+      "card-good-bg": "#6ee7b7",
+      "card-bad-bg": "#fda4af" 
+    },},
   },
   methods: {
     setViewHeight: function () {

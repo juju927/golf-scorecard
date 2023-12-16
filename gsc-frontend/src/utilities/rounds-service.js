@@ -5,7 +5,7 @@ import {
   deleteRoundAPI,
   addStrokeAPI,
   deleteStrokeAPI,
-  toggleGIRAPI,
+  updateStatsAPI,
   editStrokeAPI,
 } from "./rounds-api";
 
@@ -44,7 +44,7 @@ export async function deleteStrokeService(strokeDetails) {
   return data.data;
 }
 
-export async function toggleGIRService(holeDetails) {
-  const data = await toggleGIRAPI(holeDetails);
+export async function updateStatsService(holeDetails) {
+  const data = await updateStatsAPI(holeDetails);
   return data.data;
 }

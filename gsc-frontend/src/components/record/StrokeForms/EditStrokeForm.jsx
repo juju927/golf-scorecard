@@ -36,7 +36,11 @@ const EditStrokeForm = ({
   });
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const handleAddStroke = async () => {
+  const handleEditStroke = async () => {
+    if (!editedStroke.club || !editedStroke.ground) {
+      toast.error("Please add stroke details.");
+      return;
+    }
     try {
       const updatedRound = await editStrokeService(editedStroke);
       setCurrentRound(updatedRound);
@@ -119,8 +123,8 @@ const EditStrokeForm = ({
 
         <div className="py-2 px-4 flex justify-center">
           <button
-            className="p-3 w-full block rounded-lg bg-teal-500 text-white shadow-md shadow-teal-500/50 uppercase"
-            onClick={handleAddStroke}
+            className="h-fit px-3 py-2 rounded-lg bg-teal-700 text-white font-semibold border border-teal-500 uppercase"
+            onClick={handleEditStroke}
           >
             save
           </button>

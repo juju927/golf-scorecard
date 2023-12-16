@@ -9,7 +9,7 @@ router.get("/round", roundsCtrl.getRound);
 router.post("/", roundsCtrl.createRound);
 router.delete("/", roundsCtrl.deleteRound);
 
-router.patch("/record", roundsCtrl.editGIR);
+router.patch("/record", roundsCtrl.updateRoundRecord);
 router.post("/record/stroke", roundsCtrl.addStroke);
 router.put("/record/stroke", roundsCtrl.editStroke);
 router.delete("/record/stroke", roundsCtrl.deleteStroke); // req.body: roundrec, round, stroke

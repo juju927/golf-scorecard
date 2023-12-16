@@ -30,6 +30,6 @@ export function deleteStrokeAPI(strokeDetails) {
   return sendRequest(baseURL + "/record/stroke", "DELETE", strokeDetails);
 }
 
-export function toggleGIRAPI(holeDetails) {
+export function updateStatsAPI(holeDetails) {
   return sendRequest(baseURL + "/record", "PATCH", holeDetails);
 }

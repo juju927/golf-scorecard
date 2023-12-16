@@ -38,7 +38,7 @@ export function getScorecardValues(roundRecord) {
       hole.stroke_details[1]?.ground === "Fairway" ? FIR.hit++ : FIR.miss++;
     }
     for (let stroke of hole.stroke_details) {
-      stroke.club === "Pt" && stroke.ground === "Green" && putts++;
+      stroke.club.abbrvName === "Pt" && stroke.ground === "Green" && putts++;
     }
   }
 
@@ -54,4 +54,51 @@ export function getScorecardValues(roundRecord) {
   scorecard.puttingAverage = (putts / total_holes).toFixed(2);
 
   return scorecard;
+}
+// these are now in backend
+// export function checkGIR(strokeDetails, parNo) {
+//   if (strokeDetails.length <= parNo - 2) {
+//     // if hole in less than green in reg. check
+//     return true;
+//   }
+//   if (strokeDetails[parNo - 2]?.ground == "Green") {
+//     // this is the (par-1)th stroke
+//     return true;
+//   }
+//   return false;
+// }
+
+// export function checkFIR(strokeDetails, parNo) {
+//   if (parNo == 3) {
+//     return undefined;
+//   }
+//   if (strokeDetails[1]?.ground == "Fairway") {
+//     return true;
+//   }
+//   return false;
+// }
+
+export function checkPutts(strokeDetails) {
+  var putts = 0;
+  for (let stroke of strokeDetails) {
+    console.log(stroke)
+    if (stroke.club.abbrvName == "Pt" && stroke.ground == "Green") {
+      putts++;
+    }
+  }
+  return putts;
+}
+
+export function analysePutts(putts, GIR) {
+  if (GIR) {
+    if (putts > 1) {
+      return "bad"
+    } else {
+      return "good"
+    }
+  } if (putts > 2) {
+    return "bad"
+  } else {
+    return "good"
+  }
 }
