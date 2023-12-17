@@ -23,27 +23,13 @@ const roundSchema = new Schema(
           required: true,
         },
         penalty_strokes: { type: Number, required: true, default: 0 },
-        GIR: { type: Boolean, default: undefined },
-        FIR: { type: Boolean, default: undefined },
-        putts: { type: Number, required: true, default: undefined },
+        GIR: { type: Boolean },
+        FIR: { type: Boolean },
+        putts: { type: Number },
         is_completed: { type: Boolean, default: false, required: true },
         stroke_details: [
           {
-            club: {
-              serial: {
-                type: Number,
-                min: 0,
-                max: 34,
-                required: true,
-              },
-              category: {
-                type: String,
-                enum: ["Woods", "Hybrids", "Irons", "Wedges", "Putters"],
-                required: true,
-              },
-              name: { type: String },
-              abbrvName: { type: String, validate: /\d[iWh]|W\d{2}|PW|SW|Pt/ },
-            },
+            club: { type: Schema.Types.ObjectId, ref: "GolfClub" },
             ground: {
               type: String,
               enum: ["Tee-off", "Fairway", "Rough", "Sand", "Green"],

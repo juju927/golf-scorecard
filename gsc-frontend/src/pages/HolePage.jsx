@@ -116,10 +116,7 @@ const HolePage = () => {
         goToScorecard={goToScorecard}
       />
 
-      <StrokesSummary
-        strokeDetails={strokeDetails}
-        par_no={holeDetails?.par}
-      />
+      <StrokesSummary strokeDetails={strokeDetails} par_no={holeDetails?.par} />
 
       <div className="grow overflow-y-auto">
         <StrokeList
@@ -127,7 +124,7 @@ const HolePage = () => {
           round_id={roundDetails?._id}
         />
 
-        {showAddStroke ? (
+        {showAddStroke && (
           <NewStrokeForm
             roundId={roundDetails?._id}
             recordId={strokeDetails?._id}
@@ -135,16 +132,18 @@ const HolePage = () => {
             setShowAddStroke={setShowAddStroke}
             endRound={endRound}
           />
-        ) : (
-          <div
-            className="mx-4 my-2 px-4 h-12 rounded-lg bg-teal-500 flex justify-center items-center shadow-md shadow-teal-500/50"
-            onClick={() => setShowAddStroke(true)}
-          >
-            <p className="uppercase font-medium text-white tracking-tight">
-              add new stroke
-            </p>
-          </div>
         )}
+      </div>
+
+      <div className="h-fit py-2 px-4 border-t border-black flex justify-center">
+        <div
+          className="w-1/2 h-fit px-3 py-2 rounded-lg bg-teal-700 font-semibold border border-teal-500"
+          onClick={() => setShowAddStroke(true)}
+        >
+          <p className="uppercase font-medium text-white text-center tracking-tight">
+            add new stroke
+          </p>
+        </div>
       </div>
     </div>
   );

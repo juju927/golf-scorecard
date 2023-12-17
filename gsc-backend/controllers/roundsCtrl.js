@@ -31,6 +31,7 @@ async function getRound(req, res) {
     const round = await Round.findById(req.query.id)
       .populate("course")
       .populate({ path: "user", populate: { path: "profile" } })
+      .populate({ path: "round_record", populate: { path: "stroke_details", populate: { path: "club"}}})
       .exec();
     sendResponse(res, 200, { round });
   } catch (err) {
@@ -53,6 +54,7 @@ async function createRound(req, res) {
     const round = await Round.findById(newRound._id)
       .populate("course")
       .populate({ path: "user", populate: { path: "profile" } })
+      .populate({ path: "round_record", populate: { path: "stroke_details", populate: { path: "club"}}})
       .exec();
     debug("round", round);
     sendResponse(res, 201, { round }, `round started at ${round.date}`);
@@ -81,6 +83,7 @@ async function updateRoundRecord(req, res) {
   try {
     const round = await Round.findById(req.body.round_id)
       .populate("course")
+      .populate({ path: "round_record", populate: { path: "stroke_details", populate: { path: "club"}}})
       .exec();
     if (!userCanAlter(round.user, req.user)) {
       sendResponse(res, 401, null, "unauthorised");
@@ -102,6 +105,7 @@ async function addStroke(req, res) {
   try {
     const round = await Round.findById(req.body.round_id)
       .populate("course")
+      .populate({ path: "round_record", populate: { path: "stroke_details", populate: { path: "club"}}})
       .exec();
     if (!userCanAlter(round.user, req.user)) {
       sendResponse(res, 401, null, "unauthorised");
@@ -139,6 +143,7 @@ async function editStroke(req, res) {
   try {
     const round = await Round.findById(req.body.round_id)
       .populate("course")
+      .populate({ path: "round_record", populate: { path: "stroke_details", populate: { path: "club"}}})
       .exec();
     if (!userCanAlter(round.user, req.user)) {
       sendResponse(res, 401, null, "unauthorised");
@@ -167,6 +172,7 @@ async function deleteStroke(req, res) {
   try {
     const round = await Round.findById(req.body.round_id)
       .populate("course")
+      .populate({ path: "round_record", populate: { path: "stroke_details", populate: { path: "club"}}})
       .exec();
     if (!userCanAlter(round.user, req.user)) {
       sendResponse(res, 401, null, "unauthorised");

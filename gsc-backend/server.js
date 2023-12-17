@@ -8,6 +8,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const debug = require("debug")("gsc-backend:server.js");
+const checkToken = require("./middleware/checkToken");
 
 //* routers
 const indexRouter = require("./routes/index");
@@ -16,7 +17,7 @@ const userProfilesRouter = require("./routes/userProfilesRouter");
 const coursesRouter = require("./routes/coursesRouter");
 const clubsRouter = require("./routes/clubsRouter");
 const roundsRouter = require("./routes/roundsRouter");
-const checkToken = require("./middleware/checkToken");
+const golfClubsRouter = require("./routes/golfClubsRouter");
 
 //* app
 const app = express();
@@ -37,6 +38,7 @@ app.use("/profiles", userProfilesRouter);
 app.use("/courses", coursesRouter);
 app.use("/clubs", clubsRouter);
 app.use("/rounds", roundsRouter);
+app.use("/golfclubs", golfClubsRouter);
 
 //* catch 404 and forward to error handler
 app.use((req, res, next) => {

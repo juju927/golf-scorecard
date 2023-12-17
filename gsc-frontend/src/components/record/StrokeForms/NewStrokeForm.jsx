@@ -58,10 +58,6 @@ const NewStrokeForm = ({
         }));
         await addStrokeService(newStroke);
         await endRound();
-        setIsLoading((prevState) => ({
-          ...prevState,
-          end: false,
-        }));
         setShowAddStroke(false);
       } else {
         setIsLoading((prevState) => ({
@@ -72,13 +68,15 @@ const NewStrokeForm = ({
         resetForm();
         setCurrentRound(updatedRound);
         toast.success("Stroke added!");
-        setIsLoading((prevState) => ({
-          ...prevState,
-          next: false,
-        }));
       }
     } catch (err) {
       toast.error(`${err.message}`);
+    } finally {
+      setIsLoading((prevState) => ({
+        ...prevState,
+        next: false,
+        end: false,
+      }));
     }
   };
 

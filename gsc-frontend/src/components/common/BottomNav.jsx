@@ -1,7 +1,7 @@
-import { useAtomValue } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { userProfileAtom } from "../../utilities/atom";
+import { userAtom, userProfileAtom } from "../../utilities/atom";
 import { logOutService } from "../../utilities/users-service";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,8 @@ import { useState } from "react";
 const BottomNav = () => {
   const location = useLocation();
   const profile = useAtomValue(userProfileAtom);
+  const setUser = useSetAtom(userAtom);
+  const setProfile = useSetAtom(userProfileAtom);
   const navigate = useNavigate();
 
   const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -17,6 +19,8 @@ const BottomNav = () => {
   const handleLogout = async () => {
     try {
       await logOutService();
+      setUser(null);
+      setProfile(null);
       navigate("/login");
     } catch (err) {
       toast.error(`Error logging out: ${err.message}`);

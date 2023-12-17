@@ -3,7 +3,7 @@ const TotalStrokes = ({ total, score }) => {
 
   return (
     <div
-      className={`px-1 py-2 w-1/3 rounded-lg ${
+      className={`px-1 py-2 w-1/3 rounded-sm ${
         scoreType == "good" && "bg-card-good-bg"
       } ${
         scoreType == "bad" && "bg-card-bad-bg"
@@ -11,7 +11,7 @@ const TotalStrokes = ({ total, score }) => {
         scoreType == "neutral" && "bg-card-neutral-bg"
       } flex flex-col`}
     >
-      <span className="pl-3 uppercase text-xs text-slate-700 tracking-tighter">
+      <span className="pl-3 uppercase text-sm font-medium text-slate-700 tracking-tighter">
         total
       </span>
       <p className="w-full text-center oldstyle-nums">

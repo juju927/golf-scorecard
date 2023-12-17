@@ -17,7 +17,7 @@ async function register(req, res) {
     });
     newUser.profile = newProfile._id;
     await newUser.save();
-    const user = await User.findById(newUser._id).populate("profile").exec()
+    const user = await User.findById(newUser._id).populate("profile").exec();
     const token = createJWT(user);
     sendResponse(res, 201, { token: token }, "user created");
   } catch (err) {
@@ -29,7 +29,10 @@ async function register(req, res) {
 async function login(req, res) {
   debug("login user body: %o", req.body);
   try {
-    const user = await User.findOne({ username: req.body.username }).populate("profile").exec();
+    const user = await User.findOne({ username: req.body.username })
+      .populate("profile")
+      .populate({ path: "profile", populate: "golf_bag" })
+      .exec();
     if (user === null) {
       debug("User not found");
       throw new Error();

@@ -9,7 +9,7 @@ const GolfClubSelect = ({ stroke, setStroke }) => {
 
   const handleChange = (e) => {
     const selectedClub = clubs.filter(
-      (club) => club.serial == e.target.value
+      (club) => club._id == e.target.value
     )[0];
     setStroke((prevState) => ({
       ...prevState,
@@ -22,7 +22,7 @@ const GolfClubSelect = ({ stroke, setStroke }) => {
       <select
         name="golfClubUsed"
         id="golfClubUsed"
-        value={stroke.club.serial}
+        value={stroke.club?._id}
         onChange={handleChange}
         className="bg-gray-700/50 focus:outline-0 outline-none border-none text-white text-center"
       >
@@ -32,7 +32,7 @@ const GolfClubSelect = ({ stroke, setStroke }) => {
             {clubs
               .filter((club) => club.category == category)
               .map((club) => (
-                <option value={club.serial} key={club.serial}>
+                <option value={club._id} key={club._id}>
                   {club.name}
                 </option>
               ))}

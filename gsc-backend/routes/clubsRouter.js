@@ -8,7 +8,4 @@ router.get("/", clubsCtrl.getAll);
 router.get("/club", clubsCtrl.getByQuery);
 router.post("/", clubsCtrl.create);
 
-
-
-
 module.exports = router;

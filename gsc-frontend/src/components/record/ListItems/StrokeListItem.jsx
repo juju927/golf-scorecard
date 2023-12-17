@@ -53,7 +53,7 @@ const StrokeListItem = ({ stroke, round_id, round_record_id, idx }) => {
         <div className="flex flex-col gap">
           <p className="font-bold text-white">{stroke.ground}</p>
           <p className="pl-2 italic text-xs text-gray-300">
-            {stroke.club.name}
+            {stroke.club?.name}
           </p>
         </div>
         <div className="grow flex gap-2 justify-end items-center">

@@ -4,12 +4,14 @@ import toast from "react-hot-toast";
 import logo from "../../assets/images/golf-buddy-logo-nowords.png";
 import AuthHeader from "./AuthHeader";
 import { signUpService } from "../../utilities/users-service";
-import { useSetAtom } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom, userProfileAtom } from "../../utilities/atom";
 import { useNavigate } from "react-router-dom";
 import Loading from "../common/Loading";
+import { useEffect } from "react";
 
 const SignUpForm = () => {
+  const user = useAtomValue(userAtom);
   const setUser = useSetAtom(userAtom);
   const setUserProfile = useSetAtom(userProfileAtom);
   const navigate = useNavigate();
@@ -39,7 +41,6 @@ const SignUpForm = () => {
     try {
       const user = await signUpService(userData);
       if (user !== null && user !== undefined) {
-        setIsLoading(false);
         setUser(user);
         setUserProfile(user.profile || {});
         toast.success("Successfully signed up!");
@@ -47,9 +48,16 @@ const SignUpForm = () => {
       }
     } catch (err) {
       toast.error(`${err.message}`);
+    } finally {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (user !== null && user !== undefined) {
+      navigate("/home");
+    }
+  }, [user]);
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
@@ -166,7 +174,6 @@ const SignUpForm = () => {
                     Create an account
                   </button>
                   {isLoading && <Loading />}
-
                 </div>
 
                 <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">

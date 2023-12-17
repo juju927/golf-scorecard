@@ -32,7 +32,7 @@ const GolfBagView = () => {
             Woods
           </p>
           {woods?.map((club) => (
-            <div key={club.serial} className="place-self-center">
+            <div key={club._id} className="place-self-center">
               {club.abbrvName}
             </div>
           ))}
@@ -44,7 +44,7 @@ const GolfBagView = () => {
             Hybrids
           </p>
           {hybrids?.map((club) => (
-            <div key={club.serial} className="place-self-center">
+            <div key={club._id} className="place-self-center">
               {club.abbrvName}
             </div>
           ))}
@@ -56,7 +56,7 @@ const GolfBagView = () => {
             Irons
           </p>
           {irons?.map((club) => (
-            <div key={club.serial} className="place-self-center">
+            <div key={club._id} className="place-self-center">
               {club.abbrvName}
             </div>
           ))}
@@ -68,7 +68,7 @@ const GolfBagView = () => {
             Wedges
           </p>
           {wedges?.map((club) => (
-            <div key={club.serial} className="place-self-center">
+            <div key={club._id} className="place-self-center">
               {club.abbrvName}
             </div>
           ))}
@@ -80,7 +80,7 @@ const GolfBagView = () => {
             Putters
           </p>
           {putters?.map((club) => (
-            <div key={club.serial} className="place-self-center">
+            <div key={club._id} className="place-self-center">
               {club.abbrvName}
             </div>
           ))}

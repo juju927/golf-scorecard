@@ -28,13 +28,12 @@ const RoundsPage = () => {
       );
       if (filteredRounds.length == 0) {
         navigate("/record/new");
-        setIsLoading(false)
         return;
       }
       setTodayRounds(filteredRounds);
-      setIsLoading(false)
     } catch (err) {
       toast.error(`${err.message}`);
+    } finally {
       setIsLoading(false)
     }
   };

@@ -11,13 +11,16 @@ import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import ErrorPage from "./pages/ErrorPage";
 import Base from "./pages/Base";
-import { getUserRoundsLoader } from "./loaders/loaders";
+import { getUserRoundsLoader, getGolfClubsLibraryLoader } from "./loaders/loaders";
 import { createBrowserRouter } from "react-router-dom";
-import { getUser } from "./utilities/users-service";
 import { RouterProvider } from "react-router-dom";
+import { useAtomValue } from "jotai";
+import { userAtom } from "./utilities/atom";
 
 
 function App() {
+  const user = useAtomValue(userAtom)
+
   const routes = [
     {
       path: "login",
@@ -66,6 +69,7 @@ function App() {
     {
       path: "profile",
       element: <ProfilePage />,
+      loader: getGolfClubsLibraryLoader,
     },
   ];
 
@@ -74,7 +78,7 @@ function App() {
       path: "/",
       element: <Base />,
       errorElement: <ErrorPage />,
-      children: getUser() ? [...privateRoutes, ...routes] : routes,
+      children: user ? [...privateRoutes, ...routes] : routes,
     },
   ]);
 

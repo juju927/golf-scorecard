@@ -1,0 +1,177 @@
+[
+  {
+    "category": "Woods",
+    "name": "1-wood",
+    "abbrvName": "1W"
+  },
+  {
+    "category": "Woods",
+    "name": "2-wood",
+    "abbrvName": "2W"
+  },
+  {
+    "category": "Woods",
+    "name": "3-wood",
+    "abbrvName": "3W"
+  },
+  {
+    "category": "Woods",
+    "name": "4-wood",
+    "abbrvName": "4W"
+  },
+  {
+    "category": "Woods",
+    "name": "5-wood",
+    "abbrvName": "5W"
+  },
+  {
+    "category": "Woods",
+    "name": "6-wood",
+    "abbrvName": "6W"
+  },
+  {
+    "category": "Woods",
+    "name": "7-wood",
+    "abbrvName": "7W"
+  },
+  {
+    "category": "Hybrids",
+    "name": "2-hybrid",
+    "abbrvName": "2h"
+  },
+  {
+    "category": "Hybrids",
+    "name": "3-hybrid",
+    "abbrvName": "3h"
+  },
+  {
+    "category": "Hybrids",
+    "name": "4-hybrid",
+    "abbrvName": "4h"
+  },
+  {
+    "category": "Hybrids",
+    "name": "5-hybrid",
+    "abbrvName": "5h"
+  },
+  {
+    "category": "Hybrids",
+    "name": "6-hybrid",
+    "abbrvName": "6h"
+  },
+  {
+    "category": "Irons",
+    "name": "4-iron",
+    "abbrvName": "4i"
+  },
+  {
+    "category": "Irons",
+    "name": "5-iron",
+    "abbrvName": "5i"
+  },
+  {
+    "category": "Irons",
+    "name": "6-iron",
+    "abbrvName": "6i"
+  },
+  {
+    "category": "Irons",
+    "name": "7-iron",
+    "abbrvName": "7i"
+  },
+  {
+    "category": "Irons",
+    "name": "8-iron",
+    "abbrvName": "8i"
+  },
+  {
+    "category": "Irons",
+    "name": "9-iron",
+    "abbrvName": "9i"
+  },
+  {
+    "category": "Irons",
+    "name": "10-iron",
+    "abbrvName": "10i"
+  },
+  {
+    "category": "Wedges",
+    "name": "50-deg wedge",
+    "abbrvName": "W50"
+  },
+  {
+    "category": "Wedges",
+    "name": "51-deg wedge",
+    "abbrvName": "W51"
+  },
+  {
+    "category": "Wedges",
+    "name": "52-deg wedge",
+    "abbrvName": "W52"
+  },
+  {
+    "category": "Wedges",
+    "name": "53-deg wedge",
+    "abbrvName": "W53"
+  },
+  {
+    "category": "Wedges",
+    "name": "54-deg wedge",
+    "abbrvName": "W54"
+  },
+  {
+    "category": "Wedges",
+    "name": "55-deg wedge",
+    "abbrvName": "W55"
+  },
+  {
+    "category": "Wedges",
+    "name": "56-deg wedge",
+    "abbrvName": "W56"
+  },
+  {
+    "category": "Wedges",
+    "name": "57-deg wedge",
+    "abbrvName": "W57"
+  },
+  {
+    "category": "Wedges",
+    "name": "58-deg wedge",
+    "abbrvName": "W58"
+  },
+  {
+    "category": "Wedges",
+    "name": "59-deg wedge",
+    "abbrvName": "W59"
+  },
+  {
+    "category": "Wedges",
+    "name": "60-deg wedge",
+    "abbrvName": "W60"
+  },
+  {
+    "category": "Wedges",
+    "name": "pitching wedge",
+    "abbrvName": "PW"
+  },
+  {
+    "category": "Wedges",
+    "name": "gap wedge",
+    "abbrvName": "GW"
+  },
+  {
+    "category": "Wedges",
+    "name": "sand wedge",
+    "abbrvName": "SW"
+  },
+  {
+    "category": "Wedges",
+    "name": "lob wedge",
+    "abbrvName": "LW"
+  },
+  {
+    "category": "Putters",
+    "name": "putter",
+    "abbrvName": "Pt"
+  }
+]

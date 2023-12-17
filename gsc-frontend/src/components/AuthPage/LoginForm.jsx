@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import logo from "../../assets/images/golf-buddy-logo-nowords.png";
 import { loginService } from "../../utilities/users-service";
-import { useSetAtom } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom, userProfileAtom } from "../../utilities/atom";
 import AuthHeader from "./AuthHeader";
 import { useNavigate } from "react-router-dom";
 import Loading from "../common/Loading";
+import { useEffect } from "react";
 
 const LoginForm = () => {
+  const user = useAtomValue(userAtom)
   const setUser = useSetAtom(userAtom);
   const setUserProfile = useSetAtom(userProfileAtom);
   const navigate = useNavigate();
@@ -33,17 +35,22 @@ const LoginForm = () => {
     try {
       const user = await loginService(userData);
       if (user !== null && user !== undefined) {
-        setIsLoading(false)
         setUser(user);
         setUserProfile(user.profile || {});
         toast.success("Successfully logged in!");
-        navigate("/home");
       }
     } catch (err) {
       toast.error(`${err.message}`);
+    } finally {
       setIsLoading(false)
     }
   };
+
+  useEffect(()=> {
+    if (user !== null && user !== undefined) {
+      navigate("/home")
+    }
+  }, [user])
 
   return (
     <>
