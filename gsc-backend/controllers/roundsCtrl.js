@@ -10,16 +10,23 @@ const { checkGIR, checkFIR, checkPutts } = require("../helpers/statCalculator");
 async function getUserRounds(req, res) {
   try {
     const rounds = await Round.find({ user: req.user._id })
-      .populate("course")
-      .populate({
-        path: "user",
-        select: "profile",
-        populate: {
-          path: "profile",
-          select: ["profile_picture", "username", "display_name", "country"],
-        },
-      })
+    .populate("course")
+    .populate({
+      path: "user",
+      select: "profile",
+      populate: {
+        path: "profile",
+        select: ["profile_picture", "username", "display_name", "country"],
+      },
+    })
+    .populate({
+      path: "round_record",
+      populate: { path: "stroke_details", populate: { path: "club" } },
+    })
+    .sort({ date: -1 })
+    .limit(10)
       .exec();
+
     sendResponse(res, 200, { rounds });
   } catch (err) {
     sendResponse(res, 500, err.message);
@@ -31,7 +38,10 @@ async function getRound(req, res) {
     const round = await Round.findById(req.query.id)
       .populate("course")
       .populate({ path: "user", populate: { path: "profile" } })
-      .populate({ path: "round_record", populate: { path: "stroke_details", populate: { path: "club"}}})
+      .populate({
+        path: "round_record",
+        populate: { path: "stroke_details", populate: { path: "club" } },
+      })
       .exec();
     sendResponse(res, 200, { round });
   } catch (err) {
@@ -54,7 +64,10 @@ async function createRound(req, res) {
     const round = await Round.findById(newRound._id)
       .populate("course")
       .populate({ path: "user", populate: { path: "profile" } })
-      .populate({ path: "round_record", populate: { path: "stroke_details", populate: { path: "club"}}})
+      .populate({
+        path: "round_record",
+        populate: { path: "stroke_details", populate: { path: "club" } },
+      })
       .exec();
     debug("round", round);
     sendResponse(res, 201, { round }, `round started at ${round.date}`);
@@ -83,7 +96,10 @@ async function updateRoundRecord(req, res) {
   try {
     const round = await Round.findById(req.body.round_id)
       .populate("course")
-      .populate({ path: "round_record", populate: { path: "stroke_details", populate: { path: "club"}}})
+      .populate({
+        path: "round_record",
+        populate: { path: "stroke_details", populate: { path: "club" } },
+      })
       .exec();
     if (!userCanAlter(round.user, req.user)) {
       sendResponse(res, 401, null, "unauthorised");
@@ -105,7 +121,10 @@ async function addStroke(req, res) {
   try {
     const round = await Round.findById(req.body.round_id)
       .populate("course")
-      .populate({ path: "round_record", populate: { path: "stroke_details", populate: { path: "club"}}})
+      .populate({
+        path: "round_record",
+        populate: { path: "stroke_details", populate: { path: "club" } },
+      })
       .exec();
     if (!userCanAlter(round.user, req.user)) {
       sendResponse(res, 401, null, "unauthorised");
@@ -143,7 +162,10 @@ async function editStroke(req, res) {
   try {
     const round = await Round.findById(req.body.round_id)
       .populate("course")
-      .populate({ path: "round_record", populate: { path: "stroke_details", populate: { path: "club"}}})
+      .populate({
+        path: "round_record",
+        populate: { path: "stroke_details", populate: { path: "club" } },
+      })
       .exec();
     if (!userCanAlter(round.user, req.user)) {
       sendResponse(res, 401, null, "unauthorised");
@@ -172,7 +194,10 @@ async function deleteStroke(req, res) {
   try {
     const round = await Round.findById(req.body.round_id)
       .populate("course")
-      .populate({ path: "round_record", populate: { path: "stroke_details", populate: { path: "club"}}})
+      .populate({
+        path: "round_record",
+        populate: { path: "stroke_details", populate: { path: "club" } },
+      })
       .exec();
     if (!userCanAlter(round.user, req.user)) {
       sendResponse(res, 401, null, "unauthorised");

@@ -12,6 +12,7 @@ import {
   updateStatsService,
 } from "../utilities/rounds-service";
 import toast from "react-hot-toast";
+import { simpleConfirm } from "react-simple-dialogs";
 
 const HolePage = () => {
   const { holeNo } = useParams();
@@ -61,7 +62,7 @@ const HolePage = () => {
     }
   };
 
-  const endRound = async () => {
+  const endHole = async () => {
     try {
       const updatedRound = await updateStatsService({
         round_id: roundDetails?._id,
@@ -74,6 +75,18 @@ const HolePage = () => {
       toast.error(`${err.message}`);
     }
   };
+
+  const endGame = async () => {
+    if (
+      await simpleConfirm({
+        title: "End game?",
+        confirmLabel: "End",
+        cancelLabel: "Cancel",
+      })
+    ) {
+      goToScorecard();
+    }
+  }
 
   const goToScorecard = () => {
     navigate(`/analyse/s/${roundDetails._id}`);
@@ -130,12 +143,21 @@ const HolePage = () => {
             recordId={strokeDetails?._id}
             total_strokes={strokeDetails?.total_strokes}
             setShowAddStroke={setShowAddStroke}
-            endRound={endRound}
+            endHole={endHole}
           />
         )}
       </div>
 
-      <div className="h-fit py-2 px-4 border-t border-black flex justify-center">
+      <div className="h-fit py-2 px-4 border-t border-black flex justify-around">
+      <div
+          className="w-fit h-fit px-3 py-2 rounded-lg bg-red-700/50 font-semibold border border-red-500"
+          onClick={endGame}
+        >
+          <p className="uppercase font-medium text-white text-center tracking-tight">
+            end game
+          </p>
+        </div>
+
         <div
           className="w-1/2 h-fit px-3 py-2 rounded-lg bg-teal-700 font-semibold border border-teal-500"
           onClick={() => setShowAddStroke(true)}

@@ -20,7 +20,7 @@ const NewStrokeForm = ({
   recordId,
   total_strokes,
   setShowAddStroke,
-  endRound,
+  endHole,
 }) => {
   const setCurrentRound = useSetAtom(currentRoundRecordAtom);
   const ref = useClickAway(() => {
@@ -57,7 +57,7 @@ const NewStrokeForm = ({
           end: true,
         }));
         await addStrokeService(newStroke);
-        await endRound();
+        await endHole();
         setShowAddStroke(false);
       } else {
         setIsLoading((prevState) => ({
