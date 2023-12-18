@@ -1,6 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import { countryFlags } from "../../utilities/country-flags";
+import { countryFlags } from "../../utilities/icons";
 import { updateProfileService } from "../../utilities/profiles-service";
 import { userProfileAtom } from "../../utilities/atom";
 import toast from "react-hot-toast";
