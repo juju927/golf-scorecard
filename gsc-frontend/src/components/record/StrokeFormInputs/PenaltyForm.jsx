@@ -1,14 +1,14 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+import { penaltyTypes } from "../../../utilities/icons";
 
 const PenaltyForm = ({
   isOpen,
   setIsOpen,
-  penaltyTypes,
-  penaltyAmts,
   stroke,
   setStroke,
 }) => {
+  const penaltyAmts = [1, 2, 3];
   const handleTypeClick = (penalty) => {
     setStroke((prevState) => ({
       ...prevState,
@@ -87,8 +87,8 @@ const PenaltyForm = ({
                           key={penaltyType}
                           className={`flex flex-col items-center justify-center rounded-lg ${
                             stroke.penalty?.penalty_type == penaltyType
-                              ? "bg-teal-400 text-black font-semibold"
-                              : "bg-slate-500 text-gray-400"
+                              ? "bg-teal-400 text-white font-semibold"
+                              : "bg-slate-500 text-white/70"
                           }`}
                           onClick={() => handleTypeClick(penaltyType)}
                         >
@@ -107,8 +107,8 @@ const PenaltyForm = ({
                           key={`${penaltyAmt}-stroke-penalty`}
                           className={`h-fit w-fit rounded-lg ${
                             stroke.penalty?.penalty_amt == penaltyAmt
-                              ? "bg-teal-400 text-black font-semibold"
-                              : "bg-slate-500 text-gray-400"
+                              ? "bg-teal-400 text-white font-semibold"
+                              : "bg-slate-500 text-white/70"
                           }`}
                           onClick={() => handleAmtClick(penaltyAmt)}
                         >

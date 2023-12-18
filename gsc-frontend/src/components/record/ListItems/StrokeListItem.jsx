@@ -6,6 +6,9 @@ import { currentRoundRecordAtom } from "../../../utilities/atom";
 import toast from "react-hot-toast";
 import { simpleConfirm } from "react-simple-dialogs";
 import EditStrokeForm from "../StrokeForms/EditStrokeForm";
+import DirectionTag from "./SummaryTags/DirectionTag";
+import PenaltyTag from "./SummaryTags/PenaltyTag";
+import RemarksTag from "./SummaryTags/RemarksTag";
 
 const StrokeListItem = ({ stroke, round_id, round_record_id, idx }) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -29,8 +32,8 @@ const StrokeListItem = ({ stroke, round_id, round_record_id, idx }) => {
   };
 
   const handleEditClick = () => {
-    setShowEditStroke(true);
     setShowMenu(false);
+    setShowEditStroke(true);
   };
 
   const handleDeleteClick = async () => {
@@ -48,15 +51,35 @@ const StrokeListItem = ({ stroke, round_id, round_record_id, idx }) => {
   return (
     <>
       <div className="w-full pl-4 px-2 py-2 flex gap-3">
-        <p className="text-white text-xl font-medium font-serif">{idx + 1}.</p>
+        <p className="text-white text-xl font-medium font-serif tabular-nums">
+          {idx + 1}.
+        </p>
 
-        <div className="flex flex-col gap">
-          <p className="font-bold text-white">{stroke.ground}</p>
-          <p className="pl-2 italic text-xs text-gray-300">
-            {stroke.club?.name}
-          </p>
+        <div className="grow flex gap-2">
+
+          <div className="flex flex-col">
+            <div
+              className={`uppercase text-lg ${
+                stroke.ground == "Tee-off" && "text-green-400"
+              } ${stroke.ground == "Fairway" && "text-green-500"} ${
+                stroke.ground == "Green" && "text-green-300"
+              } ${stroke.ground == "Rough" && "text-green-600"} ${
+                stroke.ground == "Sand" && "text-stone-400"
+              }`}
+            >
+              {stroke.ground}
+            </div>
+            <p className="italic text-xs text-gray-300">{stroke.club?.name}</p>
+          </div>
+
+          <div className="tag-list flex gap-2">
+              <PenaltyTag penalty={stroke.penalty} />
+              <RemarksTag remarks={stroke.analysis?.remarks} />
+              {/* <DirectionTag direction={stroke.analysis?.direction} /> */}
+          </div>
+
         </div>
-        <div className="grow flex gap-2 justify-end items-center">
+        <div className="flex justify-end items-center">
           <div
             className="triple-dot relative"
             onClick={() => setShowMenu(true)}
