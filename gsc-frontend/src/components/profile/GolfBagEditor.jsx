@@ -61,16 +61,10 @@ const GolfBagEditor = ({ setShowGolfBagEditor }) => {
         cancelLabel: "No",
       })
     ) {
-      await saveChanges();
+      await handleUpdateGolfBag();
     } else {
       setShowGolfBagEditor(false);
     }
-  };
-
-  const saveChanges = async () => {
-    await handleUpdateGolfBag();
-    toast.success("Golf bag saved.");
-    setShowGolfBagEditor(false);
   };
 
   const handleUpdateGolfBag = async () => {
@@ -79,8 +73,11 @@ const GolfBagEditor = ({ setShowGolfBagEditor }) => {
         golf_bag: userClubs,
       });
       setUserProfile(updatedProfile);
+      toast.success("Golf bag saved.");
     } catch (err) {
       toast.error(err.message);
+    } finally {
+      setShowGolfBagEditor(false);
     }
   };
 
@@ -145,7 +142,7 @@ const GolfBagEditor = ({ setShowGolfBagEditor }) => {
         <div className="w-full h-fit border-t border-black flex justify-center py-2">
           <button
             className="w-1/2 h-fit px-3 py-2 rounded-lg bg-teal-700 text-white font-semibold border border-teal-500 uppercase"
-            onClick={saveChanges}
+            onClick={handleUpdateGolfBag}
           >
             <div className="flex items-center justify-center">
               <span>save changes</span>

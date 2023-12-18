@@ -2,14 +2,15 @@ import { Outlet } from "react-router-dom";
 import TopHeader from "../components/common/TopHeader";
 import BottomNav from "../components/common/BottomNav";
 import RoundListItem from "../components/record/ListItems/RoundListItem";
-import { useLoaderData } from "react-router-dom";
+import { useAtomValue } from "jotai";
+import { userRoundsAtom } from "../utilities/atom";
 import { Link } from "react-router-dom";
 import nogamesimg from "../assets/images/golf-no-games.png";
 import Loading from "../components/common/Loading";
 import { useLocation } from "react-router-dom";
 
 const AnalysePage = () => {
-  const rounds = useLoaderData();
+  const rounds = useAtomValue(userRoundsAtom)
   const location = useLocation();
 
   return (

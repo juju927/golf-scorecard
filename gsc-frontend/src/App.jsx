@@ -36,6 +36,7 @@ function App() {
     {
       path: "home",
       element: <HomePage />,
+      loader: getUserRoundsLoader,
     },
     {
       path: "record",
@@ -58,7 +59,6 @@ function App() {
     {
       path: "analyse",
       element: <AnalysePage />,
-      loader: getUserRoundsLoader,
       children: [
         {
           path: "s/:roundId",

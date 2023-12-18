@@ -7,5 +7,5 @@ export const userProfileAtom = atom(getUser()?.profile)
 
 export const currentRoundRecordAtom = atom({})
 
-export const userRounds = atom([])
+export const userRoundsAtom = atom([])
 

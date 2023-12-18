@@ -1,16 +1,26 @@
 import dayjs from "dayjs";
 import { AiOutlineDelete } from "react-icons/ai";
-import { deleteRoundService } from "../../../utilities/rounds-service";
+import {
+  deleteRoundService,
+  getUserRoundsService,
+} from "../../../utilities/rounds-service";
 import toast from "react-hot-toast";
 import { simpleConfirm } from "react-simple-dialogs";
-import { Link } from "react-router-dom";
+import { useSetAtom } from "jotai";
+import { userRoundsAtom } from "../../../utilities/atom";
+import { useNavigate } from "react-router-dom";
 
 const RoundListItem = ({ round, action, link }) => {
+  const setUserRoundsAtom = useSetAtom(userRoundsAtom);
+  const navigate = useNavigate()
+
   const deleteRound = async () => {
     try {
       await deleteRoundService({
         round_id: round._id,
       });
+      const userRounds = await getUserRoundsService();
+      setUserRoundsAtom(userRounds);
     } catch (err) {
       toast.error(`${err.message}`);
     }
@@ -23,19 +33,23 @@ const RoundListItem = ({ round, action, link }) => {
     }
   };
 
+  const handleClick = async () => {
+    if (action) {
+      action(round)
+    }
+    navigate(link)
+  }
+
   return (
-    <div className="w-full h-fit border-b border-slate-300/50 flex py-2 pl-4">
-      <p className="grow" onClick={() => action(round)}>
-        <Link to={link}>
+    <div className="w-full h-fit flex py-2 px-4 justify-center">
+      <p className="grow" onClick={handleClick}>
           <strong className="text-white">{round?.course.course_name}</strong>
           <span className="block text-xs italic text-slate-300">
             {dayjs(round?.date).format("D MMM YYYY")}
           </span>
-        </Link>
       </p>
 
-      <div
-        className="justify-end items-center"
+      <div className="p-2"
         onClick={(e) => handleDeleteClick(e)}
       >
         <AiOutlineDelete className="text-slate-300" />

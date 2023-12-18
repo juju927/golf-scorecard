@@ -53,7 +53,7 @@ const BottomNav = () => {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             className={`w-8 h-8 stroke-2 ${
-              location.pathname == "/analyse"
+              location.pathname.startsWith("/analyse")
                 ? "stroke-teal-300"
                 : "stroke-current"
             }`}
