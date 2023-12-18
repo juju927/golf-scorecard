@@ -19,7 +19,7 @@ const roundSchema = new Schema(
           max: 18,
         },
         total_strokes: {
-          type: Number,
+          type: Number, required: true
         },
         penalty_strokes: { type: Number, required: true },
         GIR: { type: Boolean },

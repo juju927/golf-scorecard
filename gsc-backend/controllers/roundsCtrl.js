@@ -225,6 +225,8 @@ function initialiseRecord(roundType) {
   for (let i = start; i <= end; i++) {
     arr.push({
       hole_num: i,
+      total_strokes: 0,
+      penalty_strokes: 0,
       is_completed: false,
       stroke_details: [],
     });
