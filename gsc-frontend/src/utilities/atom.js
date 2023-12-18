@@ -6,3 +6,4 @@ export const userAtom = atom(getUser())
 export const userProfileAtom = atom(getUser()?.profile)
 
 export const currentRoundRecordAtom = atom({})
+
