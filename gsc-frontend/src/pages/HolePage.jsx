@@ -6,15 +6,12 @@ import NewStrokeForm from "../components/record/StrokeForms/NewStrokeForm";
 import StrokesSummary from "../components/record/StrokesSummary";
 import HoleDetails from "../components/record/HoleDetails";
 import StrokeList from "../components/record/StrokeList";
-import {
-  updateStatsService,
-} from "../utilities/rounds-service";
+import { updateStatsService } from "../utilities/rounds-service";
 import toast from "react-hot-toast";
 import { simpleConfirm } from "react-simple-dialogs";
 import SectionHeader from "../components/common/SectionHeader";
 import { PiArrowFatLinesRightFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
-
 
 const HolePage = () => {
   const { holeNo } = useParams();
@@ -24,9 +21,9 @@ const HolePage = () => {
 
   // these 2 useState are cos idk how to derive from atom, but they are derived (refer to useEffect)
   // holeDetails - of golf course/ fixed
-  // strokeDetails - of user plays
+  // holeRecord - of user plays
   const [holeDetails, setHoleDetails] = useState({});
-  const [strokeDetails, setStrokeDetails] = useState({});
+  const [holeRecord, setHoleRecord] = useState({});
 
   // toggle form
   const [showAddStroke, setShowAddStroke] = useState(false);
@@ -42,7 +39,7 @@ const HolePage = () => {
     try {
       const updatedRound = await updateStatsService({
         round_id: roundDetails?._id,
-        round_record_id: strokeDetails?._id,
+        round_record_id: holeRecord?._id,
         is_completed: true,
       });
       setCurrentRound(updatedRound);
@@ -77,7 +74,7 @@ const HolePage = () => {
     setHoleDetails(
       roundDetails?.course?.holes.filter((hole) => hole.hole_no == holeNo)[0]
     );
-    setStrokeDetails(
+    setHoleRecord(
       roundDetails?.round_record?.filter((hole) => hole.hole_num == holeNo)[0]
     );
   }, [roundDetails, holeNo]);
@@ -104,25 +101,21 @@ const HolePage = () => {
         goToScorecard={goToScorecard}
       />
 
-      <StrokesSummary strokeDetails={strokeDetails} par_no={holeDetails?.par} />
+      <StrokesSummary holeRecord={holeRecord} par_no={holeDetails?.par} />
 
       <SectionHeader headerName={"stroke list"} />
       <div className="grow overflow-y-auto">
-        <StrokeList
-          strokeDetails={strokeDetails}
-          round_id={roundDetails?._id}
-        />
+        <StrokeList holeRecord={holeRecord} round_id={roundDetails?._id} />
 
         {showAddStroke && (
           <NewStrokeForm
             roundId={roundDetails?._id}
-            recordId={strokeDetails?._id}
-            total_strokes={strokeDetails?.total_strokes}
+            recordId={holeRecord?._id}
+            total_strokes={holeRecord?.total_strokes}
             setShowAddStroke={setShowAddStroke}
             endHole={endHole}
           />
         )}
-
       </div>
 
       <div className="h-fit py-2 px-4 border-t border-black flex justify-around">
@@ -135,7 +128,7 @@ const HolePage = () => {
           </p>
         </div>
 
-        {strokeDetails.is_completed ? (
+        {holeRecord.is_completed ? (
           <Link
             className="w-1/2 h-fit px-3 py-2 flex items-center justify-center gap-2 rounded-lg bg-teal-700 font-semibold border border-teal-500"
             to={`/record/hole/${nextHole}`}

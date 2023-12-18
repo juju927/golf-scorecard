@@ -15,19 +15,19 @@ export function getUserRoundsAPI() {
 }
 
 export function deleteRoundAPI(roundId) {
-  return sendRequest(baseURL, "DELETE", roundId)
+  return sendRequest(baseURL, "DELETE", roundId);
 }
 
-export function addStrokeAPI(strokeDetails) {
-  return sendRequest(baseURL + "/record/stroke", "POST", strokeDetails);
+export function addStrokeAPI(holeRecord) {
+  return sendRequest(baseURL + "/record/stroke", "POST", holeRecord);
 }
 
-export function editStrokeAPI(strokeDetails) {
-  return sendRequest(baseURL + "/record/stroke", "PUT", strokeDetails)
+export function editStrokeAPI(holeRecord) {
+  return sendRequest(baseURL + "/record/stroke", "PUT", holeRecord);
 }
 
-export function deleteStrokeAPI(strokeDetails) {
-  return sendRequest(baseURL + "/record/stroke", "DELETE", strokeDetails);
+export function deleteStrokeAPI(holeRecord) {
+  return sendRequest(baseURL + "/record/stroke", "DELETE", holeRecord);
 }
 
 export function updateStatsAPI(holeDetails) {

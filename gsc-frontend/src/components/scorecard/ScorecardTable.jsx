@@ -1,6 +1,6 @@
 import TableRowDetails from "./TableRowDetails";
 
-const ScoreCardTable = ({ roundDetails }) => {
+const ScorecardTable = ({ roundDetails }) => {
   const tableHeaders = [
     "hole",
     roundDetails?.course?.dist_unit,
@@ -37,4 +37,4 @@ const ScoreCardTable = ({ roundDetails }) => {
   );
 };
 
-export default ScoreCardTable;
+export default ScorecardTable;

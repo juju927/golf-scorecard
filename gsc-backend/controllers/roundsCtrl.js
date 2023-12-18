@@ -34,6 +34,7 @@ async function getUserRounds(req, res) {
 
     sendResponse(res, 200, { rounds });
   } catch (err) {
+    debug(err);
     sendResponse(res, 500, err.message);
   }
 }

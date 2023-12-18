@@ -29,18 +29,18 @@ export async function deleteRoundService(roundId) {
   return data;
 }
 
-export async function addStrokeService(strokeDetails) {
-  const data = await addStrokeAPI(strokeDetails);
+export async function addStrokeService(holeRecord) {
+  const data = await addStrokeAPI(holeRecord);
   return data.data;
 }
 
-export async function editStrokeService(strokeDetails) {
-  const data = await editStrokeAPI(strokeDetails);
+export async function editStrokeService(holeRecord) {
+  const data = await editStrokeAPI(holeRecord);
   return data.data;
 }
 
-export async function deleteStrokeService(strokeDetails) {
-  const data = await deleteStrokeAPI(strokeDetails);
+export async function deleteStrokeService(holeRecord) {
+  const data = await deleteStrokeAPI(holeRecord);
   return data.data;
 }
 
