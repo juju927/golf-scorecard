@@ -18,12 +18,12 @@ const RoundsPage = () => {
 
   const getUserRounds = async () => {
     setIsLoading(true)
+    // !!
     try {
-      // !!
       const rounds = await getUserRoundsService();
       const filteredRounds = rounds.filter(
         (round) =>
-          dayjs(round?.date).format("D MMM YYYY") ==
+          dayjs(round?.date).format("D MMM YYYY") !=
           dayjs(Date.now()).format("D MMM YYYY")
       );
       if (filteredRounds.length == 0) {

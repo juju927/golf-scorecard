@@ -10,7 +10,7 @@ const ChipCheck = ({ stroke, setStroke }) => {
   }
 
   return (
-    <div className="pt-4 flex gap-2 items-center" onClick={handleClick}>
+    <div className="flex gap-2 items-center" onClick={handleClick}>
       { stroke.is_chip ? <MdCheckBox className="text-white w-6 h-6" /> : <MdCheckBoxOutlineBlank className="text-gray-400/50 w-6 h-6" /> }
       <span className="text-white">Chip</span>
     </div>

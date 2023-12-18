@@ -5,26 +5,31 @@ const User = require("../models/UserModel");
 const Course = require("../models/CourseModel");
 const sendResponse = require("../helpers/sendResponseHelper");
 const userCanAlter = require("../helpers/userCanAlter");
-const { checkGIR, checkFIR, checkPutts } = require("../helpers/statCalculator");
+const {
+  checkGIR,
+  checkFIR,
+  checkPutts,
+  countPenalties,
+} = require("../helpers/statCalculator");
 
 async function getUserRounds(req, res) {
   try {
     const rounds = await Round.find({ user: req.user._id })
-    .populate("course")
-    .populate({
-      path: "user",
-      select: "profile",
-      populate: {
-        path: "profile",
-        select: ["profile_picture", "username", "display_name", "country"],
-      },
-    })
-    .populate({
-      path: "round_record",
-      populate: { path: "stroke_details", populate: { path: "club" } },
-    })
-    .sort({ date: -1 })
-    .limit(10)
+      .populate("course")
+      .populate({
+        path: "user",
+        select: "profile",
+        populate: {
+          path: "profile",
+          select: ["profile_picture", "username", "display_name", "country"],
+        },
+      })
+      .populate({
+        path: "round_record",
+        populate: { path: "stroke_details", populate: { path: "club" } },
+      })
+      .sort({ date: -1 })
+      .limit(10)
       .exec();
 
     sendResponse(res, 200, { rounds });
@@ -106,14 +111,12 @@ async function updateRoundRecord(req, res) {
       return;
     }
     const roundRecord = round.round_record.id(req.body.round_record_id);
-    roundRecord.GIR = checkGIR(roundRecord.stroke_details, req.body.par_no);
-    roundRecord.FIR = checkFIR(roundRecord.stroke_details, req.body.par_no);
-    roundRecord.putts = checkPutts(roundRecord.stroke_details);
+    calculateStats(round, roundRecord);
     roundRecord.is_completed = req.body.is_completed;
     await round.save();
     sendResponse(res, 200, round, "round edited");
   } catch (err) {
-    debug("Error editing GIR: %o", err);
+    debug("Error editing round: %o", err);
   }
 }
 
@@ -132,26 +135,16 @@ async function addStroke(req, res) {
     }
     // selecting a subdoc: https://mongoosejs.com/docs/subdocs.html#finding-a-subdocument
     const roundRecord = await round.round_record.id(req.body.round_record_id);
-    if (req.body.is_penalty) {
-      roundRecord.penalty_strokes++;
-      roundRecord.total_strokes++;
-      await round.save();
-      sendResponse(res, 201, round, "penalty stroke added");
-    } else {
-      roundRecord.stroke_details.push({
-        club: req.body.club,
-        ground: req.body.ground,
-        is_chip: req.body.is_chip,
-        analysis: {
-          direction: req.body.analysis.direction,
-          distance: req.body.analysis.distance,
-          remarks: req.body.analysis.remarks,
-        },
-      });
-      roundRecord.total_strokes++;
-      await round.save();
-      sendResponse(res, 201, round, "stroke added");
-    }
+    roundRecord.stroke_details.push({
+      club: req.body.club,
+      ground: req.body.ground,
+      is_chip: req.body.is_chip,
+      penalty: req.body.penalty,
+      analysis: req.body.analysis,
+    });
+    calculateStats(round, roundRecord);
+    await round.save();
+    sendResponse(res, 201, round, "stroke added");
   } catch (err) {
     debug("Error adding stroke: %o", err);
     sendResponse(res, 500, err.message);
@@ -176,12 +169,15 @@ async function editStroke(req, res) {
     stroke.club = req.body.club || stroke.club;
     stroke.ground = req.body.ground || stroke.ground;
     stroke.is_chip = req.body.is_chip || stroke.is_chip;
+    stroke.penalty = req.body.penalty || stroke.penalty;
     stroke.analysis.direction =
       req.body.analysis.direction || stroke.analysis.direction;
     stroke.analysis.distance =
       req.body.analysis.distance || stroke.analysis.distance;
     stroke.analysis.remarks =
       req.body.analysis.remarks || stroke.analysis.remarks;
+
+    calculateStats(round, roundRecord);
     await round.save();
     sendResponse(res, 200, round, "stroke edited");
   } catch (err) {
@@ -204,23 +200,8 @@ async function deleteStroke(req, res) {
       return;
     }
     const roundRecord = round.round_record.id(req.body.round_record_id);
-
-    if (req.body.is_penalty) {
-      if (roundRecord.penalty_strokes > 0) {
-        roundRecord.penalty_strokes--;
-      } else {
-        sendResponse(
-          res,
-          400,
-          null,
-          "penalty strokes cannot be decreased past 0"
-        );
-        return;
-      }
-    } else {
-      roundRecord.stroke_details.id(req.body.stroke_id).deleteOne();
-    }
-    roundRecord.total_strokes--;
+    roundRecord.stroke_details.id(req.body.stroke_id).deleteOne();
+    calculateStats(round, roundRecord);
     await round.save();
     sendResponse(res, 200, round, "stroke deleted");
   } catch (err) {
@@ -243,13 +224,26 @@ function initialiseRecord(roundType) {
   for (let i = start; i <= end; i++) {
     arr.push({
       hole_num: i,
-      total_strokes: 0,
-      penalty_strokes: 0,
+      is_completed: false,
       stroke_details: [],
     });
   }
 
   return arr;
+}
+
+function getParNo(round, roundRecord) {
+  const hole_num = roundRecord.hole_num;
+  return round.course.holes.filter((hole) => hole.hole_no == hole_num)[0].par;
+}
+
+function calculateStats(round, roundRecord) {
+  roundRecord.GIR = checkGIR(roundRecord, getParNo(round, roundRecord));
+  roundRecord.FIR = checkFIR(roundRecord, getParNo(round, roundRecord));
+  roundRecord.putts = checkPutts(roundRecord.stroke_details);
+  roundRecord.penalty_strokes = countPenalties(roundRecord.stroke_details);
+  roundRecord.total_strokes =
+    roundRecord.penalty_strokes + roundRecord.stroke_details.length;
 }
 
 module.exports = {

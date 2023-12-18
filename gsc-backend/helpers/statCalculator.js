@@ -1,20 +1,30 @@
-function checkGIR(strokeDetails, parNo) {
-  if (strokeDetails.length <= parNo - 2) {
-    // if hole in less than green in reg. check
-    return true;
-  }
-  if (strokeDetails[parNo - 2]?.ground == "Green") {
-    // this is the (par-1)th stroke
-    return true;
-  }
-  return false;
-}
-
-function checkFIR(strokeDetails, parNo) {
-  if (parNo == 3) {
+function checkGIR(roundRecord, parNo) {
+  // don't calculate GIR if round incomplete
+  if (!roundRecord.is_completed) {
     return undefined;
   }
-  if (strokeDetails[1]?.ground == "Fairway") {
+
+  var strokesBeforeGreen = 0;
+  for (let stroke of roundRecord.stroke_details) {
+    // if ground type is green, stop counting
+    if (stroke.ground == "Green") {
+      break;
+    }
+    // if not, add the stroke to count
+    strokesBeforeGreen++;
+    // and add the penalty associated with the stroke
+    strokesBeforeGreen += stroke.penalty.penalty_amt || 0;
+  }
+
+  return strokesBeforeGreen <= parNo - 2;
+}
+
+function checkFIR(roundRecord, parNo) {
+  // don't calculate FIR if par 3 or 2nd stroke not played
+  if (parNo == 3 || roundRecord.stroke_details.length < 2) {
+    return undefined;
+  }
+  if (roundRecord.stroke_details[1]?.ground == "Fairway") {
     return true;
   }
   return false;
@@ -23,7 +33,6 @@ function checkFIR(strokeDetails, parNo) {
 function checkPutts(strokeDetails) {
   var putts = 0;
   for (let stroke of strokeDetails) {
-    console.log(stroke)
     if (stroke.club.abbrvName == "Pt" && stroke.ground == "Green") {
       putts++;
     }
@@ -31,4 +40,14 @@ function checkPutts(strokeDetails) {
   return putts;
 }
 
-module.exports = { checkGIR, checkFIR, checkPutts}
+function countPenalties(strokeDetails) {
+  var penalties = 0;
+  for (let stroke of strokeDetails) {
+    if (!isNaN(stroke.penalty.penalty_amt)) {
+      penalties += stroke.penalty.penalty_amt;
+    }
+  }
+  return penalties;
+}
+
+module.exports = { checkGIR, checkFIR, checkPutts, countPenalties };

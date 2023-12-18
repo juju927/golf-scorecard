@@ -1,12 +1,8 @@
-import SectionHeader from "../common/SectionHeader";
 import StrokeListItem from "./ListItems/StrokeListItem";
 
 const StrokeList = ({ strokeDetails, round_id }) => {
   return (
     <div>
-      <SectionHeader headerName={"stroke list"} />
-
-      {/* actual list */}
       {strokeDetails?.stroke_details?.length == 0 ? (
         <div className="font-light italic text-center text-xs text-slate-100">
           no shots played yet

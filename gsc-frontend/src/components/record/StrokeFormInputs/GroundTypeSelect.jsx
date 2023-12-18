@@ -15,7 +15,7 @@ const GroundTypeSelect = ({ stroke, setStroke }) => {
         id="groundType"
         value={stroke.ground}
         onChange={handleChange}
-        className="bg-gray-700/50 focus:outline-0 outline-none border-none text-white text-center"
+        className="w-full bg-gray-700/50 focus:outline-0 outline-none border-none text-white text-center"
       >
         <option value="">Select a type</option>
         {groundTypes.map((ground) => (

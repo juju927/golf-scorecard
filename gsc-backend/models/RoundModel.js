@@ -20,9 +20,8 @@ const roundSchema = new Schema(
         },
         total_strokes: {
           type: Number,
-          required: true,
         },
-        penalty_strokes: { type: Number, required: true, default: 0 },
+        penalty_strokes: { type: Number, required: true },
         GIR: { type: Boolean },
         FIR: { type: Boolean },
         putts: { type: Number },
@@ -36,6 +35,10 @@ const roundSchema = new Schema(
               required: [true, "Please specify type of ground shot from."],
             },
             is_chip: { type: Boolean, default: false },
+            penalty: {
+              penalty_type: { type: String },
+              penalty_amt: { type: Number },
+            },
             analysis: {
               direction: {
                 type: String,

@@ -24,7 +24,7 @@ const GolfClubSelect = ({ stroke, setStroke }) => {
         id="golfClubUsed"
         value={stroke.club?._id}
         onChange={handleChange}
-        className="bg-gray-700/50 focus:outline-0 outline-none border-none text-white text-center"
+        className="w-full bg-gray-700/50 focus:outline-0 outline-none border-none text-white text-center"
       >
         <option value="">Select a club</option>
         {clubCategories.map((category) => (

@@ -7,12 +7,14 @@ import StrokesSummary from "../components/record/StrokesSummary";
 import HoleDetails from "../components/record/HoleDetails";
 import StrokeList from "../components/record/StrokeList";
 import {
-  addStrokeService,
-  deleteStrokeService,
   updateStatsService,
 } from "../utilities/rounds-service";
 import toast from "react-hot-toast";
 import { simpleConfirm } from "react-simple-dialogs";
+import SectionHeader from "../components/common/SectionHeader";
+import { PiArrowFatLinesRightFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
+
 
 const HolePage = () => {
   const { holeNo } = useParams();
@@ -36,38 +38,11 @@ const HolePage = () => {
   const prevHole = holeNo == firstHole ? holeNo : parseInt(holeNo) - 1;
   const nextHole = holeNo == lastHole ? holeNo : parseInt(holeNo) + 1;
 
-  const addPenalty = async () => {
-    try {
-      const updatedRound = await addStrokeService({
-        round_id: roundDetails?._id,
-        round_record_id: strokeDetails?._id,
-        is_penalty: true,
-      });
-      setCurrentRound(updatedRound);
-    } catch (err) {
-      toast.error(`${err.message}`);
-    }
-  };
-
-  const removePenalty = async () => {
-    try {
-      const updatedRound = await deleteStrokeService({
-        round_id: roundDetails?._id,
-        round_record_id: strokeDetails?._id,
-        is_penalty: true,
-      });
-      setCurrentRound(updatedRound);
-    } catch (err) {
-      toast.error(`${err.message}`);
-    }
-  };
-
   const endHole = async () => {
     try {
       const updatedRound = await updateStatsService({
         round_id: roundDetails?._id,
         round_record_id: strokeDetails?._id,
-        par_no: holeDetails?.par,
         is_completed: true,
       });
       setCurrentRound(updatedRound);
@@ -86,7 +61,7 @@ const HolePage = () => {
     ) {
       goToScorecard();
     }
-  }
+  };
 
   const goToScorecard = () => {
     navigate(`/analyse/s/${roundDetails._id}`);
@@ -131,6 +106,7 @@ const HolePage = () => {
 
       <StrokesSummary strokeDetails={strokeDetails} par_no={holeDetails?.par} />
 
+      <SectionHeader headerName={"stroke list"} />
       <div className="grow overflow-y-auto">
         <StrokeList
           strokeDetails={strokeDetails}
@@ -146,10 +122,11 @@ const HolePage = () => {
             endHole={endHole}
           />
         )}
+
       </div>
 
       <div className="h-fit py-2 px-4 border-t border-black flex justify-around">
-      <div
+        <div
           className="w-fit h-fit px-3 py-2 rounded-lg bg-red-700/50 font-semibold border border-red-500"
           onClick={endGame}
         >
@@ -158,14 +135,26 @@ const HolePage = () => {
           </p>
         </div>
 
-        <div
-          className="w-1/2 h-fit px-3 py-2 rounded-lg bg-teal-700 font-semibold border border-teal-500"
-          onClick={() => setShowAddStroke(true)}
-        >
-          <p className="uppercase font-medium text-white text-center tracking-tight">
-            add new stroke
-          </p>
-        </div>
+        {strokeDetails.is_completed ? (
+          <Link
+            className="w-1/2 h-fit px-3 py-2 flex items-center justify-center gap-2 rounded-lg bg-teal-700 font-semibold border border-teal-500"
+            to={`/record/hole/${nextHole}`}
+          >
+            <p className="uppercase font-medium text-white text-center tracking-tight">
+              Next hole
+            </p>
+            <PiArrowFatLinesRightFill className="text-white" />
+          </Link>
+        ) : (
+          <div
+            className="w-1/2 h-fit px-3 py-2 rounded-lg bg-teal-700 font-semibold border border-teal-500"
+            onClick={() => setShowAddStroke(true)}
+          >
+            <p className="uppercase font-medium text-white text-center tracking-tight">
+              add new stroke
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

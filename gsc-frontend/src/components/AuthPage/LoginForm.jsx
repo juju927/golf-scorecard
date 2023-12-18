@@ -30,9 +30,9 @@ const LoginForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    setIsLoading(true)
     e.preventDefault();
     try {
+      setIsLoading(true)
       const user = await loginService(userData);
       if (user !== null && user !== undefined) {
         setUser(user);

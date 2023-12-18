@@ -4,19 +4,18 @@ import { useSetAtom } from "jotai";
 import { currentRoundRecordAtom } from "../../../utilities/atom";
 import { editStrokeService } from "../../../utilities/rounds-service";
 import { AiOutlineClose } from "react-icons/ai";
-import { AiOutlineQuestionCircle } from "react-icons/ai";
 import GolfClubSelect from "../StrokeFormInputs/GolfClubSelect";
 import GroundTypeSelect from "../StrokeFormInputs/GroundTypeSelect";
 import ChipCheck from "../StrokeFormInputs/ChipCheck";
 import DirectionInput from "../StrokeFormInputs/DirectionInput";
 import DistanceInput from "../StrokeFormInputs/DistanceInput";
 import RemarksInput from "../StrokeFormInputs/RemarksInput";
+import PenaltyInput from "../StrokeFormInputs/PenaltyInput";
 
 const EditStrokeForm = ({
   round_id,
   round_record_id,
   stroke,
-  idx,
   setShowEditStroke,
 }) => {
   const setCurrentRound = useSetAtom(currentRoundRecordAtom);
@@ -26,6 +25,7 @@ const EditStrokeForm = ({
     round_record_id: round_record_id,
     stroke_id: stroke._id,
     is_chip: stroke.is_chip,
+    penalty: stroke.penalty,
     club: stroke.club,
     ground: stroke.ground,
     analysis: {
@@ -34,7 +34,6 @@ const EditStrokeForm = ({
       remarks: stroke.analysis.remarks,
     },
   });
-  const [showTooltip, setShowTooltip] = useState(false);
 
   const handleEditStroke = async () => {
     if (!editedStroke.club || !editedStroke.ground) {
@@ -58,7 +57,7 @@ const EditStrokeForm = ({
           onClick={() => setShowEditStroke(false)}
         >
           <h1 className="text-center text-white my-3 text-lg tracking-wide font-semibold">
-            Editing stroke {idx + 1}
+            Editing stroke
           </h1>
 
           <div
@@ -69,56 +68,42 @@ const EditStrokeForm = ({
           </div>
         </div>
 
-        <div className="px-2">
-          <h1 className="text-white my-3 text-xs uppercase">stroke details</h1>
+        <div className="px-2 pt-4 flex flex-col gap-3">
+          <div>
+            <h1 className="text-white my-3 text-xs uppercase">
+              stroke details
+            </h1>
 
-          <div className="w-full grid grid-cols-2 grid-rows-2">
-            <GroundTypeSelect
-              stroke={editedStroke}
-              setStroke={setEditedStroke}
-            />
-            <GolfClubSelect
-              stroke={editedStroke}
-              setStroke={setEditedStroke}
-            />
-            <div>{/* empty div to use table space lol */}</div>
-            <ChipCheck
-              stroke={editedStroke}
-              setStroke={setEditedStroke}
-            />
-          </div>
-
-          <div className="flex my-3 gap-2 relative">
-            <h1 className="text-white text-xs uppercase">stroke analysis</h1>
-            <AiOutlineQuestionCircle
-              className="text-gray-400"
-              onClick={() => setShowTooltip(!showTooltip)}
-            />
-            <div
-              className={`${
-                !showTooltip && "hidden"
-              } absolute right-0 bottom-5 z-10 p-2 text-justify text-xs bg-gray-400/90 rounded-sm w-3/4`}
-            >
-              <p>
-                {" "}
-                Optional, <b>self-analysed</b> and saved for post-game review.
-                Can be reset by clicking the header.
-              </p>
+            <div className="w-full grid grid-cols-2 grid-rows-2 gap-x-2 gap-y-1">
+              <GroundTypeSelect
+                stroke={editedStroke}
+                setStroke={setEditedStroke}
+              />
+              <GolfClubSelect
+                stroke={editedStroke}
+                setStroke={setEditedStroke}
+              />
+              <PenaltyInput stroke={editedStroke} setStroke={setEditedStroke} />
+              <ChipCheck stroke={editedStroke} setStroke={setEditedStroke} />
             </div>
           </div>
 
-          <DirectionInput
-            stroke={editedStroke}
-            setStroke={setEditedStroke}
-          />
-          <DistanceInput
-            stroke={editedStroke}
-            setStroke={setEditedStroke}
-          />
-          <RemarksInput
-            stroke={editedStroke}
-            setStroke={setEditedStroke}
-          />
+          <div>
+            <h1 className="text-white text-xs uppercase">stroke analysis</h1>
+            <p className="pb-2 text-xs text-gray-400 font-light tracking-tight">
+              Stroke analysis is optional.
+            </p>
+
+            <DirectionInput stroke={editedStroke} setStroke={setEditedStroke} />
+            <DistanceInput stroke={editedStroke} setStroke={setEditedStroke} />
+          </div>
+
+          <div>
+            <h1 className="pb-2 text-white text-xs uppercase">
+              stroke remarks
+            </h1>
+            <RemarksInput stroke={editedStroke} setStroke={setEditedStroke} />
+          </div>
         </div>
 
         <div className="py-2 px-4 flex justify-center">

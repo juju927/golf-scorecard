@@ -15,21 +15,21 @@ const DistanceInput = ({ stroke, setStroke }) => {
     <div className="w-full">
       <div className="grid grid-cols-4 text-white pb-2 items-center">
         <h2
-          className="text-sm font-light capitalize text-center"
+          className="font-light capitalize text-center"
           onClick={() => handleClick("NA")}
         >
           distance
         </h2>
         {distances.map((distance) => (
           <div
-            className={`border border-gray-700 bg-gray-700/50 p-2 text-sm text-gray-400 ${
+            className={`border border-gray-700 bg-gray-700/50 p-2 text-gray-400 ${
               stroke.analysis.distance == distance && "bg-teal-500 text-white"
             }`}
             key={distance}
             value={distance}
             onClick={() => handleClick(distance)}
           >
-            {distance}
+            <p className="text-center text-white">{distance}</p>
           </div>
         ))}
       </div>

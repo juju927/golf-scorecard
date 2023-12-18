@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "@uidotdev/usehooks": "^2.4.1",
     "dayjs": "^1.11.10",
     "debug": "^4.3.4",

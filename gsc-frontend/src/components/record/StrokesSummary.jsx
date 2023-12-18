@@ -23,7 +23,7 @@ const StrokesSummary = ({ strokeDetails, par_no }) => {
     {
       header: "Putts",
       value: strokeDetails?.putts,
-      scoreType: analysePutts(strokeDetails?.putts, strokeDetails?.GIR),
+      scoreType: analysePutts(strokeDetails?.putts),
     },
     {
       header: "Penalty",
