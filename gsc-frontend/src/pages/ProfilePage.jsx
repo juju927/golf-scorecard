@@ -3,14 +3,12 @@ import BottomNav from "../components/common/BottomNav";
 import TopHeader from "../components/common/TopHeader";
 import { userProfileAtom } from "../utilities/atom";
 import { useState } from "react";
-import { updateProfileService } from "../utilities/profiles-service";
-import toast from "react-hot-toast";
 import GolfBagEditor from "../components/profile/GolfBagEditor";
 import SectionHeader from "../components/common/SectionHeader";
 import golfBag from "../assets/images/golf-bag.png";
 import GolfBagView from "../components/profile/GolfBagView";
 import Avatar from "../components/profile/Avatar";
-import { countryFlags } from "../utilities/country-flags";
+import { countryFlags } from "../utilities/icons";
 import UserProfileEditor from "../components/profile/UserProfileEditor";
 
 const ProfilePage = () => {

@@ -176,11 +176,11 @@ const SignUpForm = () => {
                   {isLoading && <Loading />}
                 </div>
 
-                <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+                <p className="mt-4 text-sm text-gray-400 sm:mt-0">
                   Already have an account?{" "}
                   <Link
                     to="/login"
-                    className="text-gray-700 underline dark:text-gray-200"
+                    className="text-gray-200 underline"
                   >
                     Log in
                   </Link>
