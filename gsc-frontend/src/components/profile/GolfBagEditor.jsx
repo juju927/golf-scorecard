@@ -111,8 +111,8 @@ const GolfBagEditor = ({ setShowGolfBagEditor }) => {
         {/* golf bag selection */}
         <div className="mx-auto w-full grow overflow-y-auto">
           {clubCategories.map((category) => (
-            <>
-              <div key={category}>
+            <div key={category}>
+              <div>
                 <SectionHeader headerName={category} />
               </div>
 
@@ -135,7 +135,7 @@ const GolfBagEditor = ({ setShowGolfBagEditor }) => {
                     </p>
                   </div>
                 ))}
-            </>
+            </div>
           ))}
         </div>
 
