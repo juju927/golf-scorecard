@@ -6,7 +6,7 @@ const DirectionInput = ({ stroke, setStroke }) => {
       ...prevState,
       analysis: {
         ...prevState.analysis,
-        direction: direction,
+        direction: prevState.analysis.direction == direction ? "" : direction,
       },
     }));
   };
@@ -16,7 +16,7 @@ const DirectionInput = ({ stroke, setStroke }) => {
       <div className="grid grid-cols-4 text-white pb-2 items-center">
         <h2
           className="font-light capitalize text-center"
-          onClick={()=>handleClick("NA")}
+          onClick={()=>handleClick("")}
         >
           direction
         </h2>

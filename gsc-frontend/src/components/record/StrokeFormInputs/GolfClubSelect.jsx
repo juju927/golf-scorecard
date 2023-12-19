@@ -26,7 +26,7 @@ const GolfClubSelect = ({ stroke, setStroke }) => {
         onChange={handleChange}
         className="w-full bg-gray-700/50 focus:outline-0 outline-none border-none text-white text-center"
       >
-        <option value="">Select a club</option>
+        <option value={""}>Select a club</option>
         {clubCategories.map((category) => (
           <optgroup label={category} key={category}>
             {clubs

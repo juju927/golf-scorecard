@@ -1,0 +1,1546 @@
+{
+  "_id": {
+    "$oid": "658108601de3af254f79f96a"
+  },
+  "user": {
+    "$oid": "657bf5e201728bce1e79a070"
+  },
+  "course": {
+    "$oid": "6532106feaecac2b3968aaef"
+  },
+  "date": {
+    "$date": "2023-10-08T03:05:04.825Z"
+  },
+  "tee": "white",
+  "round_record": [
+    {
+      "hole_num": 1,
+      "total_strokes": 6,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd56"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "right",
+            "distance": "average",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581086f1de3af254f79f9d8"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd63"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "left",
+            "distance": "short",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581087c1de3af254f79fa09"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Rough",
+          "is_chip": false,
+          "analysis": {
+            "direction": "straight",
+            "distance": "short",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581088b1de3af254f79fa3b"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Rough",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581094836671a8e95cff877"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581095136671a8e95cff8ab"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581098236671a8e95cff8e0"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f96b"
+      },
+      "putts": 2,
+      "FIR": true
+    },
+    {
+      "hole_num": 2,
+      "total_strokes": 6,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd58"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "straight",
+            "distance": "average",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810a2636671a8e95cff94a"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd63"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "straight",
+            "distance": "short",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810ac236671a8e95cff981"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd63"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "straight",
+            "distance": "average",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810bf936671a8e95cff9b9"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd76"
+          },
+          "ground": "Sand",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810c0b36671a8e95cff9f2"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810c1236671a8e95cffa2c"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810c2f36671a8e95cffadc"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f96c"
+      },
+      "putts": 2,
+      "FIR": true
+    },
+    {
+      "hole_num": 3,
+      "total_strokes": 3,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd63"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "straight",
+            "distance": "average",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810c5536671a8e95cffb52"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Fairway",
+          "is_chip": true,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810c6136671a8e95cffb8f"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810c6736671a8e95cffbcd"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f96d"
+      },
+      "putts": 1
+    },
+    {
+      "hole_num": 4,
+      "total_strokes": 5,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd56"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "straight",
+            "distance": "long",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810c7536671a8e95cffc49"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Rough",
+          "is_chip": false,
+          "analysis": {
+            "direction": "left",
+            "distance": "average",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810c7f36671a8e95cffc89"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810c8e36671a8e95cffcca"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810c9136671a8e95cffd0c"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": "ding dong ding dong...."
+          },
+          "_id": {
+            "$oid": "65810c9d36671a8e95cffd4f"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f96e"
+      },
+      "putts": 3,
+      "FIR": false
+    },
+    {
+      "hole_num": 5,
+      "total_strokes": 5,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd56"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "straight",
+            "distance": "long",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810dd136671a8e95cffdd5"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd63"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "straight",
+            "distance": "average",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810dd936671a8e95cffe1a"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Rough",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810de736671a8e95cffe60"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810ded36671a8e95cffea7"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810df336671a8e95cffeef"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f96f"
+      },
+      "putts": 2,
+      "FIR": true
+    },
+    {
+      "hole_num": 6,
+      "total_strokes": 5,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd58"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "straight",
+            "distance": "short",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810f1336671a8e95cfff7f"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd67"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "NA",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810f2336671a8e95cfffc9"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Rough",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "long",
+            "remarks": "roll too far - aim nearer next time"
+          },
+          "_id": {
+            "$oid": "65810f4d36671a8e95d00014"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "NA",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810f6636671a8e95d00060"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810f6936671a8e95d000ad"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f970"
+      },
+      "putts": 2,
+      "FIR": true
+    },
+    {
+      "hole_num": 7,
+      "total_strokes": 3,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd63"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "straight",
+            "distance": "average",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810f8236671a8e95d00147"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": "a lot more slopey than it looks"
+          },
+          "_id": {
+            "$oid": "65810f9436671a8e95d00196"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810f9a36671a8e95d001e6"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f971"
+      },
+      "putts": 2
+    },
+    {
+      "hole_num": 8,
+      "total_strokes": 5,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd56"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810fab36671a8e95d00286"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd66"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "65810ffb36671a8e95d002d8"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581100436671a8e95d0032b"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581103f36671a8e95d0037f"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581104336671a8e95d003d4"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f972"
+      },
+      "putts": 3,
+      "FIR": true
+    },
+    {
+      "hole_num": 9,
+      "total_strokes": 7,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd56"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581107736671a8e95d0047e"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd63"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "NA",
+            "distance": "NA",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581108736671a8e95d004d5"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd65"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581109636671a8e95d0052d"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd76"
+          },
+          "ground": "Sand",
+          "is_chip": true,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658110b436671a8e95d00586"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658110bb36671a8e95d005e0"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658110bd36671a8e95d0063b"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658110d436671a8e95d0074e"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f973"
+      },
+      "putts": 3,
+      "FIR": true
+    },
+    {
+      "hole_num": 10,
+      "total_strokes": 4,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd63"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658110e436671a8e95d00806"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Fairway",
+          "is_chip": true,
+          "analysis": {
+            "direction": "straight",
+            "distance": "short",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581110236671a8e95d00864"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581110736671a8e95d008c3"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581110d36671a8e95d00923"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f974"
+      },
+      "putts": 1,
+      "FIR": true
+    },
+    {
+      "hole_num": 11,
+      "total_strokes": 4,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd63"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581111c36671a8e95d009e3"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581113c36671a8e95d00a45"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581114336671a8e95d00aa8"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581114436671a8e95d00b0c"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f975"
+      },
+      "putts": 2
+    },
+    {
+      "hole_num": 12,
+      "total_strokes": 4,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd56"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581115036671a8e95d00bd4"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Rough",
+          "is_chip": true,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581115e36671a8e95d00c3a"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581116636671a8e95d00ca1"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581116736671a8e95d00d09"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f976"
+      },
+      "putts": 2,
+      "FIR": false
+    },
+    {
+      "hole_num": 13,
+      "total_strokes": 3,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd67"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "NA",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581119a36671a8e95d00dd9"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Rough",
+          "is_chip": true,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658111ac36671a8e95d00e43"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658111b236671a8e95d00eae"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f977"
+      },
+      "putts": 1,
+      "GIR": false
+    },
+    {
+      "hole_num": 14,
+      "total_strokes": 5,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd56"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "straight",
+            "distance": "average",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658111f236671a8e95d00f84"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd63"
+          },
+          "ground": "Rough",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658111fd36671a8e95d00ff1"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd76"
+          },
+          "ground": "Sand",
+          "is_chip": true,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581120e36671a8e95d0105f"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581121336671a8e95d010ce"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581121436671a8e95d0113e"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f978"
+      },
+      "putts": 2,
+      "FIR": false,
+      "GIR": true
+    },
+    {
+      "hole_num": 15,
+      "total_strokes": 6,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd56"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581124436671a8e95d01300"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Rough",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "short",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581125836671a8e95d01372"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Rough",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581125e36671a8e95d013e5"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581126536671a8e95d01459"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581126636671a8e95d014ce"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581126736671a8e95d01544"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f979"
+      },
+      "putts": 3,
+      "FIR": false
+    },
+    {
+      "hole_num": 16,
+      "total_strokes": 5,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd56"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581127636671a8e95d01630"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd63"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581127e36671a8e95d016a8"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Rough",
+          "is_chip": true,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581128d36671a8e95d01721"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Rough",
+          "is_chip": true,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581129236671a8e95d0179b"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581129c36671a8e95d01816"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f97a"
+      },
+      "putts": 1,
+      "FIR": true
+    },
+    {
+      "hole_num": 17,
+      "total_strokes": 5,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd58"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658112aa36671a8e95d0190c"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd66"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658112b836671a8e95d01989"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd74"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658112be36671a8e95d01a07"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658112c436671a8e95d01a86"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658112c636671a8e95d01b06"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f97b"
+      },
+      "putts": 2,
+      "FIR": true
+    },
+    {
+      "hole_num": 18,
+      "total_strokes": 5,
+      "penalty_strokes": 0,
+      "is_completed": true,
+      "stroke_details": [
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd56"
+          },
+          "ground": "Tee-off",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658112da36671a8e95d01c06"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd63"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "658112f136671a8e95d01c88"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd67"
+          },
+          "ground": "Fairway",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581130036671a8e95d01d0b"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581130636671a8e95d01d8f"
+          }
+        },
+        {
+          "club": {
+            "$oid": "657e5bc2e14748800d6cfd78"
+          },
+          "ground": "Green",
+          "is_chip": false,
+          "analysis": {
+            "direction": "",
+            "distance": "",
+            "remarks": ""
+          },
+          "_id": {
+            "$oid": "6581130736671a8e95d01e14"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "658108601de3af254f79f97c"
+      },
+      "putts": 2,
+      "FIR": true
+    }
+  ],
+  "created_at": {
+    "$date": "2023-10-08T03:05:04.833Z"
+  },
+  "updated_at": {
+    "$date": "2023-10-08T03:51:02.715Z"
+  },
+  "__v": 92
+}

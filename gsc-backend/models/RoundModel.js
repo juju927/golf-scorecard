@@ -19,7 +19,8 @@ const roundSchema = new Schema(
           max: 18,
         },
         total_strokes: {
-          type: Number, required: true
+          type: Number,
+          required: true,
         },
         penalty_strokes: { type: Number, required: true },
         GIR: { type: Boolean },
@@ -42,11 +43,11 @@ const roundSchema = new Schema(
             analysis: {
               direction: {
                 type: String,
-                enum: ["left", "straight", "right", "NA"],
+                enum: ["left", "straight", "right", ""],
               },
               distance: {
                 type: String,
-                enum: ["short", "average", "long", "NA"],
+                enum: ["short", "average", "long", ""],
               },
               remarks: { type: String },
             },

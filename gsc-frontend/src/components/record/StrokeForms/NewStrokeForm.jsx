@@ -78,18 +78,18 @@ const NewStrokeForm = ({
   };
 
   const resetForm = () => {
-    setNewStroke({
+    setNewStroke((prevState) => ({
       round_id: roundId,
       round_record_id: recordId,
       is_chip: false,
-      club: "",
-      ground: "",
+      club: prevState.club,
+      ground: prevState.ground == "Green" ? "Green" : "",
       analysis: {
         direction: "",
         distance: "",
         remarks: "",
       },
-    });
+    }));
   };
 
   useEffect(() => {
@@ -132,7 +132,6 @@ const NewStrokeForm = ({
 
             <div className="w-full grid grid-cols-2 grid-rows-2 gap-x-2 gap-y-1">
               <GroundTypeSelect stroke={newStroke} setStroke={setNewStroke} />
-
               <GolfClubSelect stroke={newStroke} setStroke={setNewStroke} />
               <PenaltyInput stroke={newStroke} setStroke={setNewStroke} />
               <ChipCheck stroke={newStroke} setStroke={setNewStroke} />

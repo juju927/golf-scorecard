@@ -2,11 +2,12 @@ const DistanceInput = ({ stroke, setStroke }) => {
   const distances = ["short", "average", "long"];
 
   const handleClick = (distance) => {
+    
     setStroke((prevState) => ({
       ...prevState,
       analysis: {
         ...prevState.analysis,
-        distance: distance,
+        distance: prevState.analysis.distance == distance ? "" : distance,
       },
     }));
   };
@@ -16,7 +17,7 @@ const DistanceInput = ({ stroke, setStroke }) => {
       <div className="grid grid-cols-4 text-white pb-2 items-center">
         <h2
           className="font-light capitalize text-center"
-          onClick={() => handleClick("NA")}
+          onClick={() => handleClick("")}
         >
           distance
         </h2>
