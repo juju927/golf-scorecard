@@ -1,7 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import TopHeader from "../components/common/TopHeader";
-import BottomNav from "../components/common/BottomNav";
 import { useLocation } from "react-router-dom";
 
 const RoundRecordPage = () => {
@@ -14,7 +13,6 @@ const RoundRecordPage = () => {
         <div className="grow overflow-y-auto bg-gray-900">
           <Outlet />
         </div>
-        { !location.pathname.startsWith("/record/hole") && <BottomNav />}
       </div>
     </>
   );

@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import TopHeader from "../components/common/TopHeader";
-import BottomNav from "../components/common/BottomNav";
 import RoundListItem from "../components/record/ListItems/RoundListItem";
 import { useAtomValue } from "jotai";
 import { userRoundsAtom } from "../utilities/atom";
@@ -54,7 +53,6 @@ const AnalysePage = () => {
             <Outlet />
           )}
         </div>
-        <BottomNav />
       </div>
     </>
   );

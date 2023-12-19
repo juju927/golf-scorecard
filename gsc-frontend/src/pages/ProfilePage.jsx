@@ -1,5 +1,4 @@
-import { useAtom } from "jotai";
-import BottomNav from "../components/common/BottomNav";
+import { useAtomValue } from "jotai";
 import TopHeader from "../components/common/TopHeader";
 import { userProfileAtom } from "../utilities/atom";
 import { useState } from "react";
@@ -12,7 +11,7 @@ import { countryFlags } from "../utilities/icons";
 import UserProfileEditor from "../components/profile/UserProfileEditor";
 
 const ProfilePage = () => {
-  const [userProfile, setUserProfile] = useAtom(userProfileAtom);
+  const userProfile = useAtomValue(userProfileAtom);
 
   const [showProfileEditor, setShowProfileEditor] = useState(false);
   const [showGolfBagEditor, setShowGolfBagEditor] = useState(false);
@@ -92,7 +91,6 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <BottomNav />
     </div>
   );
 };

@@ -8,7 +8,6 @@ import {
 } from "../utilities/atom";
 import { Navigate } from "react-router-dom";
 import TopHeader from "../components/common/TopHeader";
-import BottomNav from "../components/common/BottomNav";
 import { useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
 import golfBag from "../assets/images/golf-bag.png";
@@ -32,14 +31,14 @@ const HomePage = () => {
     link: "/record/new"
   },
     {
-    label: "edit bag",
+    label: "review",
+    img: analyseScorecard,
+    link: "/analyse"
+  },
+  {
+    label: "edit profile",
     img: editGolfBag,
     link: "/profile"
-  },
-    {
-    label: "last game summary",
-    img: analyseScorecard,
-    link: userRounds.length > 0 ? `/analyse/s/${userRounds[0]._id}` : "/home"
   },
   //   {
   //   label: "new game",
@@ -129,8 +128,6 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-
-      <BottomNav />
     </div>
   );
 };
