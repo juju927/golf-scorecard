@@ -31,6 +31,17 @@ This full-stack web application was built using the **MERN** stack -
 
 [ Node.js ](https://nodejs.org/en) - runtime environment for the application
 
+## 🧊 Future developments
+
+⬜️ Implement handicap calculations
+⬜️ **Stroke Analysis** - calculates average performance of club based on user input
+⬜️ **Course Notes** - prompts user with notes they saved pertaining to courses right as they are about to play the hole
+
+## 🙇🏻‍♀️ Attribution
+
+Home page icons by [justicon](https://www.flaticon.com/authors/justicon)
+
+
 ## 🐰
 
 This application was created for my dad. May his golf days be sunny 🌤️ and his golf scores great 💯.
