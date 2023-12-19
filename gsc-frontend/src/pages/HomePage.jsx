@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import {
   userAtom,
   userProfileAtom,
@@ -20,9 +20,9 @@ import analyseScorecard from "../assets/images/analyseScorecard.png"
 const HomePage = () => {
   const user = useAtomValue(userAtom);
   const userProfile = useAtomValue(userProfileAtom);
-  const setUserRoundsAtom = useSetAtom(userRoundsAtom);
+  const [userRounds, setUserRounds] = useAtom(userRoundsAtom);
   const setCurrentRound = useSetAtom(currentRoundRecordAtom);
-  const userRounds = useLoaderData();
+  const loaderUserRounds = useLoaderData();
   const [todayRounds, setTodayRounds] = useState([]);
   const quickActions = [
     {
@@ -47,16 +47,18 @@ const HomePage = () => {
   // },
 ]
 
-
   useEffect(() => {
-    setUserRoundsAtom(userRounds);
+    setUserRounds(loaderUserRounds);
+  }, [loaderUserRounds]);
+
+  useEffect(()=> {
     const filteredRounds = userRounds.filter(
       (round) =>
         dayjs(round?.date).format("D MMM YYYY") ==
         dayjs(Date.now()).format("D MMM YYYY")
     );
     setTodayRounds(filteredRounds);
-  }, [userRounds]);
+  }, [userRounds])
 
   return (
     <div className="w-screen h-screen flex flex-col">
