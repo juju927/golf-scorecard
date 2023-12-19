@@ -60,7 +60,7 @@ const ScorecardPage = () => {
 
       </div>
       <div className="h-full w-full">
-        {view == views[0] && <ScorecardTable roundDetails={roundDetails} scorecardDetails={scorecardDetails} />}
+        {view == views[0] && <ScorecardTable roundDetails={roundDetails} />}
         {view == views[1] && <ScorecardCard scorecardDetails={scorecardDetails} />}
         {view == views[2] && <ScorecardPH roundDetails={roundDetails} />}
       </div>

@@ -46,7 +46,7 @@ const ScorecardPH = ({ roundDetails }) => {
       tee: roundDetails?.tee,
       dist: filteredHoleDetails.dists[roundDetails?.tee],
       dist_unit: roundDetails?.course?.dist_unit,
-      index_no: filteredHoleDetails.handicap_index?.tee || filteredHoleDetails.handicap_index?.all
+      index_no: filteredHoleDetails.handicap_index[roundDetails?.tee] || filteredHoleDetails.handicap_index?.all
     }
     return filteredHoleDetails 
   }

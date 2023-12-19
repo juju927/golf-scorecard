@@ -39,7 +39,7 @@ const HomePage = () => {
     {
     label: "last game summary",
     img: analyseScorecard,
-    link: `/analyse/s/${userRounds[0]._id}`
+    link: userRounds.length > 0 ? `/analyse/s/${userRounds[0]._id}` : "/home"
   },
   //   {
   //   label: "new game",

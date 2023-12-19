@@ -1,38 +1,69 @@
-import TableRowDetails from "./TableRowDetails";
+import { useState } from "react";
+import { useEffect } from "react";
+import dayjs from "dayjs";
+import { getScorecardTableValues } from "../../../utilities/scorecard-calculator";
+import TableHeader from "./TableHeader";
+import TableRow from "./TableRow";
+import TableIORow from "./TableIORow";
+import TableTotalRow from "./TableTotalRow";
 
 const ScorecardTable = ({ roundDetails }) => {
-  const tableHeaders = [
-    "hole",
-    roundDetails?.course?.dist_unit,
-    "par",
-    "index",
-    "strokes",
-  ];
+  const [tableValues, setTableValues] = useState({});
+
+  useEffect(() => {
+    setTableValues(getScorecardTableValues(roundDetails));
+  }, [roundDetails]);
+
   return (
-    <div className="table-outline w-full text-white">
-      <table className="w-full p-2 border-collapse">
-        <thead>
-          <tr>
-            {tableHeaders.map((header) => (
-              <th className="border border-white" key={header}>
-                {header}
-              </th>
-            ))}
-          </tr>
-        </thead>
+    <div className="table-page px-2 pb-4">
+      <h1 className="text-3xl text-white font-bold">
+        {roundDetails.course?.course_name}
+      </h1>
+      <div className="flex justify-between text-sm text-gray-400">
+        <span className="font-light">
+          Name:{" "}
+          <span className="text-white font-bold">{roundDetails?.user?.profile?.display_name || roundDetails?.user?.username}</span>
+        </span>
+        <span className="font-light">
+          Date:{" "}
+          <span className="text-white font-bold">{dayjs(roundDetails.date).format("D MMM YYYY")}</span>
+        </span>
+      </div>
 
-        <tbody>
-          {roundDetails?.round_record?.map((record) => (
-            <TableRowDetails
-              key={record._id}
-              record={record}
-              roundDetails={roundDetails}
-            />
+
+      {/* OUT table */}
+      <TableHeader />
+      {tableValues.out?.played && (
+        <>
+          {tableValues.out?.values?.map((rowValues, idx) => (
+            <div
+              key={`hole-${rowValues.hole_num}-row`}
+              className={`${idx % 2 && "bg-gray-400/10"}`}
+            >
+              <TableRow rowValues={rowValues} />
+            </div>
           ))}
+          <TableIORow io="out" rowValues={tableValues.out?.total} />
+        </>
+      )}
 
-          <tr></tr>
-        </tbody>
-      </table>
+      {/* IN table */}
+      <TableHeader />
+      {tableValues.in?.played && (
+        <>
+          {tableValues.in?.values?.map((rowValues, idx) => (
+            <div
+              key={`hole-${rowValues.hole_num}-row`}
+              className={`${idx % 2 && "bg-gray-400/10"}`}
+            >
+              <TableRow rowValues={rowValues} />
+            </div>
+          ))}
+          <TableIORow io="in" rowValues={tableValues.in?.total} />
+        </>
+      )}
+
+      {(tableValues.in?.played && tableValues.out?.played) && <TableTotalRow rowValues={tableValues.total} />}
     </div>
   );
 };

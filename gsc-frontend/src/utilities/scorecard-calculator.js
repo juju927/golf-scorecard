@@ -60,3 +60,79 @@ export function analysePutts(putts) {
       return "bad";
   }
 }
+
+export function getScorecardTableValues(round) {
+  if (!round) {
+    return;
+  }
+  const scorecardTableValues = {
+    in: {
+      played: false,
+      total: {
+        dist: 0,
+        par: 0,
+        strokes: 0,
+        score: 0,
+      },
+      values: [],
+    },
+    out: {
+      played: false,
+      total: {
+        dist: 0,
+        par: 0,
+        strokes: 0,
+        score: 0,
+      },
+      values: [],
+    },
+    total: {
+      dist: 0,
+      par: 0,
+      strokes: 0,
+      score: 0,
+    },
+  };
+
+  for (let i = 0; i < round.round_record.length; i++) {
+    const courseHoleDetails = round.course.holes.filter(
+      (hole) => hole.hole_no == round.round_record[i].hole_num
+    )[0];
+    const values = {
+      hole_num: round.round_record[i].hole_num,
+      dist: courseHoleDetails.dists[round.tee],
+      dist_unit: round.course.dist_unit,
+      index:
+        courseHoleDetails.handicap_index[round.tee] ||
+        courseHoleDetails.handicap_index.all,
+      par: courseHoleDetails.par,
+      strokes: round.round_record[i].total_strokes,
+      score: round.round_record[i].total_strokes - courseHoleDetails.par,
+    };
+    if (values.hole_num > 9) {
+      scorecardTableValues.in.played = true;
+      scorecardTableValues.in.values.push(values);
+      scorecardTableValues.in.total.dist += values.dist;
+      scorecardTableValues.in.total.par += values.par;
+      scorecardTableValues.in.total.strokes += values.strokes;
+    } else {
+      scorecardTableValues.out.played = true;
+      scorecardTableValues.out.values.push(values);
+      scorecardTableValues.out.total.dist += values.dist;
+      scorecardTableValues.out.total.par += values.par;
+      scorecardTableValues.out.total.strokes += values.strokes;
+    }
+    scorecardTableValues.total.dist += values.dist;
+    scorecardTableValues.total.par += values.par;
+    scorecardTableValues.total.strokes += values.strokes;
+  }
+
+  scorecardTableValues.in.total.score =
+    scorecardTableValues.in.total.strokes - scorecardTableValues.in.total.par;
+  scorecardTableValues.out.total.score =
+    scorecardTableValues.out.total.strokes - scorecardTableValues.out.total.par;
+  scorecardTableValues.total.score =
+    scorecardTableValues.total.strokes - scorecardTableValues.total.par;
+
+  return scorecardTableValues;
+}
