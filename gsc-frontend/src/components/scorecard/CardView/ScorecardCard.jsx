@@ -1,10 +1,11 @@
 import dayjs from "dayjs";
 import StatBox from "./StatBox";
+import TeeIcon from "../../common/TeeIcon";
 
 const ScorecardCard = ({ scorecardDetails }) => {
   return (
-    <div className="card-outline min-w-80 h-fit px-4 pb-3 rounded-lg border-solid border-2 border-double border-emerald-500 bg-teal-400">
-      <div className="user-profile flex h-20 gap-x-3 items-center border-b">
+    <div className="card-outline min-w-80 h-fit m-4 px-4 pb-3 rounded-lg border-solid border-2 border-double border-emerald-500 bg-teal-400">
+      <div className="user-profile flex h-20 gap-x-2 items-center border-b">
         <div>
           <img
             alt={scorecardDetails?.username}
@@ -12,7 +13,7 @@ const ScorecardCard = ({ scorecardDetails }) => {
             className="h-10 w-10 rounded-full object-cover"
           />
         </div>
-        <div className="flex flex-col">
+        <div className="grow flex flex-col">
           <p>
             <strong className="text-xs text-bold">
               {scorecardDetails?.name}
@@ -69,6 +70,7 @@ const ScorecardCard = ({ scorecardDetails }) => {
             </p>
           </div>
         </div>
+        <TeeIcon tee={scorecardDetails?.tee} />
       </div>
 
       <div className="w-full pb-1 text-2xl font-extrabold text-white text-center uppercase tracking-tight">

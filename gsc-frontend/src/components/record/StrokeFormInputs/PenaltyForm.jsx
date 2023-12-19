@@ -125,7 +125,7 @@ const PenaltyForm = ({
                     className="inline-flex justify-center rounded-md border border-red-500 bg-transparent px-4 py-2 text-sm font-medium text-red-500"
                     onClick={handleDeletePenalty}
                   >
-                    Delete Penalty
+                    Remove Penalty
                   </button>
 
                   <button

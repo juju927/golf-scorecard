@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import { simpleConfirm } from "react-simple-dialogs";
+import TeeIcon from "../common/TeeIcon";
 
 const HoleDetails = ({
   prevHole,
   nextHole,
   hole_no,
   par_no,
+  tee,
   dist,
   dist_unit,
   index_no,
-  goToScorecard,
+  handleLastHoleNext,
 }) => {
 
   const handleClick = async () => {
@@ -23,7 +25,7 @@ const HoleDetails = ({
         cancelLabel: "Cancel",
       })
     ) {
-      goToScorecard();
+      handleLastHoleNext();
     }
   };
 
@@ -68,8 +70,12 @@ const HoleDetails = ({
         <h2 className="justify-self-start text-xl text-slate-200">
           Par {par_no}
         </h2>
-        <h2 className="justify-self-center text-xl text-slate-200">
-          {dist} {dist_unit == "metres" ? "m" : "yd"}
+        <h2 className="flex items-center justify-self-center text-xl gap-2">
+          <TeeIcon tee={tee} />{" "}
+          <span className="text-slate-200">
+            {dist}{" "}
+            {dist_unit == "metres" ? "m" : "yd"}
+          </span>
         </h2>
         <h2 className="justify-self-end text-xl text-slate-200">
           Index {index_no}

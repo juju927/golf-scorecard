@@ -35,6 +35,7 @@ const HolePage = () => {
   const prevHole = holeNo == firstHole ? holeNo : parseInt(holeNo) - 1;
   const nextHole = holeNo == lastHole ? holeNo : parseInt(holeNo) + 1;
 
+
   const endHole = async () => {
     try {
       const updatedRound = await updateStatsService({
@@ -92,13 +93,14 @@ const HolePage = () => {
         nextHole={nextHole}
         hole_no={holeDetails?.hole_no}
         par_no={holeDetails?.par}
+        tee={roundDetails?.tee}
         dist={holeDetails?.dists?.[roundDetails.tee]}
         dist_unit={roundDetails?.course?.dist_unit}
         index_no={
           holeDetails?.handicap_index?.[roundDetails.tee] ||
           holeDetails?.handicap_index?.all
         }
-        goToScorecard={goToScorecard}
+        handleLastHoleNext={goToScorecard}
       />
 
       <StrokesSummary holeRecord={holeRecord} par_no={holeDetails?.par} />

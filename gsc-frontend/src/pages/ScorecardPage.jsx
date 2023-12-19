@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ScorecardCard from "../components/scorecard/ScorecardCard";
-import ScorecardTable from "../components/scorecard/ScorecardTable";
-import ScorecardPH from "../components/scorecard/ScorecardPH";
+import ScorecardCard from "../components/scorecard/CardView/ScorecardCard";
+import ScorecardTable from "../components/scorecard/TableView/ScorecardTable";
+import ScorecardPH from "../components/scorecard/PerHoleView/ScorecardPH";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getRoundService } from "../utilities/rounds-service";
@@ -59,7 +59,7 @@ const ScorecardPage = () => {
         </div>
 
       </div>
-      <div className="h-full w-full px-3">
+      <div className="h-full w-full">
         {view == views[0] && <ScorecardTable roundDetails={roundDetails} scorecardDetails={scorecardDetails} />}
         {view == views[1] && <ScorecardCard scorecardDetails={scorecardDetails} />}
         {view == views[2] && <ScorecardPH roundDetails={roundDetails} />}

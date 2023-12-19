@@ -5,9 +5,7 @@ const TotalStrokes = ({ total, score }) => {
     <div
       className={`px-1 py-2 w-1/3 rounded-sm ${
         scoreType == "good" && "bg-card-good-bg"
-      } ${
-        scoreType == "bad" && "bg-card-bad-bg"
-      } ${
+      } ${scoreType == "bad" && "bg-card-bad-bg"} ${
         scoreType == "neutral" && "bg-card-neutral-bg"
       } flex flex-col`}
     >
@@ -15,16 +13,18 @@ const TotalStrokes = ({ total, score }) => {
         total
       </span>
       <p className="w-full text-center oldstyle-nums">
-        <span className="relative text-5xl font-bold text-black">{total}</span>
-        <span
-          className={`absolute align-super ${
-            scoreType == "neutral" && "text-slate-700"
-          } ${scoreType == "bad" && "text-red-500"} ${
-            scoreType == "good" && "text-green-800"
-          } `}
-        >
-          ({score > 0 && "+"}
-          {score})
+        <span className="text-5xl font-bold text-black">
+          {total}
+          <span
+            className={`text-lg align-super ${
+              scoreType == "neutral" && "text-slate-700"
+            } ${scoreType == "bad" && "text-red-500"} ${
+              scoreType == "good" && "text-green-800"
+            } `}
+          >
+            ({score > 0 && "+"}
+            {score})
+          </span>
         </span>
       </p>
     </div>
