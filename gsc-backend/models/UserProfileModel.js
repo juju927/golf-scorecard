@@ -12,12 +12,7 @@ const userProfileSchema = new Schema({
   profile_picture: { type: String },
   display_name: { type: String },
   country: { type: String },
-  golf_bag: [
-    {
-      golfClub_id: { type: Schema.Types.ObjectId, ref: "GolfClub" },
-      distance: { type: Number, default: 0 },
-    },
-  ],
+  golf_bag: [{ type: Schema.Types.ObjectId, ref: "GolfClub" }],
   handicap: { type: Number, min: 0, max: 53 },
 });
 
