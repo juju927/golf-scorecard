@@ -24,7 +24,11 @@ function checkFIR(roundRecord, parNo) {
   if (parNo == 3 || roundRecord.stroke_details.length < 2) {
     return undefined;
   }
-  if (roundRecord.stroke_details[1]?.ground == "Fairway") {
+
+  if (
+    roundRecord.stroke_details[1]?.ground == "Fairway" &&
+    stroke_details[0].penalty.panelty_amt == 0
+  ) {
     return true;
   }
   return false;
