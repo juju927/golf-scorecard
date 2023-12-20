@@ -27,7 +27,7 @@ function checkFIR(roundRecord, parNo) {
 
   if (
     roundRecord.stroke_details[1]?.ground == "Fairway" &&
-    stroke_details[0].penalty.panelty_amt == 0
+    roundRecord.stroke_details[0].penalty.penalty_amt == 0
   ) {
     return true;
   }
