@@ -22,48 +22,58 @@ const ScorecardTable = ({ roundDetails }) => {
       <div className="flex justify-between text-sm text-gray-400">
         <span className="font-light">
           Name:{" "}
-          <span className="text-white font-bold">{roundDetails?.user?.profile?.display_name || roundDetails?.user?.username}</span>
+          <span className="text-white font-bold">
+            {roundDetails?.user?.profile?.display_name ||
+              roundDetails?.user?.username}
+          </span>
         </span>
         <span className="font-light">
           Date:{" "}
-          <span className="text-white font-bold">{dayjs(roundDetails.date).format("D MMM YYYY")}</span>
+          <span className="text-white font-bold">
+            {dayjs(roundDetails.date).format("D MMM YYYY")}
+          </span>
         </span>
       </div>
 
-
       {/* OUT table */}
-      <TableHeader />
-      {tableValues.out?.played && (
+      {tableValues.out?.is_played && (
         <>
+        <TableHeader />
           {tableValues.out?.values?.map((rowValues, idx) => (
             <div
               key={`hole-${rowValues.hole_num}-row`}
               className={`${idx % 2 && "bg-gray-400/10"}`}
             >
-              <TableRow rowValues={rowValues} />
+              {rowValues.is_completed && <TableRow rowValues={rowValues} />}
             </div>
           ))}
-          <TableIORow io="out" rowValues={tableValues.out?.total} />
+          {tableValues.out?.completed == 9 && (
+            <TableIORow io="out" rowValues={tableValues.out?.total} />
+          )}
         </>
       )}
 
       {/* IN table */}
-      <TableHeader />
-      {tableValues.in?.played && (
+      {tableValues.in?.is_played && (
         <>
+        <TableHeader />
           {tableValues.in?.values?.map((rowValues, idx) => (
             <div
               key={`hole-${rowValues.hole_num}-row`}
               className={`${idx % 2 && "bg-gray-400/10"}`}
             >
-              <TableRow rowValues={rowValues} />
+              {rowValues.is_completed && <TableRow rowValues={rowValues} />}
             </div>
           ))}
-          <TableIORow io="in" rowValues={tableValues.in?.total} />
+          {tableValues.in?.completed == 9 && (
+            <TableIORow io="in" rowValues={tableValues.in?.total} />
+          )}
         </>
       )}
 
-      {(tableValues.in?.played && tableValues.out?.played) && <TableTotalRow rowValues={tableValues.total} />}
+      {tableValues.in?.completed == 9 && tableValues.out?.completed == 9 && (
+        <TableTotalRow rowValues={tableValues.total} />
+      )}
     </div>
   );
 };

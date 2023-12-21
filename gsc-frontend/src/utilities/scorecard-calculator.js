@@ -67,7 +67,8 @@ export function getScorecardTableValues(round) {
   }
   const scorecardTableValues = {
     in: {
-      played: false,
+      is_played: false,
+      completed: 0,
       total: {
         dist: 0,
         par: 0,
@@ -77,7 +78,8 @@ export function getScorecardTableValues(round) {
       values: [],
     },
     out: {
-      played: false,
+      is_played: false,
+      completed: 0,
       total: {
         dist: 0,
         par: 0,
@@ -107,20 +109,23 @@ export function getScorecardTableValues(round) {
         courseHoleDetails.handicap_index.all,
       par: courseHoleDetails.par,
       strokes: round.round_record[i].total_strokes,
+      is_completed: round.round_record[i].is_completed,
       score: round.round_record[i].total_strokes - courseHoleDetails.par,
     };
     if (values.hole_num > 9) {
-      scorecardTableValues.in.played = true;
+      scorecardTableValues.in.is_played = true;
       scorecardTableValues.in.values.push(values);
       scorecardTableValues.in.total.dist += values.dist;
       scorecardTableValues.in.total.par += values.par;
       scorecardTableValues.in.total.strokes += values.strokes;
+      round.round_record[i].is_completed && scorecardTableValues.in.completed ++;
     } else {
-      scorecardTableValues.out.played = true;
+      scorecardTableValues.out.is_played = true;
       scorecardTableValues.out.values.push(values);
       scorecardTableValues.out.total.dist += values.dist;
       scorecardTableValues.out.total.par += values.par;
       scorecardTableValues.out.total.strokes += values.strokes;
+      round.round_record[i].is_completed && scorecardTableValues.out.completed ++;
     }
     scorecardTableValues.total.dist += values.dist;
     scorecardTableValues.total.par += values.par;
