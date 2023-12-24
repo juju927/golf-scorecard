@@ -6,7 +6,7 @@ const TableRow = ({ rowValues }) => {
       <div className="w-1/5">{rowValues?.index}</div>
       <div className="w-1/5">{rowValues?.par}</div>
       {/* <div className="w-1/6">{rowValues?.strokes}<span className="text-sm font-normal text-slate-400 align-super">({rowValues?.score > 0 && "+"}{rowValues?.score})</span></div> */}
-      <div className="w-1/6">
+      <div className={`w-1/6 ${rowValues?.score > 0 && "text-red-500"} ${rowValues?.score < 0 && "text-green-500"}`}>
         {rowValues?.score > 0 && "+"}
         {rowValues?.score}
       </div>
