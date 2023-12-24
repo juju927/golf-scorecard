@@ -1,3 +1,5 @@
+const debug = require("debug")("gsc-backend:helpers:statCalculator");
+
 function checkGIR(roundRecord, parNo) {
   // don't calculate GIR if round incomplete
   if (!roundRecord.is_completed) {
@@ -27,7 +29,7 @@ function checkFIR(roundRecord, parNo) {
 
   if (
     roundRecord.stroke_details[1]?.ground == "Fairway" &&
-    roundRecord.stroke_details[0].penalty.penalty_amt == 0
+    !(roundRecord.stroke_details[0].penalty.penalty_amt)
   ) {
     return true;
   }

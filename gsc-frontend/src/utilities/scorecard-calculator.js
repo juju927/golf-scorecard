@@ -32,7 +32,7 @@ export function getScorecardValues(roundRecord) {
     hole.FIR == false && FIR.miss++;
     totalPutts += hole.putts;
     holesPlayed++;
-  }
+  }  
 
   scorecard.roundComplete = roundComplete;
   scorecard.holesPlayed = holesPlayed;
