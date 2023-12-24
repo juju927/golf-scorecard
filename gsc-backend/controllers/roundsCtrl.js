@@ -112,8 +112,8 @@ async function updateRoundRecord(req, res) {
       return;
     }
     const roundRecord = round.round_record.id(req.body.round_record_id);
-    calculateStats(round, roundRecord);
     roundRecord.is_completed = req.body.is_completed;
+    calculateStats(round, roundRecord);
     await round.save();
     sendResponse(res, 200, round, "round edited");
   } catch (err) {
