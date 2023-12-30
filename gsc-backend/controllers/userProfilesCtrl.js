@@ -8,7 +8,9 @@ async function getUserProfile(req, res) {
   try {
     const profile = await UserProfile.find({
       username: req.params.username,
-    }).populate("golf_bag");
+    })
+      .populate("golf_bag")
+      .sort({ "golf_bag.serial": 1 });
     sendResponse(res, 200, profile);
   } catch (err) {
     debug("Error getting user profile: %o", err);

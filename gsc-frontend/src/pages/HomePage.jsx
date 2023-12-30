@@ -75,7 +75,7 @@ const HomePage = () => {
             <>
               <img src={golfBag} className="w-1/2 h-1/2 max-w-100" />
               <p className="mt-1.5 text-sm text-gray-500">
-                Looks like you have not set up your profile yet.
+                Looks like you have not set up your golf bag yet.
               </p>
               <div className="my-3 w-fit">
                 <Link
@@ -83,7 +83,7 @@ const HomePage = () => {
                   className="block rounded-lg bg-teal-500 shadow-md shadow-teal-500/50 px-5 py-3 text-sm font-medium text-white"
                   type="button"
                 >
-                  Set up profile
+                  Set up golf bag
                 </Link>
               </div>
             </>

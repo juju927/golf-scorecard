@@ -1,177 +1,212 @@
 [
   {
     "category": "Woods",
-    "name": "1-wood",
+    "name": "Driver",
     "abbrvName": "1W"
+,   "serial": 1
   },
   {
     "category": "Woods",
     "name": "2-wood",
     "abbrvName": "2W"
+,   "serial": 3
   },
   {
     "category": "Woods",
     "name": "3-wood",
     "abbrvName": "3W"
+,   "serial": 4
   },
   {
     "category": "Woods",
     "name": "4-wood",
     "abbrvName": "4W"
+,   "serial": 5
   },
   {
     "category": "Woods",
     "name": "5-wood",
     "abbrvName": "5W"
+,   "serial": 6
   },
   {
     "category": "Woods",
     "name": "6-wood",
     "abbrvName": "6W"
+,   "serial": 7
   },
   {
     "category": "Woods",
     "name": "7-wood",
     "abbrvName": "7W"
+,   "serial": 8
+  },
+  {
+    "category": "Woods",
+    "name": "9-wood",
+    "abbrvName": "9W"
+,   "serial": 9
+  },
+  {
+    "category": "Woods",
+    "name": "11-wood",
+    "abbrvName": "11W"
+,   "serial": 10
   },
   {
     "category": "Hybrids",
     "name": "2-hybrid",
     "abbrvName": "2h"
+,   "serial": 11
   },
   {
     "category": "Hybrids",
     "name": "3-hybrid",
     "abbrvName": "3h"
+,   "serial": 12
   },
   {
     "category": "Hybrids",
     "name": "4-hybrid",
     "abbrvName": "4h"
+,   "serial": 13
   },
   {
     "category": "Hybrids",
     "name": "5-hybrid",
     "abbrvName": "5h"
+,   "serial": 14
   },
   {
     "category": "Hybrids",
     "name": "6-hybrid",
     "abbrvName": "6h"
+,   "serial": 15
   },
   {
     "category": "Irons",
     "name": "4-iron",
     "abbrvName": "4i"
+,   "serial": 16
   },
   {
     "category": "Irons",
     "name": "5-iron",
     "abbrvName": "5i"
+,   "serial": 17
   },
   {
     "category": "Irons",
     "name": "6-iron",
     "abbrvName": "6i"
+,   "serial": 18
   },
   {
     "category": "Irons",
     "name": "7-iron",
     "abbrvName": "7i"
+,   "serial": 19
   },
   {
     "category": "Irons",
     "name": "8-iron",
     "abbrvName": "8i"
+,   "serial": 20 
   },
   {
     "category": "Irons",
     "name": "9-iron",
     "abbrvName": "9i"
+,   "serial": 21
   },
   {
     "category": "Irons",
     "name": "10-iron",
-    "abbrvName": "10i"
-  },
-  {
-    "category": "Wedges",
-    "name": "50-deg wedge",
-    "abbrvName": "W50"
-  },
-  {
-    "category": "Wedges",
-    "name": "51-deg wedge",
-    "abbrvName": "W51"
-  },
-  {
-    "category": "Wedges",
-    "name": "52-deg wedge",
-    "abbrvName": "W52"
-  },
-  {
-    "category": "Wedges",
-    "name": "53-deg wedge",
-    "abbrvName": "W53"
-  },
-  {
-    "category": "Wedges",
-    "name": "54-deg wedge",
-    "abbrvName": "W54"
-  },
-  {
-    "category": "Wedges",
-    "name": "55-deg wedge",
-    "abbrvName": "W55"
-  },
-  {
-    "category": "Wedges",
-    "name": "56-deg wedge",
-    "abbrvName": "W56"
-  },
-  {
-    "category": "Wedges",
-    "name": "57-deg wedge",
-    "abbrvName": "W57"
-  },
-  {
-    "category": "Wedges",
-    "name": "58-deg wedge",
-    "abbrvName": "W58"
-  },
-  {
-    "category": "Wedges",
-    "name": "59-deg wedge",
-    "abbrvName": "W59"
-  },
-  {
-    "category": "Wedges",
-    "name": "60-deg wedge",
-    "abbrvName": "W60"
+    "abbrvName": "10i",
+    "serial": 22
   },
   {
     "category": "Wedges",
     "name": "pitching wedge",
-    "abbrvName": "PW"
+    "abbrvName": "PW",
+    "serial": 23
+  },
+  {
+    "category": "Wedges",
+    "name": "46-deg wedge",
+    "abbrvName": "W46",
+    "serial": 24
+  },
+  {
+    "category": "Wedges",
+    "name": "48-deg wedge",
+    "abbrvName": "W48",
+    "serial": 25
   },
   {
     "category": "Wedges",
     "name": "gap wedge",
-    "abbrvName": "GW"
+    "abbrvName": "GW",
+    "serial": 26
+  },
+  {
+    "category": "Wedges",
+    "name": "50-deg wedge",
+    "abbrvName": "W50",
+    "serial": 27
+  },
+  {
+    "category": "Wedges",
+    "name": "52-deg wedge",
+    "abbrvName": "W52",
+    "serial": 28
+  },
+  {
+    "category": "Wedges",
+    "name": "54-deg wedge",
+    "abbrvName": "W54",
+    "serial": 29
   },
   {
     "category": "Wedges",
     "name": "sand wedge",
-    "abbrvName": "SW"
+    "abbrvName": "SW",
+    "serial": 30
+  },
+  {
+    "category": "Wedges",
+    "name": "56-deg wedge",
+    "abbrvName": "W56",
+    "serial": 31
+  },
+  {
+    "category": "Wedges",
+    "name": "58-deg wedge",
+    "abbrvName": "W58",
+    "serial": 32
+  },
+  {
+    "category": "Wedges",
+    "name": "60-deg wedge",
+    "abbrvName": "W60",
+    "serial": 33
   },
   {
     "category": "Wedges",
     "name": "lob wedge",
-    "abbrvName": "LW"
+    "abbrvName": "LW",
+    "serial": 34
+  },
+  {
+    "category": "Wedges",
+    "name": "62-deg wedge",
+    "abbrvName": "W62",
+    "serial": 35
   },
   {
     "category": "Putters",
     "name": "putter",
     "abbrvName": "Pt"
+,   "serial": 36
   }
 ]

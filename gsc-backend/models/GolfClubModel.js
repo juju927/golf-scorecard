@@ -11,6 +11,9 @@ const golfClubSchema = new Schema({
   },
   name: { type: String },
   abbrvName: { type: String, validate: /\d[iIwWhH]|W\d{2}|[A-Z]W|Pt/ },
+  serial: {
+    type: Number,
+  },
 });
 
 module.exports = model("GolfClub", golfClubSchema);

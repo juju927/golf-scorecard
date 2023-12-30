@@ -1,6 +1,5 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import { userProfileAtom } from "../../utilities/atom";
-// import golfClubsLibrary from "../../utilities/club-types";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { simpleConfirm } from "react-simple-dialogs";
@@ -31,12 +30,10 @@ const GolfBagEditor = ({ setShowGolfBagEditor }) => {
     const clubList = [...userClubs];
     clubList.push(club);
     clubList.sort((club1, club2) => {
-      const club1n = club1.name.toLowerCase();
-      const club2n = club2.name.toLowerCase();
-      if (club1n < club2n) {
+      if (club1.serial < club2.serial) {
         return -1;
       }
-      if (club1n > club2n) {
+      if (club1.serial > club2.serial) {
         return 1;
       }
       return 0;

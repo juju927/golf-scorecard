@@ -85,7 +85,6 @@ const SignUpForm = () => {
             </div>
 
             <form
-              action="#"
               className="mt-8 grid grid-cols-6 gap-6"
               onSubmit={handleSubmit}
             >
