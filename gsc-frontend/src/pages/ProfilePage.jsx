@@ -31,12 +31,12 @@ const ProfilePage = () => {
         />
 
         <div className="p-4 flex flex-col gap-3">
-          <div className="flex gap-5 items-center justify-start">
+          <div
+            className="flex gap-5 items-center justify-start"
+            onClick={() => setShowProfileEditor(true)}
+          >
             <Avatar profile_picture={userProfile?.profile_picture} />
-            <div
-              className="flex grow flex-col justify-between text-white"
-              onClick={() => setShowProfileEditor(true)}
-            >
+            <div className="flex grow flex-col justify-between text-white">
               <div className="capitalize font-semibold">
                 {userProfile.display_name} {countryFlags[userProfile.country]}{" "}
                 <span className="lowercase italic font-extralight text-white/50">
@@ -51,7 +51,9 @@ const ProfilePage = () => {
                 </span>
               </div>
             </div>
-            <div><MdModeEdit className="text-2xl text-teal-500"/></div>
+            <div>
+              <MdModeEdit className="text-2xl text-teal-500" />
+            </div>
           </div>
 
           {/* golf bag selection */}
@@ -80,13 +82,13 @@ const ProfilePage = () => {
                 <GolfBagView />
                 {userProfile.golf_bag?.length > 0 && (
                   <div
-                  className="mt-8 w-full h-fit px-3 py-2 rounded-lg bg-teal-700 font-semibold border border-teal-500"
-                  onClick={() => setShowGolfBagEditor(true)}
-                >
-                  <div className="uppercase font-medium text-white text-center tracking-tight">
-                  edit golf bag
+                    className="mt-8 w-full h-fit px-3 py-2 rounded-lg bg-teal-700 font-semibold border border-teal-500"
+                    onClick={() => setShowGolfBagEditor(true)}
+                  >
+                    <div className="uppercase font-medium text-white text-center tracking-tight">
+                      edit golf bag
+                    </div>
                   </div>
-                </div>
                 )}
               </div>
             </div>
