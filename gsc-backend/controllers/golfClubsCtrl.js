@@ -6,7 +6,7 @@ const golfClubLibrary = require("../seed/golfClubs/golfClubLibrary.json");
 
 async function getGolfClubs(req, res) {
   try {
-    const golfClubs = await GolfClub.find({});
+    const golfClubs = await GolfClub.find({}).sort({ serial: 1 });
     sendResponse(res, 200, { golfClubs });
   } catch (err) {
     sendResponse(res, 500, err.message);
