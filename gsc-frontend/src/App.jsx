@@ -16,6 +16,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import { useAtomValue } from "jotai";
 import { userAtom } from "./utilities/atom";
+import SetupPage from "./pages/SetupPage";
 
 
 function App() {
@@ -37,6 +38,11 @@ function App() {
       path: "home",
       element: <HomePage />,
       loader: getUserRoundsLoader,
+    },
+    {
+      path: "setup",
+      element: <SetupPage />,
+      loader: getGolfClubsLibraryLoader,
     },
     {
       path: "record",

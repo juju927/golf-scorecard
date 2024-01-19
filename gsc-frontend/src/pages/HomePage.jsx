@@ -10,7 +10,6 @@ import { Navigate } from "react-router-dom";
 import TopHeader from "../components/common/TopHeader";
 import { useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
-import golfBag from "../assets/images/golf-bag.png";
 import dayjs from "dayjs";
 import RoundListItem from "../components/record/ListItems/RoundListItem";
 import newGame from "../assets/images/newGame.png";
@@ -43,11 +42,6 @@ const HomePage = () => {
       img: editGolfBag,
       link: "/profile",
     },
-    //   {
-    //   label: "log out",
-    //   img: logOut,
-    //   link: "/logout"
-    // },
   ];
   const navigate = useNavigate();
 
@@ -55,9 +49,6 @@ const HomePage = () => {
     logOutService();
     setUser(null);
     navigate("/login");
-    // setTimeout(() => {
-    //   navigate("/login");
-    // }, 2000);
   };
 
   useEffect(() => {
@@ -84,27 +75,12 @@ const HomePage = () => {
           <h1 className="self-start text-2xl font-bold text-white">
             Hello, {userProfile?.display_name || user?.username}!
           </h1>
-          {userProfile?.golf_bag?.length == 0 ? (
-            <>
-              <img src={golfBag} className="w-1/2 h-1/2 max-w-100" />
-              <p className="mt-1.5 text-sm text-gray-500">
-                Looks like you have not set up your golf bag yet.
-              </p>
-              <div className="my-3 w-fit">
-                <Link
-                  to="/profile"
-                  className="block rounded-lg bg-teal-500 shadow-md shadow-teal-500/50 px-5 py-3 text-sm font-medium text-white"
-                  type="button"
-                >
-                  Set up golf bag
-                </Link>
-              </div>
-            </>
-          ) : (
+          {/* {userProfile?.golf_bag?.length == 0 && <Navigate to="/setup" /> } */}
+            
             <p className="self-start mt-1.5 text-sm text-gray-500">
               Go hit some good shots today! 🎉
             </p>
-          )}
+          
         </div>
         <div className="w-full px-4 pt-4">
           {todayRounds.length > 0 && (

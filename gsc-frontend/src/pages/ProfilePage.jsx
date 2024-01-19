@@ -9,6 +9,7 @@ import GolfBagView from "../components/profile/GolfBagView";
 import Avatar from "../components/profile/Avatar";
 import { countryFlags } from "../utilities/icons";
 import UserProfileEditor from "../components/profile/UserProfileEditor";
+import { MdModeEdit } from "react-icons/md";
 
 const ProfilePage = () => {
   const userProfile = useAtomValue(userProfileAtom);
@@ -33,7 +34,7 @@ const ProfilePage = () => {
           <div className="flex gap-5 items-center justify-start">
             <Avatar profile_picture={userProfile?.profile_picture} />
             <div
-              className="flex flex-col justify-between text-white"
+              className="flex grow flex-col justify-between text-white"
               onClick={() => setShowProfileEditor(true)}
             >
               <div className="capitalize font-semibold">
@@ -50,6 +51,7 @@ const ProfilePage = () => {
                 </span>
               </div>
             </div>
+            <div><MdModeEdit className="text-2xl text-teal-500"/></div>
           </div>
 
           {/* golf bag selection */}
@@ -77,14 +79,14 @@ const ProfilePage = () => {
 
                 <GolfBagView />
                 {userProfile.golf_bag?.length > 0 && (
-                  <div className="h-fit w-fit mt-2 p-2 border border-teal-500">
-                    <p
-                      className="uppercase text-teal-500 text-sm text-center"
-                      onClick={() => setShowGolfBagEditor(true)}
-                    >
-                      edit golf bag
-                    </p>
+                  <div
+                  className="mt-8 w-full h-fit px-3 py-2 rounded-lg bg-teal-700 font-semibold border border-teal-500"
+                  onClick={() => setShowGolfBagEditor(true)}
+                >
+                  <div className="uppercase font-medium text-white text-center tracking-tight">
+                  edit golf bag
                   </div>
+                </div>
                 )}
               </div>
             </div>

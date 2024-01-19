@@ -4,15 +4,14 @@ import toast from "react-hot-toast";
 import logo from "../../assets/images/golf-buddy-logo-nowords.png";
 import AuthHeader from "./AuthHeader";
 import { signUpService } from "../../utilities/users-service";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { userAtom, userProfileAtom } from "../../utilities/atom";
 import { useNavigate } from "react-router-dom";
 import Loading from "../common/Loading";
 import { useEffect } from "react";
 
 const SignUpForm = () => {
-  const user = useAtomValue(userAtom);
-  const setUser = useSetAtom(userAtom);
+  const [user, setUser] = useAtom(userAtom)
   const setUserProfile = useSetAtom(userProfileAtom);
   const navigate = useNavigate();
 
@@ -44,7 +43,7 @@ const SignUpForm = () => {
         setUser(user);
         setUserProfile(user.profile || {});
         toast.success("Successfully signed up!");
-        navigate("/home");
+        navigate("/setup");
       }
     } catch (err) {
       toast.error(`${err.message}`);
