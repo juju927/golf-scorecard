@@ -9,9 +9,10 @@ import { userAtom, userProfileAtom } from "../../utilities/atom";
 import { useNavigate } from "react-router-dom";
 import Loading from "../common/Loading";
 import { useEffect } from "react";
+import validator from "validator";
 
 const SignUpForm = () => {
-  const [user, setUser] = useAtom(userAtom)
+  const [user, setUser] = useAtom(userAtom);
   const setUserProfile = useSetAtom(userProfileAtom);
   const navigate = useNavigate();
 
@@ -22,12 +23,43 @@ const SignUpForm = () => {
     password: "",
     passwordconfirm: "",
   });
+  const [isValid, setIsValid] = useState({
+    email: false,
+    username: false,
+    password: false,
+    passwordconfirm: false,
+  });
+
+  const checkIfValid = (field, value) => {
+    var isFieldValid = false;
+    switch (field) {
+      case "email":
+        isFieldValid = validator.isEmail(value);
+        break;
+      case "username":
+        isFieldValid =
+          validator.isAlphanumeric(value) &&
+          validator.isLength(value, { min: 4, max: 30 });
+        break;
+      case "password":
+        isFieldValid = validator.isLength(value, { min: 8 });
+        break;
+      case "passwordconfirm":
+        isFieldValid = userData.password == value;
+        break;
+    }
+    setIsValid({
+      ...isValid,
+      [field]: isFieldValid,
+    });
+  };
 
   const handleChange = (e) => {
     setUserData({
       ...userData,
       [e.target.name]: e.target.value,
     });
+    checkIfValid(e.target.name, e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -36,6 +68,11 @@ const SignUpForm = () => {
       toast.error("Passwords do not match.");
       return;
     }
+
+    if (Object.values(isValid).includes(false)) {
+      return;
+    }
+
     setIsLoading(true);
     try {
       const user = await signUpService(userData);
@@ -54,7 +91,7 @@ const SignUpForm = () => {
 
   useEffect(() => {
     if (user !== null && user !== undefined) {
-      navigate("/home");
+      navigate("/");
     }
   }, [user]);
 
@@ -104,6 +141,13 @@ const SignUpForm = () => {
                   value={userData.email}
                   disabled={isLoading}
                 />
+                <p
+                  className={`${
+                    isValid.email ? "invisible" : "visible"
+                  } text-xs text-red-500`}
+                >
+                  Please enter a valid email address.
+                </p>
               </div>
 
               <div className="col-span-6">
@@ -123,6 +167,14 @@ const SignUpForm = () => {
                   value={userData.username}
                   disabled={isLoading}
                 />
+                <p
+                  className={`${
+                    isValid.username ? "invisible" : "visible"
+                  } text-xs text-red-500`}
+                >
+                  Username must be between 4 - 30 characters long and cannot
+                  contain symbols.
+                </p>
               </div>
 
               <div className="col-span-6 sm:col-span-3">
@@ -142,6 +194,13 @@ const SignUpForm = () => {
                   value={userData.password}
                   disabled={isLoading}
                 />
+                <p
+                  className={`${
+                    isValid.password ? "invisible" : "visible"
+                  } text-xs text-red-500`}
+                >
+                  Password must contain at least 8 characters.
+                </p>
               </div>
 
               <div className="col-span-6 sm:col-span-3">
@@ -160,14 +219,23 @@ const SignUpForm = () => {
                   onChange={handleChange}
                   value={userData.passwordconfirm}
                   disabled={isLoading}
+                  
                 />
+                <p
+                  className={`${
+                    isValid.passwordconfirm ? "invisible" : "visible"
+                  } text-xs text-red-500`}
+                >
+                  Passwords must match.
+                </p>
               </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
                 <div className="flex items-center gap-2">
                   <button
-                    className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white"
+                    className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white disabled:bg-blue-700/30 disabled:border-none disabled:text-white/30"
                     onClick={handleSubmit}
+                    disabled={(Object.values(isValid).includes(false))}
                   >
                     Create an account
                   </button>
@@ -176,10 +244,7 @@ const SignUpForm = () => {
 
                 <p className="mt-4 text-sm text-gray-400 sm:mt-0">
                   Already have an account?{" "}
-                  <Link
-                    to="/login"
-                    className="text-gray-200 underline"
-                  >
+                  <Link to="/login" className="text-gray-200 underline">
                     Log in
                   </Link>
                   .

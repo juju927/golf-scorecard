@@ -48,7 +48,7 @@ const LoginForm = () => {
 
   useEffect(()=> {
     if (user !== null && user !== undefined) {
-      navigate("/home")
+      navigate("/")
     }
   }, [user])
 
