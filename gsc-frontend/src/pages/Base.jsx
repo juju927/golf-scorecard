@@ -1,16 +1,36 @@
-import { Outlet } from "react-router-dom"
-import { getUser } from "../utilities/users-service"
-import { Navigate } from "react-router-dom"
+import { Outlet } from "react-router-dom";
+import { getUser } from "../utilities/users-service";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Base = () => {
-  const user = getUser()
-  
+  const user = getUser();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const goThere = () => {
+      if (!user) {
+        navigate("/login");
+      } else {
+        if (user.profile?.golf_bag?.length > 0) {
+          navigate("/home");
+        } else {
+          navigate("/setup");
+        }
+      }
+    };
+
+    if (location.pathname == "/") {
+      goThere();
+    }
+  }, [location.pathname]);
+
   return (
     <>
-    { user ? user.profile?.golf_bag?.length == 0 ? <Navigate to="/setup" /> : <Navigate to="/home" /> : <Navigate to="/login" />}
-    <Outlet />
+      <Outlet />
     </>
-  )
-}
+  );
+};
 
-export default Base
+export default Base;

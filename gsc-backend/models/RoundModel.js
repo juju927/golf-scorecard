@@ -9,7 +9,7 @@ const roundSchema = new Schema(
     course: { type: Schema.Types.ObjectId, ref: "Course" },
     date: { type: Date, required: true, default: Date.now() },
     tee: { type: String, required: [true, "Please specify tee colour."] }, // colour tee
-    // hcp: { type: Number }, // hcp for the course
+    hcp: { type: Number }, // hcp for the course
     round_record: [
       {
         hole_num: {

@@ -65,6 +65,7 @@ async function createRound(req, res) {
       course: course._id,
       date: Date.now(),
       tee: req.body.tee,
+      hcp: req.body.hcp,
       round_record: [...initialiseRecord(req.body.round_type)],
     });
     const round = await Round.findById(newRound._id)
